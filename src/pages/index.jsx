@@ -6,7 +6,7 @@ export default function Home() {
     <div className={styles.introduction}>
       <h2>AFC Richmond</h2>
       <div>
-        
+        <h2>Project create by Thiago Martins</h2>
       </div>
 
       <div className={styles.introduction2}>
