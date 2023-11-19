@@ -2,18 +2,29 @@
     text-align: center;
     align-items: center;
     justify-content: center;
+    display: flex;
+    flex-direction: row;
 }
 
 .introduction h2 {
     margin: 10px;
 }
 
-
 .introduction img {
     height: 80vh;
     width: 80%;
+    border-radius: 5px;
+    margin-top: 2rem;
+    transition: all .3s ease-in-out;
 }
 
-.introduction2 {
-   
+.introduction img:hover {
+    opacity: 0.8;
+}
+
+.linkSection{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
 }
