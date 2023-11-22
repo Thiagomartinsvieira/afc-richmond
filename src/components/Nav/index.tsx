@@ -6,7 +6,8 @@ const Nav = () => {
     <div>
       <nav className={Styles.nav}>
         <Link href="/home">
-          <img src="https://i.pinimg.com/originals/03/87/0f/03870f01e4595fe300ccc1a328043153.png"
+          <img 
+            src="https://i.pinimg.com/originals/03/87/0f/03870f01e4595fe300ccc1a328043153.png"
             alt="logo"
           />
         </Link>
