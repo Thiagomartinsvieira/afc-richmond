@@ -1,13 +1,13 @@
 import Nav from '@/components/Nav'
 import React from 'react'
 
-const contact = () => {
+const shop = () => {
   return (
     <div>
       <Nav />
-      <h1>contact</h1>
+      <h1>AFC Shop</h1>
     </div>
   )
 }
 
-export default contact
+export default shop
