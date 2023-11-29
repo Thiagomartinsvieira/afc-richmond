@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer'
 import Nav from '@/components/Nav'
+import Title from '@/components/Title'
 import React from 'react'
 
 const history = () => {
@@ -8,9 +9,7 @@ const history = () => {
       <Nav />
       <br />
       <div className="border-red-500 ">
-        <h1 className="text-center font-bold">
-          Foundation of AFC Richmon: An Inspiring Journey à la Ted Lasso
-        </h1>
+        <Title title=" Foundation of AFC Richmon: An Inspiring Journey à la Ted Lasso" />
         <br />
         <p className="ml-10 mr-10">
           Founding of AFC Richmon: An Inspiring Journey into Ted Lasso's Fashion

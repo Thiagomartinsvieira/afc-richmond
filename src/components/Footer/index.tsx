@@ -19,13 +19,13 @@ const Footer = () => {
               Home
             </a>
             <a href="#" className="hover:text-gray-400">
-              Home
+              Players squad
             </a>
             <a href="#" className="hover:text-gray-400">
-              Home
+              Become a fan member
             </a>
             <a href="#" className="hover:text-gray-400">
-              Home
+              History
             </a>
           </div>
 
