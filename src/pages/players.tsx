@@ -1,21 +1,32 @@
-// pages/Players.tsx
-import React from 'react'
+import React, { useState } from 'react'
 import Nav from '../components/Nav'
-import PlayerCard from '../components/PlayerCard'
+import PlayerCard from '../components/PlayerCard/incex'
 import Title from '../components/Title'
 import { playersSquad } from '@/data/playersData'
 import Footer from '@/components/Footer'
 
 const Players = () => {
+  const [showIdols, setShowIdols] = useState(false)
+  const dataShow = showIdols ? idolsData : playersSquad
+
   const positions = Array.from(
     new Set(playersSquad.map((player) => player.position)),
   )
+
+  const handleToogleData = () => {
+    setShowIdols(!showIdols)
+  }
 
   return (
     <div>
       <Nav />
       <Title title="Players squad" />
-      <h1 className="text-center font-bold">Main Male | Team idols</h1>
+      <h1 className="text-center font-bold">Main Male | Team {" "}
+        <button onClick={handleToogleData}
+          className='tex'
+        >
+        </button>
+      </h1>
 
       {positions.map((position, index) => (
         <div key={index}>

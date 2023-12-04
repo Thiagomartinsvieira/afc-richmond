@@ -1,7 +1,15 @@
 import Link from 'next/link'
-import { shoppingBagIcon } from '../icons/icons'
+import { arrowDown, shoppingBagIcon } from '../icons/icons'
+import DropdownMenu from './DropdownMenu'
+import { useState } from 'react'
 
 const Nav = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(isDropdownOpen)
+  }
+
   return (
     <div>
       <nav className="flex items-center justify-around mx-auto p-2 bg-blue-600 font-bold">
@@ -15,8 +23,10 @@ const Nav = () => {
         <Link
           href="/home"
           className="hover:text-white hover:underline transition duration-300 ease-in-out"
+          onClick={handleDropdownToggle}
         >
-          Home
+          Soccer
+          {isDropdownOpen && <DropdownMenu />}
         </Link>
         <Link
           href="/become"
