@@ -1,8 +1,10 @@
 import React from 'react'
+import SponsorFooter from './SponsorFooter'
 
 const Footer = () => {
   return (
     <div>
+      <SponsorFooter />
       <footer className="bg-gray-800 text-white py-8">
         <div className="container mx-auto flex items-center justify-around ">
           <div className="flex items-center space-x-4">
