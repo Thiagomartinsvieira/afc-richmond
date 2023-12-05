@@ -10,10 +10,10 @@ interface PlayerCardProps {
 
 const PlayerCard = (props: PlayerCardProps) => {
   return (
-    <div className="relative p-4 rounded-lg shadow-md overflow-hidden">
+    <div className="relative p-4 rounded-lg shadow-md overflow-hidden text-center">
       <div
         className="absolute top-5 right-5 bg-black text-blu-600 
-        font-black p-4 rounded-full"
+        font-black p-4 rounded-full "
       >
         {props.playerNumber}
       </div>
