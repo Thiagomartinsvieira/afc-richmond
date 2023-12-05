@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Nav from '../components/Nav'
-import PlayerCard from '../components/PlayerCard/incex'
+import PlayerCard from '../components/PlayerCard'
 import Title from '../components/Title'
 import { playersSquad } from '@/data/playersData'
 import Footer from '@/components/Footer'

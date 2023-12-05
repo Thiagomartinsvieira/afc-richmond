@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { arrowDown, shoppingBagIcon } from '../icons/icons'
 import DropdownMenu from './DropdownMenu'
 import { useState } from 'react'
+import SecondaryNav from './SecondaryNav'
 
 const Nav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -59,6 +60,7 @@ const Nav = () => {
           {shoppingBagIcon()}
         </Link>
       </nav>
+      <SecondaryNav />
     </div>
   )
 }
