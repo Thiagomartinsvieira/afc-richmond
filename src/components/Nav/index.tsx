@@ -22,7 +22,7 @@ const Nav = () => {
           />
         </Link>
         <Link
-          href="/home"
+          href="/soccer"
           className="hover:text-white hover:underline transition duration-300 ease-in-out"
           onClick={handleDropdownToggle}
         >
@@ -40,6 +40,12 @@ const Nav = () => {
           className="hover:text-white hover:underline transition duration-300 ease-in-out"
         >
           Players squad
+        </Link>
+        <Link
+          href="/stadium"
+          className="hover:text-white hover:underline transition duration-300 ease-in-out"
+        >
+          Stadium
         </Link>
         <Link
           href="/news"
