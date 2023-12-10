@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { arrowLeft, arrowRight } from '../icons/icons'
 
 const ImageSlider = ({ images }) => {
@@ -11,6 +11,14 @@ const ImageSlider = ({ images }) => {
   const prevImage = () => {
     setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1))
   }
+
+  useEffect(() => {
+    const intervalID = setInterval(() => {
+      nextImage()
+    }, 5000)
+
+    return () => clearInterval(intervalID)
+  }, [currentImage])
 
   return (
     <div className="relative w-full max-w-screen-2xl mx-auto overflow-hidden">
