@@ -2,7 +2,7 @@ const FanMemberNav = () => {
   return (
     <div>
       <nav className="flex flex-row justify-around items-center bg-black p-1">
-        <div className="flex text-center justify-center items-center">
+        <div className="flex text-center justify-center items-center cursor-pointer">
           <img
             src="https://www.asumidsouth.edu/wp-content/uploads/2021/10/Greyhounds_dog_head.png"
             alt="AFC Richmond logo"
