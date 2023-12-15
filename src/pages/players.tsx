@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Nav from '../components/Nav'
-import PlayerCard from '../components/PlayerCard'
+import PlayerCard from '@/components/Card/PlayerCard'
 import Title from '../components/Title'
 import { playersSquad } from '@/data/playersData'
 import Footer from '@/components/Footer'
@@ -21,11 +21,9 @@ const Players = () => {
     <div>
       <Nav />
       <Title title="Players squad" />
-      <h1 className="text-center font-bold">Main Male | Team {" "}
-        <button onClick={handleToogleData}
-          className='tex'
-        >
-        </button>
+      <h1 className="text-center font-bold cursor-pointer">
+        Main Male | Team Idols | staff
+        <button onClick={handleToogleData} className="tex"></button>
       </h1>
 
       {positions.map((position, index) => (
