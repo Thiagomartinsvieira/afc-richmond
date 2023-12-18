@@ -24,9 +24,13 @@ const SponsorFooter = () => {
             src="https://sep-bucket-prod.s3.amazonaws.com/wp-content/uploads/2021/08/logo-gatorade-peq-v02.png"
             alt=""
           />
-          <img src="https://i.imgur.com/eh3iv7q.png" alt="" width="60px" />
           <img
-            src="https://sm.ign.com/ign_br/screenshot/default/b57zgnfk7wpa07vlbace6dkn302ki5k4dupu6fef2-ccubhrfou-licc03bh_b4hg.png"
+            src="https://cdn.iconscout.com/icon/free/png-256/free-tnt-energy-drink-3442173-2876040.png"
+            alt=""
+            width="60px"
+          />
+          <img
+            src="https://cdn-icons-png.flaticon.com/256/588/588283.png"
             alt=""
             width="60px"
           />
