@@ -29,30 +29,26 @@ const MemberFanCard = (props: MemberFanCardProps) => {
 
   const orderedPlans = ['Bronze', 'Silver', 'Gold']
 
-  const planIndex = orderedPlans.indexOf(props.plan)
-
   const bgColorClass = planColors[props.plan] || 'bg-gray-300'
   const textColorClass = textPlanColors[props.plan] || 'text-white'
   const bgPlanColorClass = bgPlanColors[props.plan] || 'bg-gray-400'
 
   return (
     <div
-      className={`flex flex-col items-center ${bgColorClass} p-6 rounded-md mx-3
-       mb-4 w-64 border border-blue-600 border-2`}
+      className={`flex flex-col items-center ${bgColorClass} p-6 rounded-md mx-3 mb-4 w-64 border border-blue-600 border-2`}
     >
       <div
-        className={`flex items-center justify-center ${bgPlanColorClass} mb-5
-         py-5 px-8 rounded-md`}
+        className={`flex items-center justify-center ${bgPlanColorClass} mb-3 py-3 px-6 rounded-md`}
       >
-        <h3 className={`${textColorClass} text-xl font-bold`}>{props.plan}</h3>
+        <h3 className={`${textColorClass} text-lg font-bold`}>{props.plan}</h3>
       </div>
-      <div className="mb-5">
+      <div className="mb-3">
         <span className="font-semibold text-black flex items-center">
           {tiketIcon}{' '}
           <span className="ml-2">{props.discount}% discount on tickets</span>
         </span>
       </div>
-      <div className="mb-5">
+      <div className="mb-3">
         <span className="font-semibold text-black flex items-center">
           {userPluss}{' '}
           <span className="ml-2">
@@ -60,7 +56,7 @@ const MemberFanCard = (props: MemberFanCardProps) => {
           </span>
         </span>
       </div>
-      <div className="mb-5">
+      <div className="mb-3">
         <span className="font-semibold text-black flex items-center">
           {dollar}{' '}
           <span className="ml-2">
@@ -68,7 +64,7 @@ const MemberFanCard = (props: MemberFanCardProps) => {
           </span>
         </span>
       </div>
-      <div className="mb-5">
+      <div className="mb-3">
         <span className="font-semibold text-black flex items-center">
           {star}{' '}
           <span className="ml-2">
@@ -76,10 +72,14 @@ const MemberFanCard = (props: MemberFanCardProps) => {
           </span>
         </span>
       </div>
-      <button
-        className="text-center text-white bg-black font-semibold
-       p-2 rounded-md transition duration-300 hover:bg-gray-800 border"
+      <span
+        className="flex bg-green-800 text-white px-4 py-2 rounded-md
+       font-semibold mb-3 justify-center items-center"
       >
+        <div className="text-xs">$</div>
+        {props.value} <div className="text-xs ml-1">month</div>
+      </span>
+      <button className="text-center text-white bg-black font-semibold p-2 rounded-md transition duration-300 hover:bg-gray-800 border">
         Join Now
       </button>
     </div>
