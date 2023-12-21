@@ -28,7 +28,8 @@ const ExperienceCarousel = ({ images }) => {
                 key={i}
                 src={image.imageUrl}
                 alt={`Experience Image ${index * 5 + i}`}
-                className="object-contain h-64 w-full max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg"
+                className="object-contain h-64 w-full max-w-xs
+                 md:max-w-sm lg:max-w-md xl:max-w-lg"
                 style={{ maxWidth: maxImageWidth }}
               />
             ))}
