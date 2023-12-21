@@ -21,7 +21,7 @@ const ImageCarousel = ({
         selectedItem={currentImageIndex}
         onChange={() => {}}
         emulateTouch
-        infiniteLoop
+        infiniteLoop2
       >
         {images.map((image, i) => (
           <div key={i}>
