@@ -33,7 +33,7 @@ const ImageSlider = ({ images }) => {
         src={images[currentImage]}
         alt={`Slide ${currentImage + 1}`}
         className="w-full h-auto max-h-96 transition-transform transform translate-x-0"
-        style={{ maxHeight: '300px' }} // Defina a altura máxima desejada
+        style={{ maxHeight: '300px' }}
       />
       <button
         className="absolute top-1/2 transform -translate-y-1/2 right-10
