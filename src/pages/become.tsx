@@ -3,25 +3,34 @@ import Footer from '@/components/Footer'
 import ImageSlider from '@/components/ImageSlider'
 import Nav from '@/components/Nav'
 import FanMemberNav from '@/components/Nav/FanMemberNav'
-import SignUp from '@/components/Form'
 import Title from '@/components/Title'
-import React from 'react'
+import React, { useState } from 'react'
 import Benefits from '@/components/Benefits/Benefits'
+import { BecomeImages } from '@/data/becomeImages'
+import ExperienceCarrousel from '@/components/ImageCarroucel/ExperienceCarroucel'
+import BecomeFooter from '@/components/Footer/BecomeFooter'
 
 const become = () => {
   const images = [
-    'https://sep-bucket-prod.s3.amazonaws.com/wp-content/uploads/2023/03/Banner-Avanti.jpg',
-    'https://sep-bucket-prod.s3.amazonaws.com/wp-content/uploads/2023/08/Avanti-App.jpg',
-    'https://sep-bucket-prod.s3.amazonaws.com/wp-content/uploads/2023/05/Banner-Avanti-INFO-2000x600-Info-Venda-com-Facial_Reconhecimento_Facial-Portoes_FacialGremi.jpg',
-    // './images/banner/baner1.png',
-    'https://www.marketing-beat.co.uk/wp-content/uploads/2023/03/Nandos-X-A.F.C.-Richmond.jpg',
-    'https://static1.srcdn.com/wordpress/wp-content/uploads/2023/04/ted-lasso-season-3-episode-7-dani-sam-jamie.jpg',
-    'https://images5.alphacoders.com/123/1235591.jpg',
-    'https://i.redd.it/puawvbm8pze71.jpg',
     'https://www.prodirectsport.com/-/media/prodirect/project/en/soccer/pdp-content/off-pitch/nike-ted-lasso/bb---pdp---ted-lasso-players-d-150323.png',
-    'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/7f25d1166089161.641231c837bdf.jpg',
     'https://www.prodirectsport.com/-/media/prodirect/project/en/soccer/pdp-content/off-pitch/nike-ted-lasso/bb-d-storytab-nike-tedlasso-2.jpg',
+    'https://i.redd.it/puawvbm8pze71.jpg',
+    'https://www.marketing-beat.co.uk/wp-content/uploads/2023/03/Nandos-X-A.F.C.-Richmond.jpg',
+    'https://images5.alphacoders.com/123/1235591.jpg',
+    'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/7f25d1166089161.641231c837bdf.jpg',
   ]
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+  }
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length,
+    )
+  }
 
   return (
     <div>
@@ -40,9 +49,7 @@ const become = () => {
 
         <Benefits />
 
-        <hr />
-
-        <h2>ALL PLANS INCLUDE BENEFITS 🌟</h2>
+        <h2 className="mb-10">ALL PLANS INCLUDE BENEFITS 🌟</h2>
 
         <h2>Reasons to become a Richmonites</h2>
 
@@ -50,32 +57,29 @@ const become = () => {
           <MemberFanCard
             plan="Bronze"
             discount={50}
-            value={25}
+            value={15}
             quest={1}
             starsRating={2}
           />
           <MemberFanCard
             plan="Silver"
             discount={75}
-            value={40}
+            value={30}
             quest={2}
             starsRating={3}
           />
           <MemberFanCard
             plan="Gold"
             discount={100}
-            value={100}
+            value={60}
             quest={3}
             starsRating={4}
           />
         </div>
 
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaYFCsKOFMewjJ5u1xC7r69ZrmsnCVwFwdhw&usqp=CAU"
-          alt=""
-        />
-        <SignUp />
+        <ExperienceCarrousel images={BecomeImages} />
       </div>
+      <BecomeFooter />
       <Footer />
     </div>
   )
