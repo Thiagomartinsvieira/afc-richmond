@@ -2,7 +2,7 @@ import React from 'react'
 
 const SponsorFooter = () => {
   return (
-    <div className="mx-auto text-center flex items-center mt-5">
+    <div className="mx-auto text-center flex items-center">
       <footer className="bg-gray-600 w-screen border-t-4 border-b-4 border-yellow-300">
         <div className="space-x-4 flex justify-around">
           <img
