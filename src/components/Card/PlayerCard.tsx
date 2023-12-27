@@ -9,19 +9,27 @@ interface PlayerCardProps {
 }
 
 const PlayerCard = (props: PlayerCardProps) => {
+  const isStaff = props.position.toLowerCase().includes('staff')
+
   return (
-    <div className="relative p-4 rounded-lg shadow-md overflow-hidden text-center">
+    <div
+      className={`relative p-4 rounded-lg shadow-md overflow-hidden
+       text-center border border-yellow-600 bg-gray-800 m-5
+      hover:scale-105 cursor-pointe`}
+    >
       <div
-        className="absolute top-5 right-5 bg-black text-blu-600 
-        font-black p-4 rounded-full "
+        className={`absolute top-5 right-5 font-black
+        z-10 text-2xl`}
       >
         {props.playerNumber}
       </div>
+
       <img
         src={props.imageUrl}
-        alt={props.name}
-        className="w-56 h-80 object-cover mb-4 rounded-m"
+        alt={`Portrait of ${props.name}`}
+        className="w-56 h-80 object-cover mb-4 rounded-m cursor-pointer"
       />
+
       <h2 className="text-xl font-semibold">
         {props.name} {props.Captain && '⭐'}
       </h2>

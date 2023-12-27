@@ -6,6 +6,7 @@ import { playersSquad } from '@/data/playersData'
 import { idolsData } from '@/data/idolsData'
 import { staffData } from '@/data/staffData'
 import Footer from '@/components/Footer'
+import { arrowLeft } from '@/components/icons/icons'
 
 const Players = () => {
   const [showIdols, setShowIdols] = useState(false)
@@ -40,18 +41,27 @@ const Players = () => {
       <Title title="Players squad" />
       <h1
         className="text-center font-bold cursor-pointer"
-        onClick={handleToogleData}
+        onClick={() => handleToogleData('idols')}
       >
-        {showIdols ? 'Back to Players Squad' : 'View team Idols'}
+        {showIdols ? 'View team Idols' : 'Back to Players Squad'}
       </h1>
       <div className="flex justify-center mt-4 space-x-4">
-        <button onClick={() => handleToogleData('players')} className="btn">
+        <button
+          onClick={() => handleToogleData('players')}
+          className="btn font-semibold"
+        >
           Players Squad
         </button>
-        <button onClick={() => handleToogleData('idols')} className="btn">
+        <button
+          onClick={() => handleToogleData('idols')}
+          className="btn font-semibold"
+        >
           Team Idols
         </button>
-        <button onClick={() => handleToogleData('staff')} className="btn">
+        <button
+          onClick={() => handleToogleData('staff')}
+          className="btn font-semibold"
+        >
           Staff
         </button>
       </div>
@@ -59,7 +69,7 @@ const Players = () => {
       {positions.map((position, index) => (
         <div key={index}>
           <h2 className="text-2xl font-semibold mt-4">{position}</h2>
-          <hr className="mb-2" />
+          <hr className="mb-2 border-t border-yellow-600" />
           <div className="flex flex-wrap justify-center items-center">
             {dataToShow
               .filter((player) => player.position === position)
