@@ -48,19 +48,31 @@ const Players = () => {
       <div className="flex justify-center mt-4 space-x-4">
         <button
           onClick={() => handleToogleData('players')}
-          className="btn font-semibold"
+          className={`btn font-semibold transition ${
+            showIdols || showStaff
+              ? ''
+              : 'border-b-4 border-blue-500 hover:border-transparent hover:border-blue-500'
+          }`}
         >
           Players Squad
         </button>
         <button
           onClick={() => handleToogleData('idols')}
-          className="btn font-semibold"
+          className={`btn font-semibold transition ${
+            showIdols
+              ? 'border-b-4 border-blue-500 hover:border-transparent hover:border-blue-500'
+              : ''
+          }`}
         >
           Team Idols
         </button>
         <button
           onClick={() => handleToogleData('staff')}
-          className="btn font-semibold"
+          className={`btn font-semibold transition ${
+            showStaff
+              ? 'border-b-4 border-blue-500 hover:border-transparent hover:border-blue-500'
+              : ''
+          }`}
         >
           Staff
         </button>
