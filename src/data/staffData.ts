@@ -37,8 +37,13 @@ export const staffData = [
   {
     name: 'Barbara',
     position: 'Head of Marketing (former)',
-    imageUrl:
-      'https://tv-fanatic-res.cloudinary.com/iu/s--V4QdkBaM--/t_full/cs_srgb,f_auto,fl_strip_profile.lossy,q_auto:420/v1679488875/barbara-is-unimpressed-ted-lasso-s3e2.png',
+    imageUrl: 'images/staff/barbara.webp',
+  },
+
+  {
+    name: 'Sharon Fieldstone',
+    position: 'Sports psychologist',
+    imageUrl: 'images/staff/sharon.jpg',
   },
 
   {
