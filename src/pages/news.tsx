@@ -10,9 +10,9 @@ const News = () => {
       <Nav />
       <div className="flex flex-col mb-10">
         <img
-          src="https://media.santosfc.com.br/wp-content/uploads/2023/09/Nova-Arte-Pagina-Noticias.png"
-          alt=""
-          className="mb-10"
+          src="images/banner/baner1.png"
+          alt="ted lasso banner with Coach Beard, Roy kent and Rebeca"
+          className="mb-10 w-full h-auto max-h-96"
         />
         <h2 className="font-bold text-3xl text-center mb-4">News</h2>
         <div className="flex flex-row items-center justify-center">
