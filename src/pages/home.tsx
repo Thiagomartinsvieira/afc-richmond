@@ -4,15 +4,21 @@ import SocialMediaCard from '@/components/Card/SocialMediaCard'
 import Footer from '@/components/Footer'
 import PlayersCarroucel from '@/components/ImageCarroucel/PlayersCarroucel'
 import Nav from '@/components/Nav'
+import VerticalVideoNav from '@/components/Nav/VerticalVideoNav'
 import React from 'react'
 
 const home = () => {
   return (
-    <div>
+    <div className="relative">
       <Nav />
-      <video autoPlay loop muted playsInline className="w-full h-auto">
-        <source src="videos/Nike x Ted Lasso _ Believe _ Nike.mp4" />
-      </video>
+      <div className="flex">
+        <div className="relative w-full">
+          <VerticalVideoNav />
+          <video autoPlay loop muted playsInline className="w-full h-full">
+            <source src="videos/Nike x Ted Lasso _ Believe _ Nike.mp4" />
+          </video>
+        </div>
+      </div>
 
       <div className="flex flex-col">
         <h2 className="text-center mt-10">Main News</h2>
