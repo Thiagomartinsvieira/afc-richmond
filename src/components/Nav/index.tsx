@@ -16,52 +16,56 @@ const Nav = () => {
       <nav className="flex items-center justify-around mx-auto p-2 bg-blue-600 font-bold">
         <Link href="/home">
           <img
-            src="https://i.pinimg.com/originals/03/87/0f/03870f01e4595fe300ccc1a328043153.png"
-            alt="logo"
+            src="images/logos/Richmond_logo.png"
+            alt="Afc Richmond logo"
             className="w-24 h-auto"
           />
         </Link>
         <Link
-          href="/soccer"
-          className="hover:text-white hover:underline transition duration-300 ease-in-out"
-          onClick={handleDropdownToggle}
-        >
-          Soccer
-          {isDropdownOpen && <DropdownMenu />}
-        </Link>
-        <Link
           href="/become"
-          className="hover:text-white hover:underline transition duration-300 ease-in-out"
+          className="hover:text-white transition duration-300 ease-in-out hover:border-b
+          hover:border-yellow-500"
         >
-          Become a fan member
+          Become a member
         </Link>
         <Link
           href="/players"
-          className="hover:text-white hover:underline transition duration-300 ease-in-out"
+          className="hover:text-white transition duration-300 ease-in-out hover:border-b
+          hover:border-yellow-500"
         >
-          Players squad
+          Squad
         </Link>
         <Link
           href="/stadium"
-          className="hover:text-white hover:underline transition duration-300 ease-in-out"
+          className="hover:text-white transition duration-300 ease-in-out hover:border-b
+          hover:border-yellow-500"
         >
           Stadium
         </Link>
         <Link
           href="/news"
-          className="hover:text-white hover:underline transition duration-300 ease-in-out"
+          className="hover:text-white transition duration-300 ease-in-out hover:border-b
+          hover:border-yellow-500"
         >
           News
         </Link>
         <Link
           href="/history"
-          className="hover:text-white hover:underline transition duration-300 ease-in-out"
+          className="hover:text-white transition duration-300 ease-in-out hover:border-b
+          hover:border-yellow-500"
         >
           History
         </Link>
         <Link
+          href="/news"
+          className="hover:text-white transition duration-300 ease-in-out hover:border-b
+          hover:border-yellow-500"
+        >
+          Contact
+        </Link>
+        <Link
           href="/shop"
-          className="hover:text-white hover:underline transition duration-300 ease-in-out"
+          className="hover:text-white transition duration-300 ease-in-out  hover:scale-110"
         >
           {shoppingBagIcon()}
         </Link>
