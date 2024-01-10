@@ -128,7 +128,7 @@ const ContactForm = () => {
         <div className="flex items-center justify-center">
           <button
             className="bg-blue-500 text-white py-2 px-4 rounded focus:outline-none 
-          focus:shadow-outline"
+          focus:shadow-outline w-full"
             type="submit"
           >
             Submit
