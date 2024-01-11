@@ -1,46 +1,84 @@
 import React from 'react'
 
 const SponsorFooter = () => {
+  const sponsors = [
+    {
+      name: 'Bantr',
+      img: 'images/sponsors/bantr.png',
+      category: 'Master',
+      link: 'https://www.bantr.org/',
+    },
+    {
+      name: 'Apple Tv+',
+      img: 'images/sponsors/appleTv.jpg',
+      category: 'Sponsor',
+      link: 'https://www.apple.com/br/apple-tv-plus/',
+    },
+    {
+      name: 'Nike',
+      img: 'images/sponsors/nike.png',
+      category: 'Sponsor',
+      link: 'https://www.nike.com.br/',
+    },
+    {
+      name: 'Gatorade',
+      img: 'images/sponsors/gatorade.png',
+      category: 'Sponsor',
+      link: 'https://www.gatorade.com.br/',
+    },
+    {
+      name: 'TNT',
+      img: 'images/sponsors/tnt.webp',
+      category: 'Sponsor',
+      link: 'https://www.tntenergydrink.com.br/',
+    },
+    {
+      name: 'EA',
+      img: 'images/sponsors/eafc.png',
+      category: 'Sponsor',
+      link: 'https://www.ea.com/pt-br/games/ea-sports-fc/fc-24',
+    },
+    {
+      name: 'Nando`s',
+      img: '/images/sponsors/Nandos.png',
+      category: 'Partner',
+      link: 'https://www.nandosperiperi.com/',
+    },
+  ]
+
+  const groupSponsorsByCategory = sponsors.reduce((acc, sponsor) => {
+    if (!acc[sponsor.category]) {
+      acc[sponsor.category] = []
+    }
+    acc[sponsor.category].push(sponsor)
+    return acc
+  }, {})
+
   return (
-    <div className="mx-auto text-center flex items-center2">
-      <footer className="bg-gray-600 w-screen border-t-4 border-b-4 border-yellow-300">
-        <div className="space-x-4 flex justify-around">
-          <img
-            src="https://static.wixstatic.com/media/636de3_18bac9d3d4944086a616bcadfe59bddb~mv2.png/v1/fill/w_360,h_216,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/primary-logo_3x.png"
-            alt=""
-            width="50pxspo"
-          />
-          <img
-            src="https://cdn.icon-icons.com/icons2/2699/PNG/512/apple_logo_icon_168588.png"
-            alt=""
-            width="60px"
-          />
-          <img
-            src="https://cdn-icons-png.flaticon.com/256/732/732084.png"
-            alt=""
-            width="50px"
-          />
-          <img
-            src="https://sep-bucket-prod.s3.amazonaws.com/wp-content/uploads/2021/08/logo-gatorade-peq-v02.png"
-            alt=""
-          />
-          <img
-            src="https://cdn.iconscout.com/icon/free/png-256/free-tnt-energy-drink-3442173-2876040.png"
-            alt=""
-            width="60px"
-          />
-          <img
-            src="https://cdn-icons-png.flaticon.com/256/588/588283.png"
-            alt=""
-            width="60px"
-          />
-          <img
-            src="https://1000logos.net/wp-content/uploads/2017/09/Nandos-Logo.png"
-            alt=""
-            width="60px"
-          />
-        </div>
-      </footer>
+    <div className="bg-gray-800 p-4 text-center">
+      <h2 className="text-xl font-bold mb-4">Sponsors</h2>
+
+      {Object.entries(groupSponsorsByCategory).map(
+        ([category, categorySponsors], i) => (
+          <div key={i} className="mb-4">
+            <h3 className="text-lg font-semibold">{category}</h3>
+            <div className="flex items-center justify-center">
+              {categorySponsors.map((sponsor, j) => (
+                <div key={j} className="mx-4">
+                  <a href={sponsor.link} target="_blank">
+                    <img
+                      src={sponsor.img}
+                      alt={sponsor.name}
+                      className="h-16 cursor-pointer"
+                    />
+                  </a>
+                  <p className="text-sm font-bold mt-2">{sponsor.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ),
+      )}
     </div>
   )
 }

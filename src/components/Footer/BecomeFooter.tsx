@@ -6,7 +6,7 @@ const BecomeFooter = () => {
       <footer className="container mx-auto px-4 py-8">
         <div
           className="flex flex-col md:flex-row items-center
-         md:items-start justify-around"
+         md:items-start justify-center space-x-20"
         >
           <div className="flex flex-col mb-4 md:mb-0">
             <div className="flex">

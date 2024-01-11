@@ -1,11 +1,14 @@
 import React from 'react'
 import SponsorFooter from './SponsorFooter'
+import BecomeFooter from './BecomeFooter'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 
 const Footer = () => {
   return (
     <div>
       <SponsorFooter />
-      <footer className="bg-gray-800 text-white py-8">
+      <BecomeFooter />
+      <footer className="bg-gray-900 text-white py-8">
         <div className="container mx-auto flex items-center justify-around ">
           <div className="flex items-center space-x-4">
             <img
@@ -29,6 +32,9 @@ const Footer = () => {
             <a href="#" className="hover:text-gray-400">
               History
             </a>
+            <a href="#" className="hover:text-gray-400">
+              Contact
+            </a>
           </div>
 
           <div className="flex items-center space-x-4">
@@ -38,6 +44,25 @@ const Footer = () => {
           </div>
         </div>
       </footer>
+      <div>
+        <footer className="flex items-center justify-between bg-black p-3">
+          <p className="ml-10">
+            Richmond Football Club Association © 2024 - All rights are free -
+            Developed by Thiago Martins
+          </p>
+          <div className="flex space-x-2 mr-10">
+            <a
+              href="https://www.linkedin.com/in/thiago-martins-vieira-074550192/"
+              target="_blank"
+            >
+              <FaLinkedin size={30} color="white" />
+            </a>
+            <a href="https://github.com/Thiagomartinsvieira" target="_blank">
+              <FaGithub size={30} color="white" />
+            </a>
+          </div>
+        </footer>
+      </div>
     </div>
   )
 }
