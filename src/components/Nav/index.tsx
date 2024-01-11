@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { arrowDown, shoppingBagIcon } from '../icons/icons'
-import DropdownMenu from './DropdownMenu'
+import { shoppingBagIcon } from '../icons/icons'
 import { useState } from 'react'
 import SecondaryNav from './SecondaryNav'
 
@@ -57,7 +56,7 @@ const Nav = () => {
           History
         </Link>
         <Link
-          href="/news"
+          href="/contact"
           className="hover:text-white transition duration-300 ease-in-out hover:border-b
           hover:border-yellow-500"
         >
