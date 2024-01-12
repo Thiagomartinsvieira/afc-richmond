@@ -20,7 +20,7 @@ const Contact = () => {
       <div className="flex justify-center container mx-auto mt-8 p-4">
         <div className="flex flex-col items-center">
           <img
-            src="https://images2.alphacoders.com/117/thumbbig-1171238.jpg"
+            src="images/contact/Ted at the press conference.jpg"
             alt="Ted Lasso in a Press conference"
             className="object-cover w-full md:w-96 lg:w-full h-64 md:h-auto border rounded mb-4"
           />
