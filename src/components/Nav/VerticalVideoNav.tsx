@@ -46,7 +46,7 @@ const VerticalVideoNav = () => {
             </Link>
           </li>
           <li className="mb-10">
-            <Link href={'/news'} className="text-white cursor-pointer">
+            <Link href={'/news  '} className="text-white cursor-pointer">
               <div className="flex flex-col-reverse items-center transform transition-transform hover:scale-110">
                 News <FaNewspaper />
               </div>
