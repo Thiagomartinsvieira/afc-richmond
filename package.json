@@ -11,6 +11,7 @@
     "format:check": "prettier --check \"**/*.+(ts|tsx|js|jsx|json)\""
   },
   "dependencies": {
+    "@next-tools/dynamic": "^0.0.11",
     "autoprefixer": "^10.4.16",
     "next": "14.0.2",
     "postcss": "^8.4.31",
