@@ -16,7 +16,7 @@ const Nav = () => {
         <div className="flex items-center">
           <Link href="/home">
             <img
-              src="images/logos/Richmond_logo.png"
+              src="/images/logos/Richmond_logo.png"
               alt="Afc Richmond logo"
               className="w-24 h-auto"
             />
