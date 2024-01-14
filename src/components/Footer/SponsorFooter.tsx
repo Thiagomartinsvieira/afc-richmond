@@ -4,37 +4,37 @@ const SponsorFooter = () => {
   const sponsors = [
     {
       name: 'Bantr',
-      img: 'images/sponsors/bantr.png',
+      img: '/images/sponsors/bantr.png',
       category: 'Master',
       link: 'https://www.bantr.org/',
     },
     {
       name: 'Apple Tv+',
-      img: 'images/sponsors/appleTv.jpg',
+      img: '/images/sponsors/appleTv.jpg',
       category: 'Sponsor',
       link: 'https://www.apple.com/br/apple-tv-plus/',
     },
     {
       name: 'Nike',
-      img: 'images/sponsors/nike.png',
+      img: '/images/sponsors/nike.png',
       category: 'Sponsor',
       link: 'https://www.nike.com.br/',
     },
     {
       name: 'Gatorade',
-      img: 'images/sponsors/gatorade.png',
+      img: '/images/sponsors/gatorade.png',
       category: 'Sponsor',
       link: 'https://www.gatorade.com.br/',
     },
     {
       name: 'TNT',
-      img: 'images/sponsors/tnt.webp',
+      img: '/images/sponsors/tnt.webp',
       category: 'Sponsor',
       link: 'https://www.tntenergydrink.com.br/',
     },
     {
       name: 'EA',
-      img: 'images/sponsors/eafc.png',
+      img: '/images/sponsors/eafc.png',
       category: 'Sponsor',
       link: 'https://www.ea.com/pt-br/games/ea-sports-fc/fc-24',
     },
