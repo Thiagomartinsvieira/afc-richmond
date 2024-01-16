@@ -5,7 +5,7 @@ export const newsData = [
       'American football coach Ted Lasso is hired by a wealthy divorcée to coach English soccer team AFC Richmond.',
   },
   {
-    imageUrl: 'images/news/7_478x832.webp',
+    imageUrl: 'images/news/8_478x832.webp',
     article:
       "It's Ted's first day of coaching, and fans aren't happy. He makes little headway but remains undeterred as the team plays its first match.",
   },
