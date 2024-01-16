@@ -1,11 +1,11 @@
 import Footer from '@/components/Footer'
-import SignUp from '@/components/Form'
+import SignUp from '@/components/Form/SignUp'
 import Nav from '@/components/Nav'
 import FanMemberNav from '@/components/Nav/FanMemberNav'
 import Title from '@/components/Title'
 import React from 'react'
 
-const become = () => {
+const register = () => {
   return (
     <div>
       <Nav />
@@ -22,4 +22,4 @@ const become = () => {
   )
 }
 
-export default become
+export default register
