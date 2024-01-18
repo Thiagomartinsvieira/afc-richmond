@@ -1,4 +1,3 @@
-import MemberFanCard from '@/components/Card/MemberFanCard'
 import Footer from '@/components/Footer'
 import Nav from '@/components/Nav'
 import FanMemberNav from '@/components/Nav/FanMemberNav'
@@ -7,20 +6,24 @@ import { BecomeImages } from '@/data/becomeImages'
 import ExperienceCarrousel from '@/components/Carroucel/ExperienceCarroucel'
 import ImageBecomeSlider from '@/components/Carroucel/ImageBecomeSlider'
 
-const become = () => {
+const member = () => {
+  const afcMember = 'Thiago Martins Vieira'
+  const afcMember2 = afcMember.split(' ')
+  const afcMember1 = afcMember2[0]
+
   return (
     <div>
       <Nav />
       <FanMemberNav />
       <Title
-        title="Become a fan member"
-        subtitle="Join the AFC Richmond family and be part of our team on and off the field. Become a fan member and help build the glorious future of our club!"
+        title={`Welcome back ${afcMember1}, AFC Richmond Fan Member!`}
+        subtitle="Continue enjoying the perks of being part of our team on and off the field. Thank you for your ongoing support!"
       />
       <div className="flex flex-col items-center justify-center p-3">
         <ImageBecomeSlider />
         <Title
-          title="Know the plans"
-          subtitle="We have one that is ideal for you"
+          title="Explore Exclusive Benefits"
+          subtitle="As an existing fan member, you have access to special perks and experiences."
         />
 
         <ExperienceCarrousel images={BecomeImages} />
@@ -30,4 +33,4 @@ const become = () => {
   )
 }
 
-export default become
+export default member

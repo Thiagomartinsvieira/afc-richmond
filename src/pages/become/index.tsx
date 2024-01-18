@@ -54,6 +54,13 @@ const become = () => {
           />
         </div>
 
+        <button
+          className="mb-10 bg-yellow-600 rounded p-1 
+        hover:scale-105 transform transition-transform"
+        >
+          More plans
+        </button>
+
         <ExperienceCarrousel images={BecomeImages} />
       </div>
       <Footer />
