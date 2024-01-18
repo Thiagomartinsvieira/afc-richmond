@@ -44,13 +44,13 @@ const FanMemberNav = () => {
           </a>
         </ul>
         <ul>
-          <a href="/become/fac" className="text-white hover:text-gray-300">
+          <Link href="/become/fac" className="text-white hover:text-gray-300">
             FAQ
-          </a>
+          </Link>
         </ul>
         <ul>
           <Link
-            href="/become/login"
+            href="/become/register"
             className="bg-red-500 p-2 rounded-full hover:bg-red-600 
             transition duration-300 cursor-pointer"
           >
@@ -58,10 +58,7 @@ const FanMemberNav = () => {
           </Link>
         </ul>
         <ul>
-          <Link
-            href="/become/register"
-            className="text-white hover:text-gray-300"
-          >
+          <Link href="/become/login" className="text-white hover:text-gray-300">
             Sign In
           </Link>
         </ul>
