@@ -16,13 +16,15 @@ app.use("/users", userRoutes);
 app.get("/", (req, res) => {
   res.status(201).json({ message: "Hello, World" });
 });
-app.listen(port, () => {
-  console.log(`Server running at port: ${port} 🔥`);
-});
 
 mongoose
   .connect(env.DATABASE_URL)
   .then(() => {
-    console.log("app connected to database");
+    app.listen(port, () => {
+      console.log(`Server running at port: ${port} 🔥`);
+    });
+    console.log("Connected to Database 🏗️");
   })
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    console.error(err);
+  });
