@@ -4,7 +4,12 @@ const QnA = ({ question, answer, isSelected, onClick }) => (
       {question}
     </button>
     {isSelected && (
-      <p className="bg-stone-700 max-w-xs rounded p-2 font-light">{answer}</p>
+      <p
+        className="bg-stone-700 max-w-xs rounded p-2 
+      font-light"
+      >
+        {answer}
+      </p>
     )}
   </div>
 )

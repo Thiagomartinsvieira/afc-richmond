@@ -1,15 +1,22 @@
 import React from 'react'
 import QnA from './QnA'
 
-const QuestionSection = ({ questions, selectedQuestion, onQuestionClick }) => (
+interface QuestionSectionProps {
+  questions: string[]
+  selectedQuestion: string | null
+  onQuestionClick: (question: string) => void
+  answers: string[]
+}
+
+const QuestionSection = (props: QuestionSectionProps) => (
   <div className="flex flex-col space-y-3 mb-10">
-    {questions.map((question) => (
+    {props.questions.map((question, index) => (
       <QnA
         key={question}
         question={question}
-        answer={/* */}
-        isSelected={question === selectedQuestion}
-        onClick={() => onQuestionClick(question)}
+        answer={props.answers[index]}
+        isSelected={question === props.selectedQuestion}
+        onClick={() => props.onQuestionClick(question)}
       />
     ))}
   </div>
