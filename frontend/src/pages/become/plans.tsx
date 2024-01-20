@@ -21,21 +21,21 @@ const plans = () => {
         <div className="flex">
           <MemberFanCard
             plan="Bronze"
-            discount={50}
+            discount={25}
             value={15}
             quest={1}
             starsRating={2}
           />
           <MemberFanCard
             plan="Silver"
-            discount={75}
+            discount={50}
             value={30}
             quest={2}
             starsRating={3}
           />
           <MemberFanCard
             plan="Gold"
-            discount={100}
+            discount={75}
             value={60}
             quest={3}
             starsRating={4}
@@ -44,14 +44,14 @@ const plans = () => {
         <div className="flex">
           <MemberFanCard
             plan="Platinum"
-            discount={120}
+            discount={100}
             value={80}
             quest={4}
             starsRating={4.5}
           />
           <MemberFanCard
             plan="Diamond"
-            discount={150}
+            discount={100}
             value={100}
             quest={5}
             starsRating={5}

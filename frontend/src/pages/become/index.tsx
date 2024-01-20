@@ -33,21 +33,21 @@ const become = () => {
         <div className="flex flex-wrap justify-center m-5">
           <MemberFanCard
             plan="Bronze"
-            discount={50}
+            discount={25}
             value={15}
             quest={1}
             starsRating={2}
           />
           <MemberFanCard
             plan="Silver"
-            discount={75}
+            discount={50}
             value={30}
             quest={2}
             starsRating={3}
           />
           <MemberFanCard
             plan="Gold"
-            discount={100}
+            discount={75}
             value={60}
             quest={3}
             starsRating={4}
