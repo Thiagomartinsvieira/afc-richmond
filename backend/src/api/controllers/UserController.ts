@@ -1,48 +1,70 @@
 import { genSaltSync, hashSync } from 'bcrypt';
 import { Request, Response } from 'express';
-import { checkUserExists } from '../helpers/check-user-exists';
+import { createUserToken } from '../helpers/create-user-token';
 import { User } from '../models/User';
-import {
-  passwordsMatch,
-  validateRequiredFields,
-} from '../validations/userValidations';
+import UserService from '../services/UserService';
 
-export async function create(req: Request, res: Response) {
-  const { name, born_date, email, password, confirmpassword } = req.body;
-  const requiredFields = [
-    'name',
-    'born_date',
-    'email',
-    'password',
-    'confirmpassword',
-  ];
+class UserController {
+  async create(req: Request, res: Response): Promise<void> {
+    const { name, born_date, email, password, confirmpassword } = req.body;
 
-  validateRequiredFields(req, res, requiredFields);
-  passwordsMatch(req, res, password, confirmpassword);
-  const userExists = await checkUserExists(email);
-
-  if (userExists) {
-    res.status(422).json({
-      error:
-        'There is already a registered user with this email, please use another email.',
+    const missingFields = UserService.checkRequiredFields({
+      name,
+      born_date,
+      email,
+      password,
+      confirmpassword,
     });
-    return;
-  }
 
-  const salt = genSaltSync(12);
-  const hashPassword = hashSync(password, salt);
+    if (missingFields.length > 0) {
+      res.status(422).json({
+        error: `The following fields are required: ${missingFields.join(
+          ', '
+        )}.`,
+      });
+      return;
+    }
 
-  const user = new User({
-    name,
-    born_date,
-    email,
-    password: hashPassword,
-  });
+    const passwordsMatch = UserService.checkPasswordsMatch(
+      password,
+      confirmpassword
+    );
 
-  try {
-    const newUser = await user.save();
-    res.status(201).json({ msg: newUser });
-  } catch (error) {
-    res.status(500).json({ message: error });
+    if (!passwordsMatch) {
+      res.status(422).json({
+        error: 'The password and the confirmation must be the same',
+      });
+      return;
+    }
+
+    const userExists = await UserService.checkUserExists(email);
+
+    if (userExists) {
+      res.status(422).json({
+        error:
+          'There is already a registered user with this email, please use another email.',
+      });
+      return;
+    }
+
+    const salt = genSaltSync(12);
+    const hashPassword = hashSync(password, salt);
+
+    const user = new User({
+      name,
+      born_date,
+      email,
+      password: hashPassword,
+    });
+
+    try {
+      const newUser = await user.save();
+
+      createUserToken(req, res, newUser);
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
   }
 }
+
+export default new UserController();

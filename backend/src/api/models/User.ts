@@ -1,6 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
+import { IUser } from '../interfaces/IUser';
 
-const userSchema = new Schema(
+const userSchema = new Schema<IUser>(
   {
     name: {
       type: String,
@@ -18,7 +19,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    plan: Object,
+    membership_plan: {
+      type: String,
+      default: '',
+    },
   },
   { timestamps: true }
 );
