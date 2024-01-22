@@ -199,11 +199,10 @@ const Faq = () => {
         <div className="w-full bg-amber-100 text-black p-3 rounded">
           <span className="font-bold">Club-related inquiries?</span>
           <p>
-            <span className="font-bold">Attention! </span>
-            <br />
-            Any inquiries unrelated to the Richmond Greyhounds Fan Membership
-            program, including questions about the club, youth categories,
-            squad, and other matters, will not be addressed.
+            <span className="font-semibold">Attention!</span> Any inquiries
+            unrelated to the Richmond Greyhounds Fan Membership program,
+            including questions about the club, youth categories, squad, and
+            other matters, will not be addressed.
           </p>
         </div>
       </div>
