@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
 export const validateRequiredFields = (
   req: Request,
   res: Response,
-  requiredFields: string[],
+  requiredFields: string[]
 ) => {
   const missingFields: string[] = [];
 
@@ -15,7 +15,7 @@ export const validateRequiredFields = (
 
   if (missingFields.length > 0) {
     return res.status(422).json({
-      error: `The following fields are required: ${missingFields.join(", ")}`,
+      error: `The following fields are required: ${missingFields.join(', ')}`,
     });
   }
 };
@@ -23,13 +23,13 @@ export const validateRequiredFields = (
 export const passwordsMatch = (
   _req: Request,
   res: Response,
-  password: String,
-  confirmpassword: String,
+  password: string,
+  confirmpassword: string
 ) => {
   if (password !== confirmpassword) {
     res
       .status(422)
-      .json({ error: "The password and the confirmation must be the same" });
+      .json({ error: 'The password and the confirmation must be the same' });
     return;
   }
 };

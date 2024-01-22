@@ -16,7 +16,6 @@
 			"semicolons": "always",
 			"quoteStyle": "single",
 			"lineWidth": 80,
-			"indentSize": 2,
 			"indentStyle": "space",
 			"trailingComma": "es5",
 			"arrowParentheses": "always"

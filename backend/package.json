@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch --env-file .env src/index.ts",
     "lint": "biome lint src/",
+    "fix": "biome check src/ --apply",
     "format": "biome format src/ --write"
   },
   "keywords": [],
