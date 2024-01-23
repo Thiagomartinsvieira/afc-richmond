@@ -49,6 +49,12 @@ class UserService {
 
     return !!passwordMatch
   }
+
+  async getUserById(id: string) {
+    const user = await User.findById({ _id: id })
+
+    return user
+  }
 }
 
 export default new UserService();

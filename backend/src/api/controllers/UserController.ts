@@ -5,7 +5,7 @@ import { User } from '../models/User';
 import UserService from '../services/UserService';
 
 class UserController {
-  async create(req: Request, res: Response): Promise<void> {
+  async register(req: Request, res: Response): Promise<void> {
     const { name, born_date, email, password, confirmpassword } = req.body;
 
     const missingFields = UserService.checkRequiredFields({
@@ -104,6 +104,18 @@ class UserController {
     }
 
     await createUserToken(req, res, user)
+  }
+
+  async getUserInfo(req: Request, res: Response) {
+    const id = req.params.id
+
+    const user = await UserService.getUserById(id)
+
+    if (!user) {
+      return res.status(422).json({ err: 'User not found' })
+    }
+
+    res.status(200).json({ message: user })
   }
 }
 
