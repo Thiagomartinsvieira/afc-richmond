@@ -30,13 +30,6 @@ class UserController {
       confirmpassword
     );
 
-    if (!passwordsMatch) {
-      res.status(422).json({
-        error: 'The password and the confirmation must be the same',
-      });
-      return;
-    }
-
     const userExists = await UserService.checkUserExists(email);
 
     if (userExists) {
@@ -46,6 +39,14 @@ class UserController {
       });
       return;
     }
+
+    if (!passwordsMatch) {
+      res.status(422).json({
+        error: 'The password and the confirmation must be the same',
+      });
+      return;
+    }
+
 
     const salt = genSaltSync(12);
     const hashPassword = hashSync(password, salt);
@@ -60,10 +61,49 @@ class UserController {
     try {
       const newUser = await user.save();
 
-      createUserToken(req, res, newUser);
+      await createUserToken(req, res, newUser);
     } catch (error) {
       res.status(500).json({ message: error });
     }
+  }
+
+  async login(req: Request, res: Response): Promise<void> {
+    const { email, password } = req.body;
+
+    const missingFields = UserService.checkRequiredFields({
+      email,
+      password,
+    });
+
+    if (missingFields.length > 0) {
+      res.status(422).json({
+        error: `The following fields are required: ${missingFields.join(
+          ', '
+        )}.`,
+      });
+      return;
+    }
+
+
+    const user = await UserService.getUserByEmail(email)
+
+    if (!user) {
+      res.status(422).json({
+        error:
+          'There is no registered user with this email',
+      });
+      return;
+    }
+
+
+    const checkPassword = await UserService.checkPasswordCrypt(password, user.password)
+
+    if (!checkPassword) {
+      res.status(422).json({ err: 'Invalid password' })
+      return
+    }
+
+    await createUserToken(req, res, user)
   }
 }
 

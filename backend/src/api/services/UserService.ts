@@ -1,11 +1,12 @@
 import { User } from '../models/User';
+import * as bcrypt from 'bcrypt'
 
 interface ICreateUserFields {
-  name: string;
-  born_date: Date;
-  email: string;
-  password: string;
-  confirmpassword: string;
+  name?: string;
+  born_date?: Date;
+  email?: string;
+  password?: string;
+  confirmpassword?: string;
 }
 
 class UserService {
@@ -35,6 +36,18 @@ class UserService {
     }
 
     return missingFields;
+  }
+
+  async getUserByEmail(email: string) {
+    const user = await User.findOne({ email: email });
+
+    return user
+  }
+
+  async checkPasswordCrypt(password: string, hashedPassword: string): Promise<boolean> {
+    const passwordMatch = await bcrypt.compare(password, hashedPassword)
+
+    return !!passwordMatch
   }
 }
 

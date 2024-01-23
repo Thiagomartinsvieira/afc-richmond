@@ -3,14 +3,15 @@ import * as jwt from 'jsonwebtoken';
 import { env } from '../../config/env-config';
 import { IUser } from '../interfaces/IUser';
 
-export function createUserToken(_req: Request, res: Response, user: IUser) {
+export async function createUserToken(_req: Request, res: Response, user: IUser) {
   const token = jwt.sign(
     // payload data
     {
       name: user.name,
       id: user._id,
     },
-    env.JWT_SECRET
+    env.JWT_SECRET,
+    { expiresIn: '1h' }
   );
 
   // return token
