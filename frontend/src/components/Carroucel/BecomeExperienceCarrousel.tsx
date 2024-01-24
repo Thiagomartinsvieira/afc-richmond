@@ -19,6 +19,7 @@ const BecomeExperienceCarousel = () => {
         showStatus={false}
         showIndicators={false}
         emulateTouch
+        autoPlay
         showArrows={false}
         infiniteLoop
         showThumbs
