@@ -300,7 +300,7 @@ export const tagIcon = (
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
-    className="w-6 h-6 mr-2"
+    className="w-6 h-6 mr-2 sm:w-10"
   >
     <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
     <path d="M7 7h.01" />
@@ -318,7 +318,7 @@ export const planeIcon = (
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
-    className="w-6 h-6 mr-2"
+    className="w-6 h-6 mr-2 sm:w-10"
   >
     <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
   </svg>
@@ -331,7 +331,7 @@ export const trophyIcon = (
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="currentColor"
-    className="w-6 h-6 mr-2"
+    className="w-6 h-6 mr-2 sm:w-10"
   >
     <path
       stroke-linecap="round"
@@ -348,7 +348,7 @@ export const globeIcon = (
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
-    className="w-6 h-6 mr-2"
+    className="w-6 h-6 mr-2 sm:w-10"
   >
     <path
       strokeLinecap="round"
@@ -369,7 +369,7 @@ export const medalIcon = (
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
-    className="w-6 h-6 mr-2"
+    className="w-6 h-6 mr-2 sm:w-10"
   >
     <path d="M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.6 2.14a2 2 0 0 1 .14 2.2L16.79 15" />
     <path d="M11 12 5.12 2.2" />
@@ -391,7 +391,7 @@ export const ticketIcon = (
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
-    className="w-6 h-6 mr-2"
+    className="w-6 h-6 mr-2 sm:w-10"
   >
     <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
     <path d="M13 5v2" />
@@ -411,7 +411,7 @@ export const shirtIcon = (
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
-    className="w-6 h-6 mr-2"
+    className="w-6 h-6 mr-2 sm:w-10"
   >
     <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
   </svg>
@@ -428,7 +428,7 @@ export const starIcon = (
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
-    className="w-6 h-6 mr-2"
+    className="w-6 h-6 mr-2 sm:w-10"
   >
     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
   </svg>
