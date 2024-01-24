@@ -1,6 +1,9 @@
 import { genSaltSync, hashSync } from 'bcrypt';
 import { Request, Response } from 'express';
 import { createUserToken } from '../helpers/create-user-token';
+import { getToken } from '../helpers/get-token';
+import { getUserByToken } from '../helpers/get-user-by-token';
+import { IUser } from '../interfaces/IUser';
 import { User } from '../models/User';
 import UserService from '../services/UserService';
 
@@ -47,7 +50,6 @@ class UserController {
       return;
     }
 
-
     const salt = genSaltSync(12);
     const hashPassword = hashSync(password, salt);
 
@@ -84,39 +86,103 @@ class UserController {
       return;
     }
 
-
-    const user = await UserService.getUserByEmail(email)
+    const user = await UserService.getUserByEmail(email);
 
     if (!user) {
       res.status(422).json({
-        error:
-          'There is no registered user with this email',
+        error: 'There is no registered user with this email',
       });
       return;
     }
 
-
-    const checkPassword = await UserService.checkPasswordCrypt(password, user.password)
+    const checkPassword = await UserService.checkPasswordCrypt(
+      password,
+      user.password
+    );
 
     if (!checkPassword) {
-      res.status(422).json({ err: 'Invalid password' })
-      return
+      res.status(422).json({ err: 'Invalid password' });
+      return;
     }
 
-    await createUserToken(req, res, user)
+    await createUserToken(req, res, user);
   }
 
   async getUserInfo(req: Request, res: Response) {
-    const id = req.params.id
+    const id = req.params.id;
 
-    const user = await UserService.getUserById(id)
+    const user = await UserService.getUserById(id);
 
     if (!user) {
-      return res.status(422).json({ err: 'User not found' })
+      return res.status(422).json({ err: 'User not found' });
     }
 
-    res.status(200).json({ message: user })
+    res.status(200).json({ message: user });
+  }
+
+  async editUser(req: Request, res: Response) {
+    const token = getToken(req);
+    const user = await getUserByToken(req, res, token);
+
+    const { name, born_date, email, password, confirmpassword } = req.body;
+
+    // Without this TypeScript complains
+    const typedUser = user as IUser;
+
+    const missingFields = UserService.checkRequiredFields({
+      name,
+      born_date,
+      email,
+      password,
+      confirmpassword,
+    });
+
+    if (missingFields.length > 0) {
+      res.status(422).json({
+        error: `The following fields are required: ${missingFields.join(
+          ', '
+        )}.`,
+      });
+      return;
+    }
+
+    typedUser.name = name;
+    typedUser.born_date = born_date;
+    typedUser.email = email;
+    typedUser.name = name;
+
+    const passwordsMatch = UserService.checkPasswordsMatch(
+      password,
+      confirmpassword
+    );
+
+    if (!passwordsMatch) {
+      res.status(422).json({
+        error: 'The password and the confirmation must be the same',
+      });
+      return;
+    }
+
+    if (password !== null) {
+      const salt = genSaltSync(12);
+      const hashPassword = hashSync(password, salt);
+
+      typedUser.password = hashPassword;
+    }
+
+    try {
+      const updateduser = await User.findOneAndUpdate(
+        { _id: typedUser._id },
+        { $set: typedUser },
+        { new: true }
+      );
+      res.json({
+        message: 'usuário atualizado com sucesso!',
+        data: updateduser,
+      });
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
   }
 }
-
 export default new UserController();

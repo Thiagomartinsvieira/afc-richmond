@@ -3,7 +3,11 @@ import * as jwt from 'jsonwebtoken';
 import { env } from '../../config/env-config';
 import { IUser } from '../interfaces/IUser';
 
-export async function createUserToken(_req: Request, res: Response, user: IUser) {
+export async function createUserToken(
+  _req: Request,
+  res: Response,
+  user: IUser
+) {
   const token = jwt.sign(
     // payload data
     {

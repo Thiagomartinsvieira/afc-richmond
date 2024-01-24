@@ -1,7 +1,7 @@
+import * as bcrypt from 'bcrypt';
 import { User } from '../models/User';
-import * as bcrypt from 'bcrypt'
 
-interface ICreateUserFields {
+export interface ICreateUserFields {
   name?: string;
   born_date?: Date;
   email?: string;
@@ -41,19 +41,22 @@ class UserService {
   async getUserByEmail(email: string) {
     const user = await User.findOne({ email: email });
 
-    return user
+    return user;
   }
 
-  async checkPasswordCrypt(password: string, hashedPassword: string): Promise<boolean> {
-    const passwordMatch = await bcrypt.compare(password, hashedPassword)
+  async checkPasswordCrypt(
+    password: string,
+    hashedPassword: string
+  ): Promise<boolean> {
+    const passwordMatch = await bcrypt.compare(password, hashedPassword);
 
-    return !!passwordMatch
+    return !!passwordMatch;
   }
 
   async getUserById(id: string) {
-    const user = await User.findById({ _id: id })
+    const user = await User.findById({ _id: id });
 
-    return user
+    return user;
   }
 }
 
