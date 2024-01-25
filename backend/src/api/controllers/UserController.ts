@@ -184,5 +184,56 @@ class UserController {
       res.status(500).json({ message: error });
     }
   }
+
+  async deleteUser(req: Request, res: Response) {
+
+    const { email, password } = req.body
+
+    const token = getToken(req)
+
+    const user = await getUserByToken(req, res, token)
+
+    const typedUser = user as IUser
+
+    const missingFields = UserService.checkRequiredFields({
+      email,
+      password
+    })
+
+    if (missingFields.length > 0) {
+      res.status(422).json({
+        error: `The following fields are required: ${missingFields.join(
+          ', '
+        )}.`,
+      });
+      return;
+    }
+
+    const userExists = await UserService.checkUserExists(email);
+
+    if (!userExists) {
+      res.status(422).json({
+        error:
+          'There is no user registered with this email',
+      });
+      return;
+    }
+
+    const checkPassword = await UserService.checkPasswordCrypt(
+      password,
+      typedUser.password
+    );
+
+    if (!checkPassword) {
+      res.status(422).json({ err: 'Invalid password' });
+      return;
+    }
+
+    const id = req.params.id
+
+    await User.findOneAndDelete({ _id: id })
+
+    res.status(200).json({ message: 'User removed successfully' })
+  }
 }
 export default new UserController();
