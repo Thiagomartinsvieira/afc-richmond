@@ -10,7 +10,8 @@ export function checkToken(req: Request, res: Response, next: NextFunction) {
 
   try {
     const verified = jwt.verify(token, env.JWT_SECRET);
-    res.locals.user = verified;
+    // res.locals.user = verified;
+    req.user = verified;
     next(); // to continue the flow
   } catch (error) {
     res.status(400).json({ message: 'Invalid token' });

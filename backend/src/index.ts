@@ -2,19 +2,17 @@ import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 import userRoutes from './api/routes/userRoutes';
+import membershipRoutes from './api/routes/membershipRoutes'
 import { env } from './config/env-config';
 
 const app = express();
-const port = env.PORT || 3001;
+const port = env.PORT ? Number(env.PORT) : 3001;
 
 app.use(express.json());
 app.use(cors());
 
 app.use('/users', userRoutes);
-
-app.get('/', (req, res) => {
-  res.status(201).json({ message: 'Hello, World' });
-});
+app.use('/membership', membershipRoutes)
 
 mongoose
   .connect(env.DATABASE_URL)

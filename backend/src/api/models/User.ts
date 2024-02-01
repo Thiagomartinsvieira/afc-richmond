@@ -19,7 +19,7 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: true,
     },
-    membership_plan: {
+    membership: {
       type: String,
       default: '',
     },
