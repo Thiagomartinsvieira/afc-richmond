@@ -6,7 +6,8 @@ import images from '../../data/becomeCarouselData'
 const ImageSlider = () => {
   return (
     <Carousel
-      showArrows={true}
+      showArrows={false}
+      showStatus={false}
       emulateTouch
       infiniteLoop
       autoPlay

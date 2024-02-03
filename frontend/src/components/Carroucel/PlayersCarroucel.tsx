@@ -16,9 +16,11 @@ const PlayersCarroucel = () => {
         </button>
       </div>
       <Carousel
-        showArrows={true}
+        showArrows={false}
         showThumbs={false}
+        showIndicators={false}
         emulateTouch
+        autoPlay
         infiniteLoop
         showStatus={false}
       >

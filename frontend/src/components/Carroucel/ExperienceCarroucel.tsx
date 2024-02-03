@@ -13,6 +13,8 @@ const ExperienceCarousel = ({ images }) => {
       <Carousel
         showThumbs={false}
         showStatus={false}
+        showArrows={false}
+        showIndicators={false}
         emulateTouch
         infiniteLoop
         dynamicHeight={false}
