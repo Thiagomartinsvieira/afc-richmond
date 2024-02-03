@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const FanMemberNav = () => {
   return (
@@ -11,20 +12,20 @@ const FanMemberNav = () => {
           className="flex text-center justify-center items-center 
         cursor-pointer"
         >
-          <img
-            src="/images/logos/Greyhounds_dog.png"
-            alt="AFC Richmond logo"
-            width="90px"
-          />
+          <Link href="/become">
+            <Image
+              src="/images/logos/Greyhounds_dog.png"
+              alt="AFC Richmond logo"
+              width={90}
+              height={90}
+            />
+          </Link>
+        </div>
+        <Link href="/become/richmonites">
           <h2 className="text-lg font-normal text-center text-white pl-5">
             Richmonites
           </h2>
-        </div>
-        <ul>
-          <a href="" className="text-white hover:text-gray-300">
-            Home
-          </a>
-        </ul>
+        </Link>
         <ul>
           <Link href="/become/plans" className="text-white hover:text-gray-300">
             Plans
@@ -36,12 +37,12 @@ const FanMemberNav = () => {
           </a>
         </ul>
         <ul>
-          <a
+          <Link
             href="/become/experiences"
             className="text-white hover:text-gray-300"
           >
             experiences
-          </a>
+          </Link>
         </ul>
         <ul>
           <Link href="/become/faq" className="text-white hover:text-gray-300">
