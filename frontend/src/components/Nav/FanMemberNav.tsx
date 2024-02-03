@@ -36,12 +36,12 @@ const FanMemberNav = () => {
           </a>
         </ul>
         <ul>
-          <a
+          <Link
             href="/become/experiences"
             className="text-white hover:text-gray-300"
           >
             experiences
-          </a>
+          </Link>
         </ul>
         <ul>
           <Link href="/become/faq" className="text-white hover:text-gray-300">
