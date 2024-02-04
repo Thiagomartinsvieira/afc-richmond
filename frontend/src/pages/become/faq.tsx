@@ -24,7 +24,7 @@ const Faq = () => {
     'Do I need to pay any fee to receive my membership card?',
     'What is the delivery time for my Membership Card?',
     'How can I request a replacement for my membership card?',
-  ]
+  ]  
 
   const membershipCardAnswers = [
     "You can get your membership card at the club's membership desk.",
@@ -185,7 +185,7 @@ const Faq = () => {
         <div className="w-full bg-neutral-300 text-black p-3 rounded mb-5">
           <span className="font-bold">Still have questions?</span>
           <p>
-            Didn't find the answer you were looking for? No problem.{' '}
+            Didnt find the answer you were looking for? No problem.{' '}
             <Link
               href="/contact"
               target="_blank"
@@ -193,7 +193,7 @@ const Faq = () => {
             >
               Contact us
             </Link>{' '}
-            and we'll get back to you as soon as possible.
+            and well get back to you as soon as possible.
           </p>
         </div>
         <div className="w-full bg-amber-100 text-black p-3 rounded">

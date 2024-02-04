@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Home() {
@@ -15,8 +16,10 @@ export default function Home() {
       <div className="absolute top-0 right-0 m-4 text-black text-right">
         <div className="my-10 flex flex-col items-center">
           <Link href={'/home'}>
-            <img
-              src="images/logos/Richmond_logo.png"
+            <Image
+              width={100}
+              height={100}
+              src="/images/logos/Richmond_logo.png"
               alt="AFC Richmond logo"
               className="w-28 h-auto"
             />
@@ -30,8 +33,10 @@ export default function Home() {
       <div className="absolute top-36 right-0 m-4 text-black text-right">
         <div className="my-10 flex flex-col items-center">
           <Link href={'/become'}>
-            <img
-              src="images/logos/Greyhounds_dog.png"
+            <Image
+              width={100}
+              height={100}
+              src="/images/logos/Greyhounds_dog.png"
               alt="AFC Richmond logo"
               className="w-24 h-auto"
             />
@@ -45,8 +50,10 @@ export default function Home() {
       <div className="absolute top-60 right-0 m-4 text-black text-right">
         <div className="my-10 flex flex-col items-center">
           <Link href={'/shop'}>
-            <img
-              src="https://s3-us-west-2.amazonaws.com/sportshub2-uploads-prod/files/sites/1037/2019/12/23165553/logo_outline-1.png"
+            <Image
+              width={100}
+              height={100}
+              src="/images/logos/Greyhounds_athletic.png"
               alt="AFC Richmond logo"
               className="w-24 h-auto"
             />

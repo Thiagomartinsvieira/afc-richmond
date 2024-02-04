@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 const SponsorFooter = () => {
@@ -46,13 +47,16 @@ const SponsorFooter = () => {
     },
   ]
 
-  const groupSponsorsByCategory = sponsors.reduce((acc, sponsor) => {
-    if (!acc[sponsor.category]) {
-      acc[sponsor.category] = []
-    }
-    acc[sponsor.category].push(sponsor)
-    return acc
-  }, {})
+  const groupSponsorsByCategory: { [key: string]: Sponsor[] } = sponsors.reduce(
+    (acc, sponsor) => {
+      if (!acc[sponsor.category]) {
+        acc[sponsor.category] = []
+      }
+      acc[sponsor.category].push(sponsor)
+      return acc
+    },
+    {},
+  )
 
   return (
     <div className="bg-gray-800 p-4 text-center">
@@ -63,10 +67,16 @@ const SponsorFooter = () => {
           <div key={i} className="mb-4">
             <h3 className="text-lg font-semibold">{category}</h3>
             <div className="flex items-center justify-center">
-              {categorySponsors.map((sponsor, j) => (
+              {categorySponsors.map((sponsor: Sponsor, j: number) => (
                 <div key={j} className="mx-4">
-                  <a href={sponsor.link} target="_blank">
-                    <img
+                  <a
+                    href={sponsor.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      width={130}
+                      height={10}
                       src={sponsor.img}
                       alt={sponsor.name}
                       className="h-16 cursor-pointer"

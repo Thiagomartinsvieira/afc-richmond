@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { shoppingBagIcon } from '../icons/icons'
 import SecondaryNav from './SecondaryNav'
+import Image from 'next/image'
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -15,8 +16,10 @@ const Nav = () => {
       <nav className="flex items-center justify-between mx-auto p-2 bg-blue-600 font-bold">
         <div className="flex items-center">
           <Link href="/home">
-            <img
+            <Image
               src="/images/logos/Richmond_logo.png"
+              width={150}
+              height={150}
               alt="Afc Richmond logo"
               className="w-24 h-auto"
             />

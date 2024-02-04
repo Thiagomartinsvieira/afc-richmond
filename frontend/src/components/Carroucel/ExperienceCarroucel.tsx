@@ -1,10 +1,18 @@
 import React from 'react'
 import { Carousel } from 'react-responsive-carousel'
+import Image from 'next/image'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
-const ExperienceCarousel = ({ images }) => {
-  const totalSlides = Math.ceil(images.length / 5)
+interface Experience {
+  imageUrl: string
+}
 
+interface ExperienceCarouselProps {
+  images: Experience[]
+}
+
+const ExperienceCarousel: React.FC<ExperienceCarouselProps> = ({ images }) => {
+  const totalSlides = Math.ceil(images.length / 5)
   const maxImageWidth = '20rem'
 
   return (
@@ -25,14 +33,20 @@ const ExperienceCarousel = ({ images }) => {
             className="flex items-center justify-center space-x-4"
           >
             {images.slice(index * 5, (index + 1) * 5).map((image, i) => (
-              <img
+              <div
                 key={i}
-                src={image.imageUrl}
-                alt={`Experience Image ${index * 5 + i}`}
-                className="object-contain h-64 w-full max-w-xs
-                  sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
-                style={{ maxWidth: maxImageWidth }}
-              />
+                className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
+              >
+                <Image
+                  src={image.imageUrl}
+                  alt={`Experience Image ${index * 5 + i}`}
+                  width={400}
+                  height={400}
+                  objectFit="contain"
+                  className="object-contain"
+                  style={{ maxWidth: maxImageWidth }}
+                />
+              </div>
             ))}
           </div>
         ))}
