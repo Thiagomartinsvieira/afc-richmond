@@ -1,14 +1,24 @@
-const QnA = ({ question, answer, isSelected, onClick }) => (
+interface QnaProps {
+  question: string
+  answer: string
+  isSelected: boolean
+  onClick: () => void
+}
+
+const QnA = (props: QnaProps) => (
   <div className="flex flex-col space-y-3">
-    <button className="bg-stone-900 max-w-xs rounded p-2" onClick={onClick}>
-      {question}
+    <button
+      className="bg-stone-900 max-w-xs rounded p-2"
+      onClick={props.onClick}
+    >
+      {props.question}
     </button>
-    {isSelected && (
+    {props.isSelected && (
       <p
         className="bg-stone-700 max-w-xs rounded p-2 
       font-light"
       >
-        {answer}
+        {props.answer}
       </p>
     )}
   </div>

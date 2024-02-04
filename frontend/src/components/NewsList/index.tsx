@@ -1,5 +1,10 @@
 import { newsData } from '@/data/newsData'
-import NewsCard, { NewsCardProps } from '../Card/NewsCard'
+import NewsCard from '../Card/NewsCard'
+
+interface NewsCardProps {
+  imageUrl: string
+  article: string
+}
 
 const NewsList = () => {
   const chunckArray = (array: NewsCardProps[], chunkSize: number) => {
