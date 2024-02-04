@@ -6,7 +6,7 @@ interface PlayerCardProps {
   position: string
   imageUrl: string
   playerNumber: number
-  Captain: boolean
+  Captain?: boolean
 }
 
 const PlayerCard = (props: PlayerCardProps) => {
