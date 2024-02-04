@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 interface PlayerCardProps {
@@ -24,8 +25,10 @@ const PlayerCard = (props: PlayerCardProps) => {
         {props.playerNumber}
       </div>
 
-      <img
+      <Image
         src={props.imageUrl}
+        width={350}
+        height={430}
         alt={`Portrait of ${props.name}`}
         className="w-56 h-80 object-cover mb-4 rounded-m cursor-pointer"
       />

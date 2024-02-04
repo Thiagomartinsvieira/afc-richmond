@@ -1,4 +1,5 @@
-import Footer from '../Footer'
+/* eslint-disable @next/next/no-img-element */
+
 import {
   facebookIcon,
   instaIcon,

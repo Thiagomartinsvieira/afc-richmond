@@ -1,11 +1,17 @@
 import React from 'react'
 import { arrowRight } from '../icons/icons'
-import BenefitsCard, { BenefitsCardProps } from '../Card/BenefitsCard'
+import BenefitsCard from '../Card/BenefitsCard'
 import { benefitsData } from '@/data/benefitsData'
 import Link from 'next/link'
+import Image from 'next/image'
+
+interface BenefitsCardProps {
+  title: string
+  about: string
+}
 
 const Benefits = () => {
-  const chunkArray = (array: BenefitsCardProps[], chunkSize: number) => {
+  const chunkArray = (array: any[], chunkSize: number) => {
     const result = []
     for (let i = 0; i < array.length; i += chunkSize) {
       result.push(array.slice(i, i + chunkSize))
@@ -17,10 +23,11 @@ const Benefits = () => {
 
   return (
     <div className="flex justify-start my-8 flex-wrap mx-5">
-      <img
-        src="https://www.asumidsouth.edu/wp-content/uploads/2021/10/Greyhounds_dog_head.png"
+      <Image
+        src="/images/logos/Greyhounds_dog.png"
         alt=""
-        style={{ width: 100, height: 65 }}
+        width={100}
+        height={65}
       />
       <div className="flex flex-col mx-2">
         <h2 className="font-bold text-yellow-500 text-xl">Benefits</h2>
@@ -40,19 +47,25 @@ const Benefits = () => {
           experiences, access to exclusive content and much more. Become a fan
           member and experience the best of the Richmonites Greyhounds universe!
         </p>
+
         {benefitsChunks.map((chunk, chunkIndex) => (
           <div
             key={chunkIndex}
-            className="flex justify-evenly items-center w-full mb-4"
+            className="flex justify-evenly items-center w-full"
           >
             {chunk.map((benefit, index) => (
-              <BenefitsCard key={index} {...benefit} />
+              <BenefitsCard
+                key={index}
+                title={benefit.title}
+                about={benefit.about}
+              />
             ))}
           </div>
         ))}
+
         <div className="flex flex-col text-center justify-center items-center">
           <span className="mb-2">
-            And there! You can't miss out on all these benefits, right?{' '}
+            And there! You cant miss out on all these benefits, right?{' '}
           </span>
           <p className="mb-2">
             Become an AFC Richmond fan, a true{' '}
