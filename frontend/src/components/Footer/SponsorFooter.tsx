@@ -1,8 +1,15 @@
 import Image from 'next/image'
 import React from 'react'
 
+interface Sponsor {
+  name: string
+  img: string
+  category: string
+  link: string
+}
+
 const SponsorFooter = () => {
-  const sponsors = [
+  const sponsors: Sponsor[] = [
     {
       name: 'Bantr',
       img: '/images/sponsors/bantr.png',
@@ -48,7 +55,7 @@ const SponsorFooter = () => {
   ]
 
   const groupSponsorsByCategory: { [key: string]: Sponsor[] } = sponsors.reduce(
-    (acc, sponsor) => {
+    (acc: { [key: string]: Sponsor[] }, sponsor) => {
       if (!acc[sponsor.category]) {
         acc[sponsor.category] = []
       }
@@ -76,7 +83,7 @@ const SponsorFooter = () => {
                   >
                     <Image
                       width={130}
-                      height={10}
+                      height={100}
                       src={sponsor.img}
                       alt={sponsor.name}
                       className="h-16 cursor-pointer"

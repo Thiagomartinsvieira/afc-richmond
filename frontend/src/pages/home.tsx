@@ -6,7 +6,6 @@ import Nav from '@/components/Nav'
 import VerticalVideoNav from '@/components/Nav/VerticalVideoNav'
 import React from 'react'
 import PlayersCarroucel from '@/components/Carroucel/PlayersCarroucel'
-import FanMemberNav from '@/components/Nav/FanMemberNav'
 
 const Home = () => {
   return (

@@ -3,27 +3,25 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useRouter } from 'next/router'
+import { FormEvent } from 'react'
 
 const SignUp = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-
   const router = useRouter()
 
-  const handleRegister = (e) => {
+  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (password !== confirmPassword) {
       toast.error("Passwords don't match!")
     } else {
       toast.success('ok')
-
       setName('')
       setEmail('')
       setPassword('')
       setConfirmPassword('')
-
       setTimeout(() => {
         router.push('/become/member')
       }, 2000)
