@@ -8,14 +8,14 @@ import QuestionSection from '@/components/Faq/QuestionSection'
 
 const Faq = () => {
   const [spanValue, setSpanValue] = useState('MEMBERSHIP CARD')
-  const [selectedQuestion, setSelectedQuestion] = useState(null)
+  const [selectedQuestion, setSelectedQuestion] = useState<string | null>(null)
 
-  const handleButtonClick = (newValue) => {
+  const handleButtonClick = (newValue: string) => {
     setSpanValue(newValue)
     setSelectedQuestion(null)
   }
 
-  const handleQuestionClick = (question) => {
+  const handleQuestionClick = (question: string) => {
     setSelectedQuestion(question === selectedQuestion ? null : question)
   }
 
