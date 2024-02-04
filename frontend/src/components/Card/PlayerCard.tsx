@@ -5,7 +5,7 @@ interface PlayerCardProps {
   name: string
   position: string
   imageUrl: string
-  playerNumber: number
+  playerNumber?: number
   Captain?: boolean
 }
 
