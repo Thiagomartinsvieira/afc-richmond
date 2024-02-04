@@ -8,7 +8,7 @@ import Title from '@/components/Title'
 import NextImage from 'next/image'
 import { useState } from 'react'
 
-const experiences = () => {
+const Experiences = () => {
   const [isHovering, setIsHovering] = useState(false)
 
   const handleMouseEnter = () => {
@@ -88,4 +88,4 @@ const experiences = () => {
   )
 }
 
-export default experiences
+export default Experiences

@@ -1,6 +1,7 @@
 import React from 'react'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import Image from 'next/image'
 import images from '../../data/becomeCarouselData'
 
 const ImageSlider = () => {
@@ -16,11 +17,13 @@ const ImageSlider = () => {
     >
       {images.map((imageUrl, index) => (
         <div key={index}>
-          <img
+          <Image
             src={imageUrl}
             alt={`Image ${index + 1}`}
+            width={500}
+            height={300}
+            layout="responsive"
             className="w-full h-auto max-h-96 transition-transform transform translate-x-0"
-            style={{ maxHeight: '500px' }}
           />
         </div>
       ))}

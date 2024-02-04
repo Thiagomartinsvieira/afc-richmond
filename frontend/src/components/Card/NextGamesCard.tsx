@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -6,25 +7,25 @@ const NextGamesCard = () => {
     {
       id: 1,
       name: 'Richmond vs Tottenham',
-      imageUrl: 'https://pbs.twimg.com/media/FvKXPJpXwAMxytG.jpg:large',
+      imageUrl: '/images/games/game_1.jpg',
       description: 'Test Description',
     },
     {
       id: 2,
       name: 'Richmond vs Arsenal',
-      imageUrl: 'https://pbs.twimg.com/media/FulFHtPWIBQS0no.jpg:large',
+      imageUrl: '/images/games/game_2.jpg',
       description: 'Test Description',
     },
     {
       id: 3,
       name: 'Westham United',
-      imageUrl: 'https://pbs.twimg.com/media/Fxal778WIAImEsK.jpg:large',
+      imageUrl: '/images/games/game_3.jpg',
       description: 'Test Description',
     },
     {
       id: 4,
       name: 'Richmond vs Brighton',
-      imageUrl: 'https://pbs.twimg.com/media/Fvt-gkFacAAlAPd.jpg:large',
+      imageUrl: '/images/games/game_4.jpg',
       description: 'Test Description',
     },
   ]
@@ -35,17 +36,16 @@ const NextGamesCard = () => {
         {games.map((game) => (
           <div key={game.id} className="rounded-md overflow-hidden mx-2">
             <Link href="/tickets">
-              <img
+              <Image
+                width={150}
+                height={64}
                 src={game.imageUrl}
                 alt={`Banner ${game.name}`}
-                className="w-full h-64 object-cover rounded-t w-56 opacity-50
+                className="w-full object-cover rounded-t opacity-50
                   hover:opacity-100 cursor-pointer"
               />
             </Link>
             <div className="p-4">
-              {/* <h2 className="text-lg font-semibold 
-              truncate">{game.name}</h2> */}
-              {/* <p className="text-gray-500 text-center">{game.description}</p> */}
               <a
                 href="/tickets"
                 className="bg-blue-500 text-white px-4 

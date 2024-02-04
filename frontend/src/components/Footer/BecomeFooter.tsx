@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { FaEnvelope, FaHeadset, FaWhatsapp } from 'react-icons/fa'
 
 const BecomeFooter = () => {
@@ -10,7 +11,9 @@ const BecomeFooter = () => {
         >
           <div className="flex flex-col mb-4 md:mb-0">
             <div className="flex">
-              <img
+              <Image
+                width={200}
+                height={200}
                 src="/images/logos/Greyhounds_dog.png"
                 alt="Company Logo"
                 className="w-24 h-auto mb-2"

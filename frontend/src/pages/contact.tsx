@@ -11,6 +11,7 @@ import {
   plussIcon,
   twiterIcon,
 } from '@/components/icons/icons'
+import Image from 'next/image'
 
 const Contact = () => {
   return (
@@ -19,10 +20,13 @@ const Contact = () => {
       <Title title="Contact" subtitle="Here you can leave a feedback message" />
       <div className="flex justify-center container mx-auto mt-8 p-4">
         <div className="flex flex-col items-center">
-          <img 
-            src="images/contact/Ted at the press conference.jpg"
+          <Image
+            src="/images/contact/Ted_at_the_press_conference.jpg"
             alt="Ted Lasso in a Press conference"
-            className="object-cover w-full md:w-96 lg:w-full h-64 md:h-auto border rounded mb-4"
+            width={500}
+            height={300}
+            className="object-cover w-full md:w-96 lg:w-full h-64 
+            md:h-auto border rounded mb-4 border-yellow-500"
           />
           <div className="w-full md:w-full">
             <hr />
@@ -51,11 +55,12 @@ const Contact = () => {
             </p>
           </div>
         </div>
-        <img
-          src="images/contact/Sam and Tartt.jpeg"
+        <Image
+          src="/images/contact/Sam and Tartt.jpeg"
           alt="logo with Jamie tartt and Sam Obisanya"
-          className="ml-32"
+          className="ml-32 rounded-md"
           width={300}
+          height={300}
         />
       </div>
       <div className="flex flex-row justify-center space-x-4 my-10">
