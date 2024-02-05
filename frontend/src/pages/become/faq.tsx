@@ -8,14 +8,14 @@ import QuestionSection from '@/components/Faq/QuestionSection'
 
 const Faq = () => {
   const [spanValue, setSpanValue] = useState('MEMBERSHIP CARD')
-  const [selectedQuestion, setSelectedQuestion] = useState(null)
+  const [selectedQuestion, setSelectedQuestion] = useState<string | null>(null)
 
-  const handleButtonClick = (newValue) => {
+  const handleButtonClick = (newValue: string) => {
     setSpanValue(newValue)
     setSelectedQuestion(null)
   }
 
-  const handleQuestionClick = (question) => {
+  const handleQuestionClick = (question: string) => {
     setSelectedQuestion(question === selectedQuestion ? null : question)
   }
 
@@ -24,7 +24,7 @@ const Faq = () => {
     'Do I need to pay any fee to receive my membership card?',
     'What is the delivery time for my Membership Card?',
     'How can I request a replacement for my membership card?',
-  ]  
+  ]
 
   const membershipCardAnswers = [
     "You can get your membership card at the club's membership desk.",

@@ -21,7 +21,7 @@ const Players = () => {
     new Set(dataToShow.map((player) => player.position)),
   )
 
-  const handleToogleData = (dataType) => {
+  const handleToogleData = (dataType: string) => {
     if (dataType === 'idols') {
       setShowIdols(!showIdols)
       setShowStaff(false)

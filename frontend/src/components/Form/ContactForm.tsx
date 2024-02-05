@@ -1,16 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent, FormEvent } from 'react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+interface FormData {
+  fullName: string
+  email: string
+  subject: string
+  message: string
+}
+
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     fullName: '',
     email: '',
     subject: '',
     message: '',
   })
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { id, value } = e.target
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -18,7 +27,7 @@ const ContactForm = () => {
     }))
   }
 
-  const handlesubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     toast.success('We received your message', {
       position: 'top-right',
@@ -50,7 +59,7 @@ const ContactForm = () => {
   return (
     <div className="flex justify-center items-center py-8">
       <form
-        onSubmit={handlesubmit}
+        onSubmit={handleSubmit}
         className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md"
       >
         <div className="mb-4">
@@ -119,7 +128,7 @@ const ContactForm = () => {
           text-white leading-tight focus:outline-none focus:shadow-outline"
             id="message"
             placeholder="Type your message or feedback here"
-            rows="4"
+            rows={4}
             value={formData.message}
             onChange={handleChange}
             required
