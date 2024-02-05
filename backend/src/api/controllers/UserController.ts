@@ -233,5 +233,17 @@ class UserController {
 
     res.status(200).json({ message: 'User removed successfully' });
   }
+
+  async listUsers(_req: Request, res: Response) {
+    const users = await User.find({}, 'name born_date email membership');
+
+    if (!users[0]) {
+      return res
+        .status(422)
+        .json({ error: 'There is no users registered in the system' });
+    }
+
+    return res.status(200).json({ message: users });
+  }
 }
 export default new UserController();
