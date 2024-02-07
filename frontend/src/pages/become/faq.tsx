@@ -192,7 +192,7 @@ const Faq = () => {
               className="text-blue-500 hover:text-blue-400"
             >
               Contact us
-            </Link>{' '}
+            </Link>
             and well get back to you as soon as possible.
           </p>
         </div>
