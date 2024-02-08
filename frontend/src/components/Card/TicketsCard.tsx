@@ -13,7 +13,7 @@ interface TicketsCard {
 
 const TicketsCard = (props: TicketsCard) => {
   return (
-    <div className="flex flex-col border mx-auto">
+    <div className="flex flex-col border mx-auto border-gray-500">
       <span
         className="  text-center mt-3 text-blue-500 font-bold 
       text-lg"
