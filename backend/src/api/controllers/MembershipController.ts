@@ -25,9 +25,7 @@ class MembershipController {
     if (
       !['platinum', 'diamond', 'gold', 'silver', 'bronze'].includes(membership)
     ) {
-      return res
-        .status(422)
-        .json({ error: 'Invalid membership plan' });
+      return res.status(422).json({ error: 'Invalid membership plan' });
     }
 
     typedUser.membership = membership;
@@ -74,7 +72,7 @@ class MembershipController {
   }
 
   async edit(req: Request, res: Response) {
-    const token = getToken(req)
+    const token = getToken(req);
 
     const user = await getUserByToken(req, res, token);
 
@@ -92,20 +90,22 @@ class MembershipController {
     if (
       !['platinum', 'diamond', 'gold', 'silver', 'bronze'].includes(membership)
     ) {
-      return res
-        .status(422)
-        .json({ error: 'Invalid membership plan' });
+      return res.status(422).json({ error: 'Invalid membership plan' });
     }
 
     if (typedUser.membership === '') {
-      return res.status(422).json({ error: 'User does not have a membership plan' })
+      return res
+        .status(422)
+        .json({ error: 'User does not have a membership plan' });
     }
 
     if (membership === typedUser.membership) {
-      return res.status(422).json({ error: 'User already has this membership plan' })
+      return res
+        .status(422)
+        .json({ error: 'User already has this membership plan' });
     }
 
-    typedUser.membership = membership
+    typedUser.membership = membership;
 
     try {
       await User.findOneAndUpdate(
@@ -120,24 +120,19 @@ class MembershipController {
     }
   }
 
-  async list(_req: Request, res: Response) {
-    const users = await User.find({}, 'name born_date email membership')
-
-    if (!users[0]) {
-      return res.status(422).json({ error: 'There is no users registered in the system' })
-    }
-
-    return res.status(200).json({ message: users })
-  }
-
   async associates(_req: Request, res: Response) {
-    const associates = await User.find({ membership: { $ne: '' } }, 'name born_date email membership')
+    const associates = await User.find(
+      { membership: { $ne: '' } },
+      'name born_date email membership'
+    );
 
     if (!associates[0]) {
-      return res.status(422).json({ error: 'There is no users with an active membership plan' })
+      return res
+        .status(422)
+        .json({ error: 'There is no users with an active membership plan' });
     }
 
-    return res.status(200).json({ message: associates })
+    return res.status(200).json({ message: associates });
   }
 }
 
