@@ -15,6 +15,7 @@ const richmod = () => {
         subtitle="Follow AFC Richmond in social medias"
       />
       <RichmondPlusCarroucel />
+
       <Footer />
     </div>
   )
