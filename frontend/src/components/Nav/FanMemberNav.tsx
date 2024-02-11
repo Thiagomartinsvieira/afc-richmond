@@ -32,9 +32,12 @@ const FanMemberNav = () => {
           </Link>
         </ul>
         <ul>
-          <a href="/become/richmod" className="text-white hover:text-gray-300">
+          <Link
+            href="/become/richmod"
+            className="text-white hover:text-gray-300"
+          >
             Richmond+
-          </a>
+          </Link>
         </ul>
         <ul>
           <Link
