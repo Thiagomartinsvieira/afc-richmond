@@ -36,20 +36,56 @@ const richmonites = () => {
         </p>
       </div>
 
-      <div>
-        <Accordion>
-          <AccordionItem header="Match Day Gatherings">
+      <div className="flex justify-center w-10/12 mx-auto text-center mb-10">
+        <Accordion className="w-10/12 font-bold text-lg">
+          <AccordionItem
+            className="border p-10 space-y-10"
+            header={
+              <>
+                <span className="cursor-pointer">
+                  Match Day Gatherings
+                  <span className="ml-2 text-gray-500 text-xs">
+                    Click to expand
+                  </span>
+                </span>
+              </>
+            }
+          >
             Join us on match days to rally behind AFC Richmond, meet fellow
             fans, and share the excitement of the game.
           </AccordionItem>
 
-          <AccordionItem header="Club History">
+          <AccordionItem
+            className="border p-10 space-y-10"
+            header={
+              <>
+                <span className="cursor-pointer">
+                  Club History
+                  <span className="ml-2 text-gray-500 text-xs">
+                    Click to expand
+                  </span>
+                </span>
+              </>
+            }
+          >
             Learn about the rich history of AFC Richmond, including its
             founding, iconic moments, and the legends who have shaped the clubs
             legacy.
           </AccordionItem>
 
-          <AccordionItem header="Membership Information">
+          <AccordionItem
+            className="border p-10 space-y-10"
+            header={
+              <>
+                <span className="cursor-pointer">
+                  Membership Information
+                  <span className="ml-2 text-gray-500 text-xs">
+                    Click to expand
+                  </span>
+                </span>
+              </>
+            }
+          >
             Interested in becoming a Richmonite? Discover the benefits of
             membership, how to join, and exclusive perks available to our
             supporters.
