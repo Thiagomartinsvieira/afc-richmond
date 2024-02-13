@@ -122,12 +122,9 @@ class UserController {
 
   async editUser(req: Request, res: Response) {
     const token = getToken(req);
-    const user = await getUserByToken(req, res, token);
+    const user = (await getUserByToken(req, res, token)) as IUser;
 
     const { name, born_date, email, password, confirmpassword } = req.body;
-
-    // Without this TypeScript complains
-    const typedUser = user as IUser;
 
     const missingFields = UserService.checkRequiredFields({
       name,
@@ -146,10 +143,9 @@ class UserController {
       return;
     }
 
-    typedUser.name = name;
-    typedUser.born_date = born_date;
-    typedUser.email = email;
-    typedUser.name = name;
+    user.name = name;
+    user.born_date = born_date;
+    user.email = email;
 
     const passwordsMatch = UserService.checkPasswordsMatch(
       password,

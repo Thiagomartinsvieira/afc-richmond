@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
+import contactRoutes from './api/routes/contactRoutes';
 import membershipRoutes from './api/routes/membershipRoutes';
 import userRoutes from './api/routes/userRoutes';
 import { env } from './config/env-config';
@@ -13,6 +14,7 @@ app.use(cors());
 
 app.use('/users', userRoutes);
 app.use('/membership', membershipRoutes);
+app.use('/contact', contactRoutes);
 
 mongoose
   .connect(env.DATABASE_URL)
