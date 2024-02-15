@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 interface TicketsCard {
@@ -65,13 +66,14 @@ const TicketsCard = (props: TicketsCard) => {
         </span>
 
         <p className="">{props.matchTime}h</p>
-        <p className=" ">{props.stadium}</p>
-        <button
+        <p className="">{props.stadium}</p>
+        <Link
+          href={`/tickets/${props.id}`}
           className="bg-red-900 px-8 py-1 rounded mb-3 
         hover:bg-red-800"
         >
           Buy
-        </button>
+        </Link>
       </div>
     </div>
   )

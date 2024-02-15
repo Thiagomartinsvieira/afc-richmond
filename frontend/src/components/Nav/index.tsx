@@ -11,6 +11,8 @@ const Nav = () => {
     setMenuOpen(!menuOpen)
   }
 
+  const number = 0
+
   return (
     <div>
       <nav className="flex items-center justify-between mx-auto p-2 bg-blue-600 font-bold">
@@ -44,7 +46,7 @@ const Nav = () => {
           <Link href="/contact" className="nav-link">
             Contact
           </Link>
-          {/* Adicionando margem horizontal para espaçamento entre os ícones */}
+
           <Link href="/shop" className="nav-link mx-2">
             {shoppingBagIcon()}
           </Link>

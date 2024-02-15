@@ -46,13 +46,13 @@ const NextGamesCard = () => {
               />
             </Link>
             <div className="p-4">
-              <a
+              <Link
                 href="/tickets"
                 className="bg-blue-500 text-white px-4 
               py-2 mt-2 rounded-full"
               >
                 Comprar Ingresso
-              </a>
+              </Link>
             </div>
           </div>
         ))}
