@@ -13,7 +13,6 @@ const Tickets = () => {
         title="Ticket Options"
         subtitle="Select the match you want to go to"
       />
-
       {ticketsGame.map((ticket) => (
         <TicketsCard key={ticket.id} {...ticket} />
       ))}

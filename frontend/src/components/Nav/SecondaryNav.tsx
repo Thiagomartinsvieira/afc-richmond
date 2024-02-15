@@ -30,54 +30,77 @@ const SecondaryNav = () => {
         className="flex flex-row justify-around items-center 
       bg-white p-1"
       >
-        <div className="flex text-center">
+        <div className="flex text-center space-x-7 items-center">
           <h2
-            className="text-lg font-normal mr-10 text-center 
+            className="text-lg font-normal text-center 
           text-black"
           >
             Upcoming Games
           </h2>
-          <Image
-            src="/images/games/Premier_League_Logo.webp"
-            alt="Premier legue logo"
-            width={70}
-            height={40}
-          />
+          <Link target="_blank" href="https://www.premierleague.com">
+            <Image
+              src="/images/games/Premier_League_Logo.webp"
+              alt="Premier legue logo"
+              width={70}
+              height={40}
+            />
+          </Link>
+          <Link
+            target="_blank"
+            href="https://www.thefa.com/competitions/thefacup"
+          >
+            <Image
+              src="/images/games/FA_Cup_2020.png"
+              alt="The Emirates FA CUP logo"
+              width={90}
+              height={40}
+            />
+          </Link>
         </div>
         <ul className="flex space-x-4 justify-center items-center mt-1">
           {upcomingGames.map((game) => (
             <li key={game.id} className="mb-2 flex items-center">
               {game.atHome ? (
                 <>
-                  <Image
-                    width={40}
-                    height={50}
-                    src="/images/logos/Afc-richmond.webp"
-                    alt="Afc richmond logo"
-                  />
-                  <p className="text-black mx-1">vs</p>
-                  <Image
-                    src={game.teamLogo}
-                    width={40}
-                    height={50}
-                    alt={`Logo ${game.title}`}
-                  />
+                  <Link
+                    className="flex items-center"
+                    href={`/tickets/${game.id}`}
+                  >
+                    <Image
+                      width={40}
+                      height={50}
+                      src="/images/logos/Afc-richmond.webp"
+                      alt="Afc richmond logo"
+                    />
+                    <p className="text-black mx-1">vs</p>
+                    <Image
+                      src={game.teamLogo}
+                      width={40}
+                      height={50}
+                      alt={`Logo ${game.title}`}
+                    />
+                  </Link>
                 </>
               ) : (
                 <>
-                  <Image
-                    src={game.teamLogo}
-                    width={40}
-                    height={50}
-                    alt={`Logo ${game.title}`}
-                  />
-                  <p className="text-black mx-1">vs</p>
-                  <Image
-                    width={40}
-                    height={50}
-                    src="/images/logos/Afc-richmond.webp"
-                    alt="Afc richmond logo"
-                  />
+                  <Link
+                    className="flex items-center"
+                    href={`/tickets/${game.id}`}
+                  >
+                    <Image
+                      src={game.teamLogo}
+                      width={40}
+                      height={50}
+                      alt={`Logo ${game.title}`}
+                    />
+                    <p className="text-black mx-1">vs</p>
+                    <Image
+                      width={40}
+                      height={50}
+                      src="/images/logos/Afc-richmond.webp"
+                      alt="Afc richmond logo"
+                    />
+                  </Link>
                 </>
               )}
               <a href="#" className="text-blue-500 hover:underline"></a>
