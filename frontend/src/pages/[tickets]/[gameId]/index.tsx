@@ -12,6 +12,7 @@ const GameId = () => {
   const router = useRouter()
   const { gameId } = router.query
   const gameIdValue = Array.isArray(gameId) ? gameId[0] : gameId
+
   const game = gameIdValue
     ? ticketsGame.find((ticket) => ticket.id === parseInt(gameIdValue))
     : null
@@ -106,7 +107,7 @@ const GameId = () => {
         <div className="flex flex-col space-y-2 justify-center items-center">
           <span>No, I am not a Richmond Fan Member</span>
           <Link
-            href={gameId ? `/tickets/${gameId}/buy` : '#'}
+            href={gameId ? `/tickets/${gameId}/${gameId}` : '#'}
             className="bg-yellow-700 border rounded w-1/2 
           p-2 text-center"
           >
