@@ -7,38 +7,40 @@ import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import Ticket from '@/components/Tickets/Ticket'
 
-interface colorClasses {
+interface ColorPriceClasses {
   red: string
   blue: string
   violet: string
   green: string
 }
 
+const colorClasses: ColorPriceClasses = {
+  red: 'text-red-500',
+  blue: 'text-blue-500',
+  violet: 'text-violet-500',
+  green: 'text-green-500',
+}
+
+const priceClasses: ColorPriceClasses = {
+  red: '30',
+  blue: '45',
+  violet: '60',
+  green: '30',
+}
+
+type GrandstandColor = keyof typeof colorClasses
+
 const Buy = () => {
   const router = useRouter()
   const { buy } = router.query
 
-  const game = ticketsGame.find((ticket) => ticket.id === parseInt(buy))
+  const game = ticketsGame.find(
+    (ticket) => ticket.id === parseInt(buy as string),
+  )
 
-  const colorClasses = {
-    red: 'text-red-500',
-    blue: 'text-blue-500',
-    violet: 'text-violet-500',
-    green: 'text-green-500',
-  }
-
-  const priceClasses = {
-    red: 30,
-    blue: 45,
-    violet: 60,
-    green: 30,
-  }
-
-  type GrandstandColor = keyof typeof colorClasses
-
-  const [amount, setAmount] = useState(1)
-  const [grandstand, setGrandstand] = useState<GrandstandColor | null>(null)
-  const [showTicket, setShowTicket] = useState(false)
+  const [amount, setAmount] = useState<number>(1)
+  const [grandstandState, setGrandstandState] = useState<GrandstandColor>('red')
+  const [showTicket, setShowTicket] = useState<boolean>(false)
 
   const handleBuyTicket = () => {
     setTimeout(() => {
@@ -55,15 +57,13 @@ const Buy = () => {
         <div className="flex justify-center mb-20">
           <div className="flex flex-col justify-center items-center">
             <div
-              className="bg-red-600 p-6 hover:bg-red-400
-            cursor-pointer w-52"
-              onClick={() => setGrandstand('red')}
+              className="bg-red-600 p-6 hover:bg-red-400 cursor-pointer w-52"
+              onClick={() => setGrandstandState('red')}
             ></div>
             <div className="flex">
               <div
-                className="bg-blue-600 p-6 hover:bg-blue-400
-              cursor-pointer"
-                onClick={() => setGrandstand('blue')}
+                className="bg-blue-600 p-6 hover:bg-blue-400 cursor-pointer"
+                onClick={() => setGrandstandState('blue')}
               ></div>
               <Image
                 src="/images/stadium/field.jpg"
@@ -72,15 +72,13 @@ const Buy = () => {
                 alt="Soccer field"
               />
               <div
-                className="bg-violet-600 p-6 hover:bg-violet-400
-              cursor-pointer"
-                onClick={() => setGrandstand('violet')}
+                className="bg-violet-600 p-6 hover:bg-violet-400 cursor-pointer"
+                onClick={() => setGrandstandState('violet')}
               ></div>
             </div>
             <div
-              className="bg-green-600 p-6 hover:bg-green-400
-            cursor-pointer w-52"
-              onClick={() => setGrandstand('green')}
+              className="bg-green-600 p-6 hover:bg-green-400 cursor-pointer w-52"
+              onClick={() => setGrandstandState('green')}
             ></div>
           </div>
         </div>
@@ -165,12 +163,13 @@ const Buy = () => {
           </div>
         </div>
       </div>
-      {grandstand !== null && (
+      {grandstandState && (
         <>
           <p className="flex justify-center space-x-2">
             <span>You selected</span>
-            <b className={colorClasses[grandstand]}>
-              {grandstand} $ {priceClasses[grandstand] * amount}
+            <b className={colorClasses[grandstandState]}>
+              {grandstandState} ${' '}
+              {parseInt(priceClasses[grandstandState]) * amount}
             </b>
           </p>
           <div className="flex flex-col justify-center items-center">
@@ -180,8 +179,8 @@ const Buy = () => {
             <input
               id="amount"
               className="w-16 border rounded-sm text-center transition-all duration-300 
-              ease-in-out focus:border-blue-500 focus:outline-none focus:ring-2 
-              focus:ring-blue-200"
+        ease-in-out focus:border-blue-500 focus:outline-none focus:ring-2 
+        focus:ring-blue-200"
               type="number"
               min={1}
               max={10}
@@ -194,7 +193,7 @@ const Buy = () => {
             <span className="font-semibold">Form of payment:</span>
             <select
               className="p-2 border rounded-md focus:outline-none 
-              focus:border-blue-500"
+        focus:border-blue-500"
               name="payment"
               id="payment"
               disabled={showTicket}
@@ -211,9 +210,9 @@ const Buy = () => {
       )}
       <button
         className={`flex my-7 mx-auto bg-orange-500 py-1 px-3 
-      rounded font-bold w-32 items-center justify-center 
-      ${grandstand ? '' : 'bg-gray-300 cursor-not-allowed'}`}
-        disabled={!grandstand}
+  rounded font-bold w-32 items-center justify-center 
+  ${grandstandState ? '' : 'bg-gray-300 cursor-not-allowed'}`}
+        disabled={!grandstandState}
         onClick={handleBuyTicket}
       >
         Buy ticket
