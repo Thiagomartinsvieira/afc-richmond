@@ -9,9 +9,7 @@ import MembershipService from '../services/MembershipService';
 class MembershipController {
   async add(req: Request, res: Response) {
     const token = getToken(req);
-    const user = await getUserByToken(req, res, token);
-
-    const typedUser = user as IUser;
+    const user = (await getUserByToken(req, res, token)) as IUser;
 
     const membership = req.body.membership as IMembershipPlans;
 
@@ -28,12 +26,12 @@ class MembershipController {
       return res.status(422).json({ error: 'Invalid membership plan' });
     }
 
-    typedUser.membership = membership;
+    user.membership = membership;
 
     try {
       await User.findOneAndUpdate(
-        { _id: typedUser._id },
-        { $set: typedUser },
+        { _id: user._id },
+        { $set: user },
         { new: true }
       );
 
@@ -46,22 +44,20 @@ class MembershipController {
   async remove(req: Request, res: Response) {
     const token = getToken(req);
 
-    const user = await getUserByToken(req, res, token);
+    const user = (await getUserByToken(req, res, token)) as IUser;
 
-    const typedUser = user as IUser;
-
-    if (!MembershipService.checkUserHasMembershipPlan(typedUser)) {
+    if (!MembershipService.checkUserHasMembershipPlan(user)) {
       return res
         .status(422)
         .json({ error: 'The user already does not have a membership plan' });
     }
 
-    typedUser.membership = '';
+    user.membership = '';
 
     try {
       await User.findOneAndUpdate(
-        { _id: typedUser._id },
-        { $set: typedUser },
+        { _id: user._id },
+        { $set: user },
         { new: true }
       );
 
@@ -74,9 +70,7 @@ class MembershipController {
   async edit(req: Request, res: Response) {
     const token = getToken(req);
 
-    const user = await getUserByToken(req, res, token);
-
-    const typedUser = user as IUser;
+    const user = (await getUserByToken(req, res, token)) as IUser;
 
     const membership = req.body.membership as IMembershipPlans;
 
@@ -93,24 +87,24 @@ class MembershipController {
       return res.status(422).json({ error: 'Invalid membership plan' });
     }
 
-    if (typedUser.membership === '') {
+    if (user.membership === '') {
       return res
         .status(422)
         .json({ error: 'User does not have a membership plan' });
     }
 
-    if (membership === typedUser.membership) {
+    if (membership === user.membership) {
       return res
         .status(422)
         .json({ error: 'User already has this membership plan' });
     }
 
-    typedUser.membership = membership;
+    user.membership = membership;
 
     try {
       await User.findOneAndUpdate(
-        { _id: typedUser._id },
-        { $set: typedUser },
+        { _id: user._id },
+        { $set: user },
         { new: true }
       );
 

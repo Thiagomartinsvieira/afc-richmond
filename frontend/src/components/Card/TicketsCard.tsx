@@ -1,11 +1,18 @@
 import Image from 'next/image'
+<<<<<<< HEAD
 import Link from 'next/link'
+=======
+>>>>>>> development_backend
 import React from 'react'
 
 interface TicketsCard {
   id: number
   teamImageUrl: string
+<<<<<<< HEAD
   matchTime: string
+=======
+  matchTime: number
+>>>>>>> development_backend
   footballLeague: string
   stadium: string
   atHome: boolean
@@ -66,14 +73,23 @@ const TicketsCard = (props: TicketsCard) => {
         </span>
 
         <p className="">{props.matchTime}h</p>
+<<<<<<< HEAD
         <p className="">{props.stadium}</p>
         <Link
           href={`/tickets/${props.id}`}
+=======
+        <p className=" ">{props.stadium}</p>
+        <button
+>>>>>>> development_backend
           className="bg-red-900 px-8 py-1 rounded mb-3 
         hover:bg-red-800"
         >
           Buy
+<<<<<<< HEAD
         </Link>
+=======
+        </button>
+>>>>>>> development_backend
       </div>
     </div>
   )

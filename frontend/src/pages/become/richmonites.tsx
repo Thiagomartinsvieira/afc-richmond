@@ -36,6 +36,7 @@ const richmonites = () => {
         </p>
       </div>
 
+<<<<<<< HEAD
       <div className="flex justify-center w-10/12 mx-auto text-center mb-10">
         <Accordion className="w-10/12 font-bold text-lg">
           <AccordionItem
@@ -51,10 +52,16 @@ const richmonites = () => {
               </>
             }
           >
+=======
+      <div>
+        <Accordion>
+          <AccordionItem header="Match Day Gatherings">
+>>>>>>> development_backend
             Join us on match days to rally behind AFC Richmond, meet fellow
             fans, and share the excitement of the game.
           </AccordionItem>
 
+<<<<<<< HEAD
           <AccordionItem
             className="border p-10 space-y-10"
             header={
@@ -68,11 +75,15 @@ const richmonites = () => {
               </>
             }
           >
+=======
+          <AccordionItem header="Club History">
+>>>>>>> development_backend
             Learn about the rich history of AFC Richmond, including its
             founding, iconic moments, and the legends who have shaped the clubs
             legacy.
           </AccordionItem>
 
+<<<<<<< HEAD
           <AccordionItem
             className="border p-10 space-y-10"
             header={
@@ -86,6 +97,9 @@ const richmonites = () => {
               </>
             }
           >
+=======
+          <AccordionItem header="Membership Information">
+>>>>>>> development_backend
             Interested in becoming a Richmonite? Discover the benefits of
             membership, how to join, and exclusive perks available to our
             supporters.

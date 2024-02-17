@@ -5,14 +5,14 @@ import {
   textTemplate,
   transporter,
 } from '../../config/nodemailer';
+import { checkRequiredFields } from '../helpers/check-required-fields';
 import { isEmail } from '../helpers/is-email';
-import ContactService from '../services/ContactService';
 
 class UserController {
   async getContact(req: Request, res: Response) {
     const { name, email, subject, message } = req.body;
 
-    const missingFields = ContactService.checkRequiredFields({
+    const missingFields = checkRequiredFields({
       name,
       email,
       subject,

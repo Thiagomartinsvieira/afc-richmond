@@ -23,21 +23,6 @@ class UserService {
     return !!userExists;
   }
 
-  checkRequiredFields(fields: ICreateUserFields): string[] {
-    const fieldsRequired: Array<keyof ICreateUserFields> = Object.keys(
-      fields
-    ) as Array<keyof ICreateUserFields>;
-    const missingFields: string[] = [];
-
-    for (const field of fieldsRequired) {
-      if (!fields[field]) {
-        missingFields.push(field);
-      }
-    }
-
-    return missingFields;
-  }
-
   async getUserByEmail(email: string) {
     const user = await User.findOne({ email: email });
 
