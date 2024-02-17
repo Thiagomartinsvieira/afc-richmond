@@ -7,7 +7,7 @@ import userRoutes from './api/routes/userRoutes';
 import { env } from './config/env-config';
 
 const app = express();
-const port = env.PORT ? Number(env.PORT) : 3001;
+const port = env.PORT || 3001;
 
 app.use(express.json());
 app.use(cors());

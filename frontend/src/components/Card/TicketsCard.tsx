@@ -1,22 +1,15 @@
-import Image from 'next/image'
-<<<<<<< HEAD
-import Link from 'next/link'
-=======
->>>>>>> development_backend
-import React from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 interface TicketsCard {
-  id: number
-  teamImageUrl: string
-<<<<<<< HEAD
-  matchTime: string
-=======
-  matchTime: number
->>>>>>> development_backend
-  footballLeague: string
-  stadium: string
-  atHome: boolean
-  opponent: string
+  id: number;
+  teamImageUrl: string;
+  matchTime: string;
+  footballLeague: string;
+  stadium: string;
+  atHome: boolean;
+  opponent: string;
 }
 
 const TicketsCard = (props: TicketsCard) => {
@@ -73,26 +66,17 @@ const TicketsCard = (props: TicketsCard) => {
         </span>
 
         <p className="">{props.matchTime}h</p>
-<<<<<<< HEAD
         <p className="">{props.stadium}</p>
         <Link
           href={`/tickets/${props.id}`}
-=======
-        <p className=" ">{props.stadium}</p>
-        <button
->>>>>>> development_backend
           className="bg-red-900 px-8 py-1 rounded mb-3 
         hover:bg-red-800"
         >
           Buy
-<<<<<<< HEAD
         </Link>
-=======
-        </button>
->>>>>>> development_backend
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TicketsCard
+export default TicketsCard;

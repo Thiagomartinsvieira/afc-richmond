@@ -275,7 +275,6 @@ export const plussIcon = (
 );
 
 export const githubIcon = (
-<<<<<<< HEAD
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -458,7 +457,6 @@ export const constructionIcon = (
     <path d="m8 6 8 8" />
   </svg>
 )
-=======
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -641,4 +639,3 @@ export const constructionIcon = (
 		<path d="m8 6 8 8" />
 	</svg>
 );
->>>>>>> development_backend
