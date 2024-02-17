@@ -30,13 +30,20 @@ const SecondaryNav = () => {
         className="flex flex-row justify-around items-center 
       bg-white p-1"
       >
+<<<<<<< HEAD
         <div className="flex text-center space-x-7 items-center">
           <h2
             className="text-lg font-normal text-center 
+=======
+        <div className="flex text-center">
+          <h2
+            className="text-lg font-normal mr-10 text-center 
+>>>>>>> development_backend
           text-black"
           >
             Upcoming Games
           </h2>
+<<<<<<< HEAD
           <Link target="_blank" href="https://www.premierleague.com">
             <Image
               src="/images/games/Premier_League_Logo.webp"
@@ -56,12 +63,21 @@ const SecondaryNav = () => {
               height={40}
             />
           </Link>
+=======
+          <Image
+            src="/images/games/Premier_League_Logo.webp"
+            alt="Premier legue logo"
+            width={70}
+            height={40}
+          />
+>>>>>>> development_backend
         </div>
         <ul className="flex space-x-4 justify-center items-center mt-1">
           {upcomingGames.map((game) => (
             <li key={game.id} className="mb-2 flex items-center">
               {game.atHome ? (
                 <>
+<<<<<<< HEAD
                   <Link
                     className="flex items-center"
                     href={`/tickets/${game.id}`}
@@ -101,6 +117,37 @@ const SecondaryNav = () => {
                       alt="Afc richmond logo"
                     />
                   </Link>
+=======
+                  <Image
+                    width={40}
+                    height={50}
+                    src="/images/logos/Afc-richmond.webp"
+                    alt="Afc richmond logo"
+                  />
+                  <p className="text-black mx-1">vs</p>
+                  <Image
+                    src={game.teamLogo}
+                    width={40}
+                    height={50}
+                    alt={`Logo ${game.title}`}
+                  />
+                </>
+              ) : (
+                <>
+                  <Image
+                    src={game.teamLogo}
+                    width={40}
+                    height={50}
+                    alt={`Logo ${game.title}`}
+                  />
+                  <p className="text-black mx-1">vs</p>
+                  <Image
+                    width={40}
+                    height={50}
+                    src="/images/logos/Afc-richmond.webp"
+                    alt="Afc richmond logo"
+                  />
+>>>>>>> development_backend
                 </>
               )}
               <a href="#" className="text-blue-500 hover:underline"></a>

@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { FormEvent } from 'react'
 
 const SignUp = () => {
+<<<<<<< HEAD
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const router = useRouter()
@@ -23,12 +24,38 @@ const SignUp = () => {
 
     setEmail('')
     setPassword('')
+=======
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const router = useRouter()
+
+  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (password !== confirmPassword) {
+      toast.error("Passwords don't match!")
+    } else {
+      toast.success('ok')
+      setName('')
+      setEmail('')
+      setPassword('')
+      setConfirmPassword('')
+      setTimeout(() => {
+        router.push('/become/member')
+      }, 2000)
+    }
+>>>>>>> development_backend
   }
 
   return (
     <div className="flex items-center justify-center mb-10">
       <form
+<<<<<<< HEAD
         onSubmit={handleLogin}
+=======
+        onSubmit={handleRegister}
+>>>>>>> development_backend
         className="flex flex-col bg-slate-800 p-8 
       rounded-lg w-96 shadow-md"
       >
@@ -36,8 +63,21 @@ const SignUp = () => {
           className="text-center text-2xl font-bold 
         mb-4"
         >
+<<<<<<< HEAD
           Login
         </h3>
+=======
+          Register
+        </h3>
+        <input
+          type="text"
+          placeholder="Full name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          className="mb-4 p-2 border border-gray-300 rounded-md"
+        />
+>>>>>>> development_backend
         <input
           type="email"
           placeholder="Email"
@@ -53,15 +93,35 @@ const SignUp = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
           minLength={6}
+<<<<<<< HEAD
+=======
+          className="mb-4 p-2 border border-gray-300 rounded-md"
+        />
+        <input
+          type="password"
+          required
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          minLength={6}
+          placeholder="Confirm Password"
+>>>>>>> development_backend
           className="mb-4 p-2 border border-gray-300 rounded-md"
         />
 
         <span className="text-gray-400 mb-2">
+<<<<<<< HEAD
           Do not have an account yet?{' '}
           <Link
             className="text-blue-500 
           hover:underline"
             href="/become/register"
+=======
+          Already have an account?{' '}
+          <Link
+            className="text-blue-500 
+          hover:underline"
+            href="/become/login"
+>>>>>>> development_backend
           >
             Click here
           </Link>

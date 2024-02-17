@@ -1,5 +1,6 @@
 import { genSaltSync, hashSync } from 'bcrypt';
 import { Request, Response } from 'express';
+import { checkRequiredFields } from '../helpers/check-required-fields';
 import { createUserToken } from '../helpers/create-user-token';
 import { getToken } from '../helpers/get-token';
 import { getUserByToken } from '../helpers/get-user-by-token';
@@ -11,7 +12,7 @@ class UserController {
   async register(req: Request, res: Response): Promise<void> {
     const { name, born_date, email, password, confirmpassword } = req.body;
 
-    const missingFields = UserService.checkRequiredFields({
+    const missingFields = checkRequiredFields({
       name,
       born_date,
       email,
@@ -72,7 +73,7 @@ class UserController {
   async login(req: Request, res: Response): Promise<void> {
     const { email, password } = req.body;
 
-    const missingFields = UserService.checkRequiredFields({
+    const missingFields = checkRequiredFields({
       email,
       password,
     });
@@ -126,7 +127,7 @@ class UserController {
 
     const { name, born_date, email, password, confirmpassword } = req.body;
 
-    const missingFields = UserService.checkRequiredFields({
+    const missingFields = checkRequiredFields({
       name,
       born_date,
       email,
@@ -163,13 +164,13 @@ class UserController {
       const salt = genSaltSync(12);
       const hashPassword = hashSync(password, salt);
 
-      typedUser.password = hashPassword;
+      user.password = hashPassword;
     }
 
     try {
       const updateduser = await User.findOneAndUpdate(
-        { _id: typedUser._id },
-        { $set: typedUser },
+        { _id: user._id },
+        { $set: user },
         { new: true }
       );
       res.json({
@@ -186,11 +187,9 @@ class UserController {
 
     const token = getToken(req);
 
-    const user = await getUserByToken(req, res, token);
+    const user = (await getUserByToken(req, res, token)) as IUser;
 
-    const typedUser = user as IUser;
-
-    const missingFields = UserService.checkRequiredFields({
+    const missingFields = checkRequiredFields({
       email,
       password,
     });
@@ -215,7 +214,7 @@ class UserController {
 
     const checkPassword = await UserService.checkPasswordCrypt(
       password,
-      typedUser.password
+      user.password
     );
 
     if (!checkPassword) {
