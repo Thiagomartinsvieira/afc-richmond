@@ -39,7 +39,9 @@ const Buy = () => {
   )
 
   const [amount, setAmount] = useState<number>(1)
-  const [grandstandState, setGrandstandState] = useState<GrandstandColor>('red')
+  const [grandstandState, setGrandstandState] = useState<
+    GrandstandColor | '' | null
+  >(null)
   const [showTicket, setShowTicket] = useState<boolean>(false)
 
   const handleBuyTicket = () => {
@@ -163,7 +165,7 @@ const Buy = () => {
           </div>
         </div>
       </div>
-      {grandstandState && (
+      {grandstandState !== null && grandstandState !== '' && (
         <>
           <p className="flex justify-center space-x-2">
             <span>You selected</span>
