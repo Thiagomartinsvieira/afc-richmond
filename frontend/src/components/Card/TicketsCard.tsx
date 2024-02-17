@@ -5,7 +5,7 @@ import React from 'react'
 interface TicketsCard {
   id: number
   teamImageUrl: string
-  matchTime: number
+  matchTime: string
   footballLeague: string
   stadium: string
   atHome: boolean
