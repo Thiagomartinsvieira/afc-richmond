@@ -1,9 +1,9 @@
-import Footer from '@/components/Footer'
-import Nav from '@/components/Nav'
-import FanMemberNav from '@/components/Nav/FanMemberNav'
-import Title from '@/components/Title'
-import Image from 'next/image'
-import { Accordion, AccordionItem } from '@szhsin/react-accordion'
+import Footer from "@/components/Footer";
+import Nav from "@/components/Nav";
+import FanMemberNav from "@/components/Nav/FanMemberNav";
+import Title from "@/components/Title";
+import Image from "next/image";
+import { Accordion, AccordionItem } from "@szhsin/react-accordion";
 
 const richmonites = () => {
   return (
@@ -109,7 +109,7 @@ const richmonites = () => {
 
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default richmonites
+export default richmonites;
