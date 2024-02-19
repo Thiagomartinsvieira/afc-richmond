@@ -26,44 +26,34 @@ const SecondaryNav = () => {
 
   return (
     <div>
-      <nav
-        className="flex flex-row justify-around items-center 
-      bg-white p-1"
-      >
+      <nav className="flex flex-row justify-around items-center bg-white p-1">
         <div className="flex text-center space-x-7 items-center">
-          <h2
-            className="text-lg font-normal text-center 
-          text-black"
-          >
+          <h2 className="text-lg font-normal text-center text-black">
             Upcoming Games
           </h2>
-          <Link target="_blank" href="https://www.premierleague.com">
-            <Image
-              src="/images/games/Premier_League_Logo.webp"
-              alt="Premier legue logo"
-              width={70}
-              height={40}
-            />
-          </Link>
-          <Link
-            target="_blank"
-            href="https://www.thefa.com/competitions/thefacup"
-          >
-            <Image
-              src="/images/games/FA_Cup_2020.png"
-              alt="The Emirates FA CUP logo"
-              width={90}
-              height={40}
-            />
-          </Link>
-          <Image
-            src="/images/games/Premier_League_Logo.webp"
-            alt="Premier legue logo"
-            width={70}
-            height={40}
-          />
+          <div className="hidden lg:flex items-center space-x-7">
+            <Link target="_blank" href="https://www.premierleague.com">
+              <Image
+                src="/images/games/Premier_League_Logo.webp"
+                alt="Premier legue logo"
+                width={70}
+                height={40}
+              />
+            </Link>
+            <Link
+              target="_blank"
+              href="https://www.thefa.com/competitions/thefacup"
+            >
+              <Image
+                src="/images/games/FA_Cup_2020.png"
+                alt="The Emirates FA CUP logo"
+                width={90}
+                height={40}
+              />
+            </Link>
+          </div>
         </div>
-        <ul className="flex space-x-4 justify-center items-center mt-1">
+        <ul className="hidden md:flex space-x-4 justify-center items-center mt-1">
           {upcomingGames.map((game) => (
             <li key={game.id} className="mb-2 flex items-center">
               {game.atHome ? (
@@ -107,35 +97,6 @@ const SecondaryNav = () => {
                       alt="Afc richmond logo"
                     />
                   </Link>
-                  <Image
-                    width={40}
-                    height={50}
-                    src="/images/logos/Afc-richmond.webp"
-                    alt="Afc richmond logo"
-                  />
-                  <p className="text-black mx-1">vs</p>
-                  <Image
-                    src={game.teamLogo}
-                    width={40}
-                    height={50}
-                    alt={`Logo ${game.title}`}
-                  />
-                </>
-              ) : (
-                <>
-                  <Image
-                    src={game.teamLogo}
-                    width={40}
-                    height={50}
-                    alt={`Logo ${game.title}`}
-                  />
-                  <p className="text-black mx-1">vs</p>
-                  <Image
-                    width={40}
-                    height={50}
-                    src="/images/logos/Afc-richmond.webp"
-                    alt="Afc richmond logo"
-                  />
                 </>
               )}
               <a href="#" className="text-blue-500 hover:underline"></a>
@@ -143,10 +104,7 @@ const SecondaryNav = () => {
           ))}
         </ul>
         <Link href="/tickets">
-          <p
-            className="text-black bg-yellow-300 p-1 cursor-pointer 
-          rounded-lg"
-          >
+          <p className="text-black bg-yellow-300 p-1 cursor-pointer rounded-lg">
             Tickets
           </p>
         </Link>

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import { useWindowSize } from 'react-use'
 
 interface TicketsProps {
   id: number
@@ -12,6 +13,8 @@ interface TicketsProps {
 }
 
 const Ticket = (props: TicketsProps) => {
+  const { width } = useWindowSize()
+
   return (
     <div>
       <span className="flex justify-center text-green-500 font-bold">
@@ -25,7 +28,7 @@ const Ticket = (props: TicketsProps) => {
           <>
             <Image
               src="/images/logos/Afc-richmond.webp"
-              width={120}
+              width={width > 640 ? 120 : 70}
               height={120}
               className="mr-4"
               alt="Afc richmond logo"
@@ -33,7 +36,7 @@ const Ticket = (props: TicketsProps) => {
             VS
             <Image
               src={props.teamImageUrl}
-              width={120}
+              width={width > 640 ? 120 : 70}
               height={120}
               className="ml-4"
               alt={`oponent ${props.opponent} logo`}
@@ -43,7 +46,7 @@ const Ticket = (props: TicketsProps) => {
           <>
             <Image
               src={props.teamImageUrl}
-              width={120}
+              width={width > 640 ? 120 : 70}
               height={120}
               className="mr-4"
               alt={`oponent ${props.opponent} logo`}
@@ -51,7 +54,7 @@ const Ticket = (props: TicketsProps) => {
             VS
             <Image
               src="/images/logos/Afc-richmond.webp"
-              width={120}
+              width={width > 640 ? 120 : 70}
               height={120}
               className="ml-4"
               alt="Afc richmond logo"
@@ -73,7 +76,7 @@ const Ticket = (props: TicketsProps) => {
             <>
               <Image
                 src="/images/games/FA_Cup_2020.png"
-                width={120}
+                width={width > 640 ? 120 : 100}
                 height={120}
                 alt={props.footballLeague}
                 className="flex mx-auto mb-4 bg-white rounded-2xl"

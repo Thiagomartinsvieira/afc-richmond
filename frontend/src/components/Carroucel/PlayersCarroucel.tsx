@@ -3,15 +3,28 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import PlayerCard from '../Card/PlayerCard'
 import { playersSquad } from '@/data/playersData'
 import Link from 'next/link'
+import { useWindowSize } from 'react-use'
 
-const PlayersCarroucel = () => {
-  const itemsPerSlide = 3
+const PlayersCarrousel = () => {
+  const { width } = useWindowSize()
+  let itemsPerSlide: number
+
+  if (width < 640) {
+    itemsPerSlide = 1
+  } else if (width < 1024) {
+    itemsPerSlide = 2
+  } else {
+    itemsPerSlide = 3
+  }
 
   return (
     <div>
-      <div className="flex justify-center items-center space-x-32 my-8">
+      <div
+        className="flex flex-col lg:flex-row justify-center items-center 
+      my-8 lg:space-x-20"
+      >
         <h1 className="text-xl font-bold">Player roster</h1>
-        <button className="bg-yellow-600 rounded p-1">
+        <button className="bg-yellow-600 rounded p-1 mt-2 lg:mb-2">
           <Link href="/players">See full player roster</Link>
         </button>
       </div>
@@ -40,4 +53,4 @@ const PlayersCarroucel = () => {
   )
 }
 
-export default PlayersCarroucel
+export default PlayersCarrousel

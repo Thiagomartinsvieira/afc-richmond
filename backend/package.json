@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch --env-file .env.local src/index.ts",
     "start": "node ./dist/index.js",
-    "build": "tsup src/",
+    "build": "npm i && tsup src/",
     "lint": "biome lint src/",
     "fix": "biome check src/ --apply",
     "format": "biome format src/ --write"
@@ -23,6 +23,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.1.0",
     "nodemailer": "^6.9.9",
+    "tsup": "^8.0.2",
     "zod": "^3.22.4"
   },
   "devDependencies": {

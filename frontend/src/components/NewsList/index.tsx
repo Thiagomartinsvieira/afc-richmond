@@ -1,5 +1,6 @@
 import { newsData } from '@/data/newsData'
 import NewsCard from '../Card/NewsCard'
+import { useWindowSize } from 'react-use'
 
 interface NewsCardProps {
   imageUrl: string
@@ -15,7 +16,19 @@ const NewsList = () => {
     return result
   }
 
-  const newsRows = chunckArray(newsData, 3)
+  const { width } = useWindowSize()
+
+  let newsCardPerLine: number
+
+  if (width < 640) {
+    newsCardPerLine = 1
+  } else if (width < 1024) {
+    newsCardPerLine = 2
+  } else {
+    newsCardPerLine = 3
+  }
+
+  const newsRows = chunckArray(newsData, newsCardPerLine)
 
   return (
     <div>

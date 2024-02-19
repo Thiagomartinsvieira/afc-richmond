@@ -4,11 +4,7 @@ import BenefitsCard from '../Card/BenefitsCard'
 import { benefitsData } from '@/data/benefitsData'
 import Link from 'next/link'
 import Image from 'next/image'
-
-interface BenefitsCardProps {
-  title: string
-  about: string
-}
+import { useWindowSize } from 'react-use'
 
 const Benefits = () => {
   const chunkArray = (array: any[], chunkSize: number) => {
@@ -19,7 +15,18 @@ const Benefits = () => {
     return result
   }
 
-  const benefitsChunks = chunkArray(benefitsData, 3)
+  const { width } = useWindowSize()
+  let cardsPerSlide: number
+
+  if (width < 640) {
+    cardsPerSlide = 1
+  } else if (width < 1024) {
+    cardsPerSlide = 2
+  } else {
+    cardsPerSlide = 3
+  }
+
+  const benefitsChunks = chunkArray(benefitsData, cardsPerSlide)
 
   return (
     <div className="flex justify-start my-8 flex-wrap mx-5">

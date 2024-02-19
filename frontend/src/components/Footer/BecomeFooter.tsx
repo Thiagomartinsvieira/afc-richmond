@@ -7,7 +7,7 @@ const BecomeFooter = () => {
       <footer className="container mx-auto px-4 py-8">
         <div
           className="flex flex-col md:flex-row items-center
-         md:items-start justify-center space-x-20"
+         md:items-start justify-center lg:space-x-20"
         >
           <div className="flex flex-col mb-4 md:mb-0">
             <div className="flex">
@@ -84,7 +84,10 @@ const BecomeFooter = () => {
               <h2 className="text-lg font-semibold text-yellow-600">
                 Memberships
               </h2>
-              <p className="text-center flex justify-between items-center my-2">
+              <p
+                className="text-center flex justify-between items-center 
+              my-2"
+              >
                 <span className="bg-white text-black p-2 rounded">0</span>
                 <span className="bg-white text-black p-2 rounded">0</span>
                 <span className="bg-white text-black p-2 rounded">0</span>

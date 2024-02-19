@@ -12,7 +12,7 @@ const History = () => {
       <div className="border-red-500 ">
         <Title title=" Foundation of AFC Richmon: An Inspiring Journey à la Ted Lasso" />
         <br />
-        <p className="ml-10 mr-10">
+        <p className="mx-10">
           Founding of AFC Richmon: An Inspiring Journey into Ted Lasso Fashion
           AFC Richmon was born from an inspiration as captivating as the
           American TV series &quot;Ted Lasso&quot;. Three sports enthusiasts,
@@ -73,26 +73,29 @@ const History = () => {
           and Brown, becoming a symbol of pride for the entire community in its
           111 years of history.
         </p>
-        <div className="flex justify-around mt-16 mb-16">
+        <div
+          className="flex lg:flex-row flex-col my-16 items-center 
+        space-y-7 justify-center lg:space-x-10"
+        >
           <Image
-            className="rounded-xl hover:scale-105"
+            className="rounded-xl hover:scale-105  "
             src="/images/history/image_1.webp"
             alt=""
-            width={200}
+            width={250}
             height={200}
           />
           <Image
             className="rounded-xl hover:scale-105"
             src="/images/history/image_2.jpg"
             alt=""
-            width={200}
+            width={380}
             height={200}
           />
           <Image
             className="rounded-xl hover:scale-105"
             src="/images/history/image_3.jpg"
             alt=""
-            width={200}
+            width={350}
             height={200}
           />
         </div>
