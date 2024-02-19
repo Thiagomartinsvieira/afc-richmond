@@ -1,4 +1,5 @@
 export type IMembershipPlans =
+  | ''
   | 'bronze'
   | 'silver'
   | 'gold'

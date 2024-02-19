@@ -1,6 +1,8 @@
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
+import contactRoutes from './api/routes/contactRoutes';
+import membershipRoutes from './api/routes/membershipRoutes';
 import userRoutes from './api/routes/userRoutes';
 import { env } from './config/env-config';
 
@@ -11,10 +13,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/users', userRoutes);
-
-app.get('/', (req, res) => {
-  res.status(201).json({ message: 'Hello, World' });
-});
+app.use('/membership', membershipRoutes);
+app.use('/contact', contactRoutes);
 
 mongoose
   .connect(env.DATABASE_URL)

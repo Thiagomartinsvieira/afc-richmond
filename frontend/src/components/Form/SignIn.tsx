@@ -23,6 +23,26 @@ const SignUp = () => {
 
     setEmail('')
     setPassword('')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const router = useRouter()
+
+  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (password !== confirmPassword) {
+      toast.error("Passwords don't match!")
+    } else {
+      toast.success('ok')
+      setName('')
+      setEmail('')
+      setPassword('')
+      setConfirmPassword('')
+      setTimeout(() => {
+        router.push('/become/member')
+      }, 2000)
+    }
   }
 
   return (
@@ -38,6 +58,16 @@ const SignUp = () => {
         >
           Login
         </h3>
+          Register
+        </h3>
+        <input
+          type="text"
+          placeholder="Full name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          className="mb-4 p-2 border border-gray-300 rounded-md"
+        />
         <input
           type="email"
           placeholder="Email"
@@ -53,6 +83,15 @@ const SignUp = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
           minLength={6}
+          className="mb-4 p-2 border border-gray-300 rounded-md"
+        />
+        <input
+          type="password"
+          required
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          minLength={6}
+          placeholder="Confirm Password"
           className="mb-4 p-2 border border-gray-300 rounded-md"
         />
 

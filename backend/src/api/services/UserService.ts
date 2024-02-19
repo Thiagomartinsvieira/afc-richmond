@@ -1,11 +1,12 @@
+import * as bcrypt from 'bcrypt';
 import { User } from '../models/User';
 
-interface ICreateUserFields {
-  name: string;
-  born_date: Date;
-  email: string;
-  password: string;
-  confirmpassword: string;
+export interface ICreateUserFields {
+  name?: string;
+  born_date?: Date;
+  email?: string;
+  password?: string;
+  confirmpassword?: string;
 }
 
 class UserService {
@@ -22,19 +23,25 @@ class UserService {
     return !!userExists;
   }
 
-  checkRequiredFields(fields: ICreateUserFields): string[] {
-    const fieldsRequired: Array<keyof ICreateUserFields> = Object.keys(
-      fields
-    ) as Array<keyof ICreateUserFields>;
-    const missingFields: string[] = [];
+  async getUserByEmail(email: string) {
+    const user = await User.findOne({ email: email });
 
-    for (const field of fieldsRequired) {
-      if (!fields[field]) {
-        missingFields.push(field);
-      }
-    }
+    return user;
+  }
 
-    return missingFields;
+  async checkPasswordCrypt(
+    password: string,
+    hashedPassword: string
+  ): Promise<boolean> {
+    const passwordMatch = await bcrypt.compare(password, hashedPassword);
+
+    return !!passwordMatch;
+  }
+
+  async getUserById(id: string) {
+    const user = await User.findById({ _id: id });
+
+    return user;
   }
 }
 

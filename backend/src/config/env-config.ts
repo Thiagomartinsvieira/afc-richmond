@@ -2,8 +2,10 @@ import { z } from 'zod';
 
 const envSchema = z.object({
   PORT: z.string(),
-  DATABASE_URL: z.string().url(),
+  DATABASE_URL: z.string(),
   JWT_SECRET: z.string(),
+  EMAIL: z.string().email(),
+  EMAIL_PASS: z.string(),
 });
 
 export const env = envSchema.parse(process.env);

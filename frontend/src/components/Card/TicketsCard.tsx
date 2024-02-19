@@ -1,15 +1,15 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 interface TicketsCard {
-  id: number
-  teamImageUrl: string
-  matchTime: string
-  footballLeague: string
-  stadium: string
-  atHome: boolean
-  opponent: string
+  id: number;
+  teamImageUrl: string;
+  matchTime: string;
+  footballLeague: string;
+  stadium: string;
+  atHome: boolean;
+  opponent: string;
 }
 
 const TicketsCard = (props: TicketsCard) => {
@@ -76,7 +76,7 @@ const TicketsCard = (props: TicketsCard) => {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TicketsCard
+export default TicketsCard;

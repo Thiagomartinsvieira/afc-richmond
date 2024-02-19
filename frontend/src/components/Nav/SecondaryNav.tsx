@@ -106,6 +106,35 @@ const SecondaryNav = () => {
                       alt="Afc richmond logo"
                     />
                   </Link>
+                  <Image
+                    width={40}
+                    height={50}
+                    src="/images/logos/Afc-richmond.webp"
+                    alt="Afc richmond logo"
+                  />
+                  <p className="text-black mx-1">vs</p>
+                  <Image
+                    src={game.teamLogo}
+                    width={40}
+                    height={50}
+                    alt={`Logo ${game.title}`}
+                  />
+                </>
+              ) : (
+                <>
+                  <Image
+                    src={game.teamLogo}
+                    width={40}
+                    height={50}
+                    alt={`Logo ${game.title}`}
+                  />
+                  <p className="text-black mx-1">vs</p>
+                  <Image
+                    width={40}
+                    height={50}
+                    src="/images/logos/Afc-richmond.webp"
+                    alt="Afc richmond logo"
+                  />
                 </>
               )}
               <a href="#" className="text-blue-500 hover:underline"></a>

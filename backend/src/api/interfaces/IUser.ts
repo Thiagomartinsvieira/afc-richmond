@@ -6,5 +6,5 @@ export interface IUser {
   born_date: Date;
   password: string;
   email: string;
-  membership_plan?: IMembershipPlans;
+  membership?: IMembershipPlans;
 }
