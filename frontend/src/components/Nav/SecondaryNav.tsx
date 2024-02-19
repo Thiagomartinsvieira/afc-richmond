@@ -37,27 +37,32 @@ const SecondaryNav = () => {
           >
             Upcoming Games
           </h2>
-          <Link target="_blank" href="https://www.premierleague.com">
-            <Image
-              src="/images/games/Premier_League_Logo.webp"
-              alt="Premier legue logo"
-              width={70}
-              height={40}
-            />
-          </Link>
-          <Link
-            target="_blank"
-            href="https://www.thefa.com/competitions/thefacup"
-          >
-            <Image
-              src="/images/games/FA_Cup_2020.png"
-              alt="The Emirates FA CUP logo"
-              width={90}
-              height={40}
-            />
-          </Link>
+          <div className="hidden lg:flex items-center space-x-7">
+            <Link target="_blank" href="https://www.premierleague.com">
+              <Image
+                src="/images/games/Premier_League_Logo.webp"
+                alt="Premier legue logo"
+                width={70}
+                height={40}
+              />
+            </Link>
+            <Link
+              target="_blank"
+              href="https://www.thefa.com/competitions/thefacup"
+            >
+              <Image
+                src="/images/games/FA_Cup_2020.png"
+                alt="The Emirates FA CUP logo"
+                width={90}
+                height={40}
+              />
+            </Link>
+          </div>
         </div>
-        <ul className="flex space-x-4 justify-center items-center mt-1">
+        <ul
+          className="hidden md:flex space-x-4 justify-center items-center 
+        mt-1"
+        >
           {upcomingGames.map((game) => (
             <li key={game.id} className="mb-2 flex items-center">
               {game.atHome ? (
