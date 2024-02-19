@@ -7,7 +7,7 @@ import { FaBehance, FaFacebook, FaInstagram, FaXTwitter } from 'react-icons/fa6'
 const RichmondPlusCarroucel = () => {
   return (
     <div
-      className="mx-auto container sm:w-1/2 md:w-1/4 lg:w-1/3 xl:w-1/4
+      className="mx-auto container sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4
      mb-20 cursor-pointer"
     >
       <Carousel

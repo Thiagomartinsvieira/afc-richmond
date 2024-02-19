@@ -66,24 +66,24 @@ const SponsorFooter = () => {
   )
 
   return (
-    <div className="bg-gray-800 p-4 text-center">
+    <div className="flex flex-col bg-gray-800 p-4 text-center">
       <h2 className="text-xl font-bold mb-4">Sponsors</h2>
 
       {Object.entries(groupSponsorsByCategory).map(
         ([category, categorySponsors], i) => (
           <div key={i} className="mb-4">
             <h3 className="text-lg font-semibold">{category}</h3>
-            <div className="flex items-center justify-center">
+            <div className="flex flex-wrap justify-center">
               {categorySponsors.map((sponsor: Sponsor, j: number) => (
-                <div key={j} className="mx-4">
+                <div key={j} className="mx-2 my-2 flex flex-col items-center">
                   <a
                     href={sponsor.link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <Image
-                      width={130}
-                      height={100}
+                      width={100}
+                      height={80}
                       src={sponsor.img}
                       alt={sponsor.name}
                       className="h-16 cursor-pointer"

@@ -1,23 +1,18 @@
 import NextGamesCard from '@/components/Card/NextGamesCard'
 import BecomeExperienceCarrousel from '@/components/Carroucel/BecomeExperienceCarrousel'
+import BecomeExperienceCarouselResponsive from '@/components/Carroucel/BecomeExperienceCarrouselResponsive'
+import BecomeExperienceCarouselResponsiveSm from '@/components/Carroucel/BecomeExperienceCarrouselResponsiveSM'
 import BecomeExperienceVideos from '@/components/Carroucel/BecomeExperienceVideos'
 import Footer from '@/components/Footer'
 import Nav from '@/components/Nav'
 import FanMemberNav from '@/components/Nav/FanMemberNav'
 import Title from '@/components/Title'
 import NextImage from 'next/image'
-import { useState } from 'react'
+import { useWindowSize } from 'react-use'
 
 const Experiences = () => {
-  const [isHovering, setIsHovering] = useState(false)
+  const { width } = useWindowSize()
 
-  const handleMouseEnter = () => {
-    setIsHovering(true)
-  }
-
-  const handleMouseLeave = () => {
-    setIsHovering(false)
-  }
   return (
     <div>
       <Nav />
@@ -38,7 +33,10 @@ const Experiences = () => {
         <span className="text-lg">FOR AFC RICHMOND FANS</span>
       </div>
 
-      <div className="flex items-center justify-center my-20 xl:mx-20">
+      <div
+        className={`flex flex-col lg:flex-row items-center justify-center
+       my-20 xl:mx-20 lg:space-x-5 ${width < 1024 ? 'space-y-5' : ''}`}
+      >
         <BecomeExperienceVideos
           url="/videos/Nike x Ted Lasso _ Believe _ Nike.mp4"
           title="Actions"
@@ -60,7 +58,15 @@ const Experiences = () => {
         height={500}
         className="w-full mb-10"
       />
-      <BecomeExperienceCarrousel />
+
+      {width > 1280 ? (
+        <BecomeExperienceCarrousel />
+      ) : width > 768 ? (
+        <BecomeExperienceCarouselResponsive />
+      ) : (
+        <BecomeExperienceCarouselResponsiveSm />
+      )}
+
       <div className="text-center">
         <h1 className="text-3xl">TICKET PRESALES</h1>
         <span className="text-lg">

@@ -31,7 +31,7 @@ const BecomeExperienceVideos = (props: BecomeExperienceVideosProps) => {
 
   return (
     <div
-      className="border border-blue-500 rounded"
+      className="border border-blue-500 rounded md:mx-40 lg:mx-0"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

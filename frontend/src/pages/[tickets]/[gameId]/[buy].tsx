@@ -6,6 +6,7 @@ import ticketsGame from '@/data/ticketsGameData'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import Ticket from '@/components/Tickets/Ticket'
+import { useWindowSize } from 'react-use'
 
 interface ColorPriceClasses {
   red: string
@@ -50,21 +51,28 @@ const Buy = () => {
     }, 500)
   }
 
+  const { width } = useWindowSize()
+
   return (
     <div>
       <Nav />
       <Title title="Choose Your Seat" subtitle="Select a Section" />
 
-      <div className="flex justify-center space-x-32">
+      <div
+        className={`flex flex-col-reverse md:flex-row justify-center 
+      ${width < 640 ? '' : 'space-x-32'}`}
+      >
         <div className="flex justify-center mb-20">
           <div className="flex flex-col justify-center items-center">
             <div
-              className="bg-red-600 p-6 hover:bg-red-400 cursor-pointer w-52"
+              className={` bg-red-600 p-6 hover:bg-red-400 cursor-pointer
+               w-52 ${width > 640 ? '' : 'mt-10'}`}
               onClick={() => setGrandstandState('red')}
             ></div>
             <div className="flex">
               <div
-                className="bg-blue-600 p-6 hover:bg-blue-400 cursor-pointer"
+                className="bg-blue-600 p-6 hover:bg-blue-400 
+                cursor-pointer"
                 onClick={() => setGrandstandState('blue')}
               ></div>
               <Image
@@ -74,12 +82,14 @@ const Buy = () => {
                 alt="Soccer field"
               />
               <div
-                className="bg-violet-600 p-6 hover:bg-violet-400 cursor-pointer"
+                className="bg-violet-600 p-6 hover:bg-violet-400 
+                cursor-pointer"
                 onClick={() => setGrandstandState('violet')}
               ></div>
             </div>
             <div
-              className="bg-green-600 p-6 hover:bg-green-400 cursor-pointer w-52"
+              className="bg-green-600 p-6 hover:bg-green-400 
+              cursor-pointer w-52"
               onClick={() => setGrandstandState('green')}
             ></div>
           </div>
@@ -146,7 +156,10 @@ const Buy = () => {
             <div>18/02/2024 - {game?.matchTime} </div>
             <div className="mb-5">{game?.stadium}</div>
           </div>
-          <div className="flex mx-auto bg-neutral-800 w-80 py-5 rounded-b-md">
+          <div
+            className="flex mx-auto bg-neutral-800 w-80 py-5 
+          rounded-b-md"
+          >
             <div className="flex flex-col ml-4 space-y-3">
               <span>upper stand Red</span>
               <span>lower stand Green</span>
@@ -180,7 +193,8 @@ const Buy = () => {
             </label>
             <input
               id="amount"
-              className="w-16 border rounded-sm text-center transition-all duration-300 
+              className="w-16 border rounded-sm text-center transition-all 
+              duration-300 
         ease-in-out focus:border-blue-500 focus:outline-none focus:ring-2 
         focus:ring-blue-200"
               type="number"

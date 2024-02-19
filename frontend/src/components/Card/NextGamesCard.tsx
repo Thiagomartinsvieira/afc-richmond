@@ -32,7 +32,7 @@ const NextGamesCard = () => {
 
   return (
     <div className="container mx-auto flex justify-center">
-      <div className="flex my-5">
+      <div className="flex flex-wrap justify-center my-5">
         {games.map((game) => (
           <div key={game.id} className="rounded-md overflow-hidden mx-2">
             <Link href="/tickets">

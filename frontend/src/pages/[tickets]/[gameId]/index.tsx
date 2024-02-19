@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { MdOutlineStadium } from 'react-icons/md'
+import { useWindowSize } from 'react-use'
 
 const GameId = () => {
   const router = useRouter()
@@ -16,6 +17,8 @@ const GameId = () => {
   const game = gameIdValue
     ? ticketsGame.find((ticket) => ticket.id === parseInt(gameIdValue))
     : null
+
+  const { width } = useWindowSize()
 
   return (
     <div>
@@ -35,7 +38,6 @@ const GameId = () => {
             width={250}
             height={200}
             alt="Premier Legue logo"
-            className=""
           />
         ) : (
           <Image
@@ -43,7 +45,6 @@ const GameId = () => {
             width={250}
             height={200}
             alt="FA Cup logo"
-            className=""
           />
         )}
       </span>
@@ -51,7 +52,7 @@ const GameId = () => {
       {game && game.atHome ? (
         <div
           className="flex mx-auto items-center justify-center 
-        space-x-32 mb-4"
+        md:space-x-20 mb-4"
         >
           <Image
             src="/images/logos/Afc-richmond.webp"
@@ -70,7 +71,7 @@ const GameId = () => {
       ) : game ? (
         <div
           className="flex mx-auto items-center justify-center 
-        space-x-32 mb-4"
+        md:space-x-20 mb-4"
         >
           <Image
             src={game.teamImageUrl}
@@ -93,7 +94,10 @@ const GameId = () => {
       </div>
       <p className="text-center font-medium">{game?.matchTime}H</p>
 
-      <div className="flex space-x-32 items-center justify-center my-20">
+      <div
+        className={`flex flex-col md:flex-row md:space-x-20 items-center 
+      justify-center my-20 ${width < 640 ? 'space-y-10' : ''}`}
+      >
         <div className="flex flex-col space-y-2 justify-center items-center">
           <span>Yes, I am a Richmond Fan Member</span>
           <Link

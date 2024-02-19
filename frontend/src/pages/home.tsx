@@ -4,16 +4,22 @@ import SocialMediaCard from '@/components/Card/SocialMediaCard'
 import Footer from '@/components/Footer'
 import Nav from '@/components/Nav'
 import VerticalVideoNav from '@/components/Nav/VerticalVideoNav'
-import React from 'react'
+import React, { useState } from 'react'
 import PlayersCarroucel from '@/components/Carroucel/PlayersCarroucel'
+import { useWindowSize } from 'react-use'
 
 const Home = () => {
+  const { width } = useWindowSize()
+
   return (
     <div className="relative">
       <Nav />
       <div className="flex items-center justify-center">
-        <div className="relative h-[50vh] md:h-full md:left-auto md:right-auto">
-          <VerticalVideoNav />
+        <div
+          className="relative h-[50vh] md:h-full md:left-auto 
+        md:right-auto md:block"
+        >
+          {width > 1024 && <VerticalVideoNav />}
           <video
             autoPlay
             loop
@@ -29,7 +35,10 @@ const Home = () => {
       <div className="flex flex-col">
         <h2 className="text-center mt-10">Main News</h2>
         <hr className="mt-5 border border-t-yellow-400" />
-        <div className="flex flex-row">
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 
+         lg:grid-cols-3 gap-4 items-center"
+        >
           <NewsCard
             imageUrl="images/news/1_478x832.webp"
             article="The time has come for the debut of Richmond's new acquisition, with all the consequences entails. Hannah attends an unusual session, while Ted is perplexed by his personal situation."
@@ -42,8 +51,6 @@ const Home = () => {
             imageUrl="images/news/3_478x832.webp"
             article="In a difficult phase, AFC Richmond has to face the league's titan and conflicts and complications on and off the court accumulate."
           />
-        </div>
-        <div className="flex flex-row">
           <NewsCard
             imageUrl="images/news/4_478x832.webp"
             article="The Greyhounds try a new strategy that has everyone thinking outside the box. Sam prepares to host a VIP guest at Ola's."
@@ -58,6 +65,7 @@ const Home = () => {
           />
         </div>
       </div>
+
       <div className="text-center my-10">
         <span
           className="bg-yellow-600 rounded p-2 font-medium text-base

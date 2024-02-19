@@ -35,7 +35,10 @@ const Contact = () => {
           <h2></h2>
         </div>
       </div>
-      <div className="flex flex-row items-center justify-center">
+      <div
+        className="flex flex-col-reverse lg:flex-row items-center 
+      justify-center"
+      >
         <div className="space-y-5">
           <div className="">
             <span className="font-bold">AFC Richmond Headquarters</span>
@@ -58,7 +61,7 @@ const Contact = () => {
         <Image
           src="/images/contact/Sam and Tartt.jpeg"
           alt="logo with Jamie tartt and Sam Obisanya"
-          className="ml-32 rounded-md"
+          className="lg:ml-32 mb-5 lg:mt-5 rounded-md"
           width={300}
           height={300}
         />

@@ -11,11 +11,14 @@ import {
 const SocialMediaCard = () => {
   return (
     <div>
-      <div className="flex text-center items-center justify-center">
+      <div
+        className="flex flex-col text-center items-center 
+      justify-center"
+      >
         <h2>
           Follow <strong>RICHMOND</strong> on social Media
         </h2>
-        <div className="flex space-x-2 ml-2">
+        <div className="flex space-x-2 ml-2 my-4">
           <div className="cursor-pointer text-purple-600 hover:text-purple-700">
             {instaIcon}
           </div>
