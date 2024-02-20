@@ -6,23 +6,6 @@ import { useRouter } from 'next/router'
 import { FormEvent } from 'react'
 
 const SignUp = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const router = useRouter()
-
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    try {
-      toast.success('its ok')
-      setTimeout(() => {
-        router.push('/become/member')
-      }, 2000)
-    } catch (error) {
-      toast.error('try again')
-    }
-
-    setEmail('')
-    setPassword('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -48,18 +31,10 @@ const SignUp = () => {
   return (
     <div className="flex items-center justify-center mb-10">
       <form
-        onSubmit={handleLogin}
-        className="flex flex-col bg-slate-800 p-8 
-      rounded-lg w-96 shadow-md"
+        onSubmit={handleRegister}
+        className="flex flex-col bg-slate-800 p-8 rounded-lg w-96 shadow-md"
       >
-        <h3
-          className="text-center text-2xl font-bold 
-        mb-4"
-        >
-          Login
-        </h3>
-          Register
-        </h3>
+        <h3 className="text-center text-2xl font-bold mb-4">Register</h3>
         <input
           type="text"
           placeholder="Full name"
@@ -98,8 +73,7 @@ const SignUp = () => {
         <span className="text-gray-400 mb-2">
           Do not have an account yet?{' '}
           <Link
-            className="text-blue-500 
-          hover:underline"
+            className="text-blue-500 hover:underline"
             href="/become/register"
           >
             Click here
@@ -107,8 +81,7 @@ const SignUp = () => {
         </span>
         <button
           type="submit"
-          className="bg-blue-500 text-white py-2 rounded-md 
-          hover:bg-blue-700 transition duration-300 cursor-pointer"
+          className="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300 cursor-pointer"
         >
           Sign Up
         </button>
