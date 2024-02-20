@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { dollar, star, tiketIcon, userPluss } from '../icons/icons'
+import { dollar, star, ticket, userPluss } from '../icons/icons'
 
 interface MemberFanCardProps {
   plan: 'Bronze' | 'Silver' | 'Gold' | 'Platinum' | 'Diamond'
@@ -49,7 +49,7 @@ const MemberFanCard = (props: MemberFanCardProps) => {
       </div>
       <div className="mb-3">
         <span className="font-semibold text-black flex items-center">
-          {tiketIcon}{' '}
+          {ticket}{' '}
           <span className="ml-2">{props.discount}% discount on tickets</span>
         </span>
       </div>

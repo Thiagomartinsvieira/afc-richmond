@@ -66,7 +66,7 @@ export const arrowRight = (
   </svg>
 )
 
-export const tiketIcon = (
+export const ticket = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
