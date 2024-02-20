@@ -64,7 +64,7 @@ export default function Home() {
         </div>
       </div>
       <h1 className="absolute bottom-3 left-1/2 transform -translate-x-1/2 text-red-100">
-        Project created by Thiago Martins Vieira
+        Project created by Thiago and Lucas
       </h1>
     </div>
   )

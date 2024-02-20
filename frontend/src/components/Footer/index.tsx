@@ -62,7 +62,7 @@ const Footer = () => {
           md:mb-0 mt-2 lg:mb-2"
           >
             Richmond Football Club Association © 2024 - All rights are free -
-            Developed by Thiago Martins
+            Developed by Thiago and Lucas
           </p>
           <div
             className="flex items-center justify-center md:justify-end 
