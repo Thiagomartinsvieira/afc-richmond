@@ -229,8 +229,8 @@ class UserController {
     res.status(200).json({ message: 'User removed successfully' });
   }
 
-  async listUsers(_req: Request, res: Response) {
-    const users = await User.find({}, 'name born_date email membership');
+  async getUsers(_req: Request, res: Response) {
+    const users = await User.find({}, 'name born_date email membership roles');
 
     if (!users[0]) {
       return res

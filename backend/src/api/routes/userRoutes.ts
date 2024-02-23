@@ -4,7 +4,7 @@ import { checkToken } from '../middlewares/checkToken';
 
 const router = Router();
 
-router.get('/', UserController.listUsers);
+router.get('/', UserController.getUsers);
 router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 router.get('/:id', checkToken, UserController.getUserInfo);

@@ -1,4 +1,5 @@
 import { IMembershipPlans } from './IMembershipPlans';
+import { IUserRoles } from './IUserRoles';
 
 export interface IUser {
   _id: string;
@@ -7,4 +8,5 @@ export interface IUser {
   password: string;
   email: string;
   membership?: IMembershipPlans;
+  roles: IUserRoles[];
 }

@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import { IUser } from '../interfaces/IUser';
+import { IUserRoles } from '../interfaces/IUserRoles';
 
 const userSchema = new Schema<IUser>(
   {
@@ -22,6 +23,13 @@ const userSchema = new Schema<IUser>(
     membership: {
       type: String,
       default: '',
+    },
+    roles: {
+      type: [String],
+      required: true,
+      default: ["user"],
+      validate: (value: Array<IUserRoles>) =>
+        value.every((role) => ['user', 'admin'].includes(role)),
     },
   },
   { timestamps: true }
