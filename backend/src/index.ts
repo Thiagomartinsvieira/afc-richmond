@@ -4,6 +4,8 @@ import mongoose from 'mongoose';
 import contactRoutes from './api/routes/contactRoutes';
 import membershipRoutes from './api/routes/membershipRoutes';
 import userRoutes from './api/routes/userRoutes';
+import playerRoutes from './api/routes/playerRoutes';
+
 import { env } from './config/env-config';
 
 const app = express();
@@ -15,6 +17,7 @@ app.use(cors());
 app.use('/users', userRoutes);
 app.use('/membership', membershipRoutes);
 app.use('/contact', contactRoutes);
+app.use('/players', playerRoutes)
 
 mongoose
   .connect(env.DATABASE_URL)
