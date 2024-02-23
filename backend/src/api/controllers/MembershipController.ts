@@ -1,10 +1,19 @@
 import { Request, Response } from 'express';
+import z from 'zod';
 import { getToken } from '../helpers/get-token';
 import { getUserByToken } from '../helpers/get-user-by-token';
 import { IMembershipPlans } from '../interfaces/IMembershipPlans';
 import { IUser } from '../interfaces/IUser';
 import { User } from '../models/User';
 import MembershipService from '../services/MembershipService';
+
+const membershipSchema = z.enum([
+  'platinum',
+  'diamond',
+  'gold',
+  'silver',
+  'bronze',
+]);
 
 class MembershipController {
   async add(req: Request, res: Response) {
@@ -19,11 +28,10 @@ class MembershipController {
         .json({ error: 'You need to send the membership field.' });
     }
 
-    // HACK: I don't like this code
-    if (
-      !['platinum', 'diamond', 'gold', 'silver', 'bronze'].includes(membership)
-    ) {
-      return res.status(422).json({ error: 'Invalid membership plan' });
+    try {
+      membershipSchema.parse(membership);
+    } catch (error) {
+      res.status(422).json({ error: 'Invalid membership plan' });
     }
 
     user.membership = membership;
@@ -80,11 +88,10 @@ class MembershipController {
         .json({ error: 'You need to send the membership field.' });
     }
 
-    // HACK: I don't like this code
-    if (
-      !['platinum', 'diamond', 'gold', 'silver', 'bronze'].includes(membership)
-    ) {
-      return res.status(422).json({ error: 'Invalid membership plan' });
+    try {
+      membershipSchema.parse(membership);
+    } catch (error) {
+      res.status(422).json({ error: 'Invalid membership plan' });
     }
 
     if (user.membership === '') {

@@ -9,9 +9,18 @@ export interface ICreateUserFields {
 }
 
 class PlayerService {
-  async checkPlayerExist(name: string, born_date: Date, position: string, number: number): Promise<boolean> {
-
-    const playerExist = await Player.findOne({ name, born_date, position, number })
+  async checkPlayerExist(
+    name: string,
+    born_date: Date,
+    position: string,
+    number: number
+  ): Promise<boolean> {
+    const playerExist = await Player.findOne({
+      name,
+      born_date,
+      position,
+      number,
+    });
 
     return !!playerExist;
   }
