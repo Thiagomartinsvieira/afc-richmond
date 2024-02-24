@@ -4,6 +4,8 @@ export const playersSquad = [
     position: 'Goalkeeper',
     imageUrl: '/images/players/Tom_OBrien.webp',
     playerNumber: 1,
+    birthDate: '1995, 1, 3',
+    PlaceOfBirth: 'England',
   },
 
   {
@@ -11,6 +13,8 @@ export const playersSquad = [
     position: 'Goalkeeper',
     imageUrl: '/images/players/Thierry_Zoreaux.webp',
     playerNumber: 81,
+    birthDate: '1993, 10, 11',
+    PlaceOfBirth: 'Montréal, Canada',
   },
 
   {
@@ -18,6 +22,8 @@ export const playersSquad = [
     position: 'Goalkeeper',
     imageUrl: '/images/players/DeMaat.webp',
     playerNumber: 22,
+    birthDate: '1996, 9, 28',
+    PlaceOfBirth: 'Netherlands',
   },
 
   {
@@ -25,6 +31,8 @@ export const playersSquad = [
     position: 'Right Back',
     imageUrl: '/images/players/Arlo_Dixon.webp',
     playerNumber: 2,
+    birthDate: '1996, 6, 4',
+    PlaceOfBirth: 'England',
   },
 
   {
@@ -32,6 +40,7 @@ export const playersSquad = [
     position: 'Left Back',
     imageUrl: '/images/players/Gareth_Canterbury.webp',
     playerNumber: 3,
+    birthDate: '1992, 5, 2',
   },
 
   {
@@ -39,6 +48,8 @@ export const playersSquad = [
     position: 'Centre Back',
     imageUrl: '/images/players/Tommy_Winchester.webp',
     playerNumber: 4,
+    birthDate: '1996, 6, 19',
+    PlaceOfBirth: 'England',
   },
 
   {
@@ -47,6 +58,8 @@ export const playersSquad = [
     imageUrl: '/images/players/Isaac_McAdoo.webp',
     playerNumber: 5,
     Captain: true,
+    birthDate: '1996, 6, 4',
+    PlaceOfBirth: 'England',
   },
 
   {
@@ -54,6 +67,8 @@ export const playersSquad = [
     position: 'Left Wing',
     imageUrl: '/images/players/Colin_Hughes.webp',
     playerNumber: 12,
+    birthDate: '1995, 8, 21',
+    PlaceOfBirth: 'Cardiff, Wales',
   },
 
   {
@@ -61,6 +76,8 @@ export const playersSquad = [
     position: 'Right Midfielder',
     imageUrl: '/images/players/Kuko.webp',
     playerNumber: 7,
+    birthDate: '2000, 5, 9',
+    PlaceOfBirth: 'England',
   },
 
   {
@@ -68,6 +85,8 @@ export const playersSquad = [
     position: 'Right Midfielder',
     imageUrl: '/images/players/Sam_Obisanya.webp',
     playerNumber: 24,
+    birthDate: '2000, 1, 11',
+    PlaceOfBirth: 'Unknown Nigerian Football League',
   },
 
   {
@@ -75,6 +94,8 @@ export const playersSquad = [
     position: 'Centre Midfielder',
     imageUrl: '/images/players/Richard_Montlaur.webp',
     playerNumber: 8,
+    birthDate: '1994, 7, 14',
+    PlaceOfBirth: 'Cordon, Haute-Savoie, France',
   },
 
   {
@@ -82,6 +103,8 @@ export const playersSquad = [
     position: 'Centre Midfielder',
     imageUrl: '/images/players/Moe_Bumbercatch.webp',
     playerNumber: 21,
+    birthDate: '1996, 8, 14',
+    PlaceOfBirth: 'Switzerland',
   },
 
   {
@@ -89,6 +112,8 @@ export const playersSquad = [
     position: 'Forward',
     imageUrl: '/images/players/Roberts.webp',
     playerNumber: 16,
+    birthDate: '1993, 6, 8',
+    PlaceOfBirth: 'Harare, Zimbabwe',
   },
 
   {
@@ -96,6 +121,8 @@ export const playersSquad = [
     position: 'Striker',
     imageUrl: '/images/players/Jamie_Tartt.webp',
     playerNumber: 9,
+    birthDate: '1997, 10, 20',
+    PlaceOfBirth: 'Manchester, United Kingdom',
   },
 
   {
@@ -103,6 +130,8 @@ export const playersSquad = [
     position: 'Centre Back',
     imageUrl: '/images/players/Jan_Maas.webp',
     playerNumber: 13,
+    birthDate: '1993, 7, 1',
+    PlaceOfBirth: 'Groningen, Netherlands',
   },
 
   {
@@ -110,6 +139,8 @@ export const playersSquad = [
     position: 'Striker',
     imageUrl: '/images/players/Dani_Rojas.webp',
     playerNumber: 14,
+    birthDate: '1995, 7, 16',
+    PlaceOfBirth: 'Guadalajara, Mexico',
   },
 
   {
@@ -117,6 +148,8 @@ export const playersSquad = [
     position: 'Left Back',
     imageUrl: '/images/players/Jeff_Goodman.webp',
     playerNumber: 17,
+    birthDate: '1992, 7, 8',
+    PlaceOfBirth: 'Manchester, United Kingdom',
   },
 
   {
@@ -124,6 +157,8 @@ export const playersSquad = [
     position: 'Centre Back',
     imageUrl: '/images/players/Babatunde.webp',
     playerNumber: 18,
+    birthDate: '1992, 6, 8',
+    PlaceOfBirth: 'Ugochukwu Ejiegbu',
   },
 
   {
@@ -131,6 +166,8 @@ export const playersSquad = [
     position: 'Forward',
     imageUrl: '/images/players/Declan_Cockburn.webp',
     playerNumber: 19,
+    birthDate: '1994, 9, 14',
+    PlaceOfBirth: 'England',
   },
 
   {
@@ -138,6 +175,8 @@ export const playersSquad = [
     position: 'Centre Back',
     imageUrl: '/images/players/Paul_Reynolds.webp',
     playerNumber: 20,
+    birthDate: '1991, 6, 1',
+    PlaceOfBirth: 'Ireland',
   },
 
   {
@@ -145,6 +184,8 @@ export const playersSquad = [
     position: 'Forward',
     imageUrl: '/images/players/Kyle_McCracken.webp',
     playerNumber: 28,
+    birthDate: '1995, 9, 14',
+    PlaceOfBirth: 'England',
   },
 
   {
@@ -152,6 +193,8 @@ export const playersSquad = [
     position: 'Right Back',
     imageUrl: '/images/players/Bhargava.webp',
     playerNumber: 29,
+    birthDate: '1993, 9, 14',
+    PlaceOfBirth: 'England',
   },
 
   {
@@ -159,5 +202,7 @@ export const playersSquad = [
     position: 'Left Wing',
     imageUrl: '/images/players/Anders_Rosenfeldt.webp',
     playerNumber: 33,
+    birthDate: '1996, 9, 14',
+    PlaceOfBirth: 'England',
   },
 ]

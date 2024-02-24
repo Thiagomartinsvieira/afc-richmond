@@ -4,8 +4,11 @@ import PlayerCard from '../Card/PlayerCard'
 import { playersSquad } from '@/data/playersData'
 import Link from 'next/link'
 import { useWindowSize } from 'react-use'
+import { useRouter } from 'next/router'
 
 const PlayersCarrousel = () => {
+  const router = useRouter()
+
   const { width } = useWindowSize()
   let itemsPerSlide: number
 
@@ -15,6 +18,10 @@ const PlayersCarrousel = () => {
     itemsPerSlide = 2
   } else {
     itemsPerSlide = 3
+  }
+
+  const handlePlayerClick = (player) => {
+    router.push(`/players/${player.playerNumber}`)
   }
 
   return (
@@ -36,6 +43,8 @@ const PlayersCarrousel = () => {
         autoPlay
         infiniteLoop
         showStatus={false}
+        transitionTime={1000}
+        className="cursor-pointer"
       >
         {Array.from({
           length: Math.ceil(playersSquad.length / itemsPerSlide),
@@ -44,7 +53,11 @@ const PlayersCarrousel = () => {
             {playersSquad
               .slice(index * itemsPerSlide, (index + 1) * itemsPerSlide)
               .map((player, i) => (
-                <PlayerCard key={i} {...player} />
+                <PlayerCard
+                  key={i}
+                  {...player}
+                  onclick={() => handlePlayerClick(player)}
+                />
               ))}
           </div>
         ))}

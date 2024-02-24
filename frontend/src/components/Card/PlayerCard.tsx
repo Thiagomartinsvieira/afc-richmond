@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 interface PlayerCardProps {
@@ -7,6 +8,7 @@ interface PlayerCardProps {
   imageUrl: string
   playerNumber?: number
   Captain?: boolean
+  onclick?: () => void
 }
 
 const PlayerCard = (props: PlayerCardProps) => {
@@ -17,6 +19,7 @@ const PlayerCard = (props: PlayerCardProps) => {
       className={`relative p-4 rounded-lg shadow-md overflow-hidden
        text-center border border-yellow-600 bg-gray-800 m-5
       hover:scale-105 cursor-pointe`}
+      onClick={props.onclick}
     >
       <div
         className={`absolute top-5 right-5 font-black
@@ -25,13 +28,16 @@ const PlayerCard = (props: PlayerCardProps) => {
         {props.playerNumber}
       </div>
 
-      <Image
-        src={props.imageUrl}
-        width={350}
-        height={430}
-        alt={`Portrait of ${props.name}`}
-        className="w-56 h-80 object-cover mb-4 rounded-m cursor-pointer"
-      />
+      <Link href={`/players/${props.playerNumber}`}>
+        <Image
+          src={props.imageUrl}
+          width={350}
+          height={430}
+          alt={`Portrait of ${props.name}`}
+          className="w-56 h-80 object-cover mb-4 
+          rounded-m cursor-pointer"
+        />
+      </Link>
 
       <h2 className="text-xl font-semibold">
         {props.name} {props.Captain && '⭐'}
