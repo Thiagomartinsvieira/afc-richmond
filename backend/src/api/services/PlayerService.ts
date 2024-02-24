@@ -1,13 +1,5 @@
 import { Player } from '../models/Player';
 
-export interface ICreateUserFields {
-  name?: string;
-  born_date?: Date;
-  email?: string;
-  password?: string;
-  confirmpassword?: string;
-}
-
 class PlayerService {
   async checkPlayerExist(
     name: string,
@@ -23,6 +15,15 @@ class PlayerService {
     });
 
     return !!playerExist;
+  }
+
+  async isNumberUsed(number: number, active: boolean): Promise<boolean> {
+    if (active) {
+      const numberUsed = await Player.findOne({ number, active: true });
+
+      return !!numberUsed;
+    }
+    return false;
   }
 }
 

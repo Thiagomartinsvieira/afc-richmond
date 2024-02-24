@@ -40,8 +40,19 @@ class PlayerController {
     );
 
     if (playerExist) {
-      res.status(422).json({
+      return res.status(422).json({
         error: 'There is already a player registered with that information.',
+      });
+    }
+
+    const numberUsed = await PlayerService.isNumberUsed(
+      data.number,
+      data.active
+    );
+
+    if (numberUsed) {
+      return res.status(422).json({
+        error: 'There is already a active player registered with that number.',
       });
     }
 
