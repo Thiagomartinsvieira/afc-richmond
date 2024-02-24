@@ -20,7 +20,36 @@ const PlayersCarrousel = () => {
     itemsPerSlide = 3
   }
 
-  const handlePlayerClick = (player) => {
+  const handlePlayerClick = (
+    player:
+      | {
+          name: string
+          position: string
+          imageUrl: string
+          playerNumber: number
+          birthDate: string
+          PlaceOfBirth: string
+          Captain?: undefined
+        }
+      | {
+          name: string
+          position: string
+          imageUrl: string
+          playerNumber: number
+          birthDate: string
+          PlaceOfBirth?: undefined
+          Captain?: undefined
+        }
+      | {
+          name: string
+          position: string
+          imageUrl: string
+          playerNumber: number
+          Captain: boolean
+          birthDate: string
+          PlaceOfBirth: string
+        },
+  ) => {
     router.push(`/players/${player.playerNumber}`)
   }
 

@@ -79,7 +79,7 @@ const PlayerDetails = () => {
           </div>
 
           <div className="flex flex-col ml-10 space-y-5">
-            <div className="flex text-3xl mx-auto lg:mx-0">
+            <div className="flex text-3xl mx-auto lg:mx-0 ">
               <h2 className="font-extrabold">{player.name}</h2>
             </div>
             <p className="font-bold">
