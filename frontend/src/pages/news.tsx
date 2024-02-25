@@ -3,9 +3,15 @@ import Nav from '@/components/Nav'
 import NewsList from '@/components/NewsList'
 import { searchIcon } from '@/components/icons/icons'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 
 const News = () => {
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const handleSearchChange = (e: any) => {
+    setSearchQuery(e.target.value)
+  }
+
   return (
     <div>
       <Nav />
@@ -21,9 +27,10 @@ const News = () => {
         <div className="flex flex-row items-center justify-center">
           <input
             type="search"
-            placeholder="Search"
-            className="bg-white w-11/12 border border-yellow-400 rounded-l-lg p-2 sm:w-10/12
-            lg:w-10/12 xl:w-7/12 text-black"
+            placeholder="Enter your search"
+            className="bg-white w-11/12 border border-yellow-400 rounded-l-lg p-2 sm:w-10/12 lg:w-10/12 xl:w-7/12 text-black"
+            onChange={handleSearchChange}
+            value={searchQuery}
           />
           <div
             className="bg-yellow-400 rounded-r-lg cursor-pointer p-2
@@ -32,7 +39,7 @@ const News = () => {
             {searchIcon}
           </div>
         </div>
-        <NewsList />
+        <NewsList searchQuery={searchQuery} />
       </div>
       <Footer />
     </div>
