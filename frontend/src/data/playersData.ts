@@ -86,7 +86,7 @@ export const playersSquad = [
     imageUrl: '/images/players/Sam_Obisanya.webp',
     playerNumber: 24,
     birthDate: '2000, 1, 11',
-    PlaceOfBirth: 'Unknown Nigerian Football League',
+    PlaceOfBirth: 'Lagos, Nigeria',
   },
 
   {
