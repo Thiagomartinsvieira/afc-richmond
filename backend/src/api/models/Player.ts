@@ -24,6 +24,10 @@ const playerSchema = new Schema<IPlayer>(
       required: true,
       default: true,
     },
+    place_birth: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );

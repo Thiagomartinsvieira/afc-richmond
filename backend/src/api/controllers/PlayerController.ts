@@ -3,34 +3,35 @@ import z from 'zod';
 import { Player } from '../models/Player';
 import PlayerService from '../services/PlayerService';
 
+const playerSchema = z.object({
+  name: z.string(),
+  born_date: z.string().datetime(),
+  position: z.enum([
+    'GK',
+    'CB',
+    'SW',
+    'RB',
+    'LB',
+    'LWB',
+    'RWB',
+    'DM',
+    'CDM',
+    'CM',
+    'CAM',
+    'RW',
+    'LW',
+    'SS',
+    'CF',
+    'ST',
+  ]),
+  number: z.number().min(1).max(99),
+  active: z.boolean(),
+  place_birth: z.string(),
+});
+
 class PlayerController {
   async add(req: Request, res: Response) {
     const data = req.body;
-
-    const playerSchema = z.object({
-      name: z.string(),
-      born_date: z.string().datetime(),
-      position: z.enum([
-        'GK',
-        'CB',
-        'SW',
-        'RB',
-        'LB',
-        'LWB',
-        'RWB',
-        'DM',
-        'CDM',
-        'CM',
-        'CAM',
-        'RW',
-        'LW',
-        'SS',
-        'CF',
-        'ST',
-      ]),
-      number: z.number().min(1).max(99),
-      active: z.boolean(),
-    });
 
     const playerExist = await PlayerService.checkPlayerExist(
       data.name,
@@ -65,6 +66,7 @@ class PlayerController {
         position: data.position,
         number: data.number,
         active: data.active,
+        place_birth: data.place_birth,
       });
 
       await player.save();
@@ -72,6 +74,14 @@ class PlayerController {
     } catch (error) {
       res.status(400).json({ error: error });
     }
+  }
+
+  async getPlayer(req: Request, res: Response) {
+    const id = req.params.id;
+
+    const player = await PlayerService.getPlayerById(id);
+
+    res.status(200).json({ player });
   }
 }
 

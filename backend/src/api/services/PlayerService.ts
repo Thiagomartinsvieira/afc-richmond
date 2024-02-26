@@ -25,6 +25,12 @@ class PlayerService {
     }
     return false;
   }
+
+  async getPlayerById(id: string) {
+    const player = await Player.findById({ _id: id });
+
+    return player;
+  }
 }
 
 export default new PlayerService();

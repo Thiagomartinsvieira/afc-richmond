@@ -4,4 +4,5 @@ export interface IPlayer {
   position: string;
   number: number;
   active: boolean;
+  place_birth: string;
 }
