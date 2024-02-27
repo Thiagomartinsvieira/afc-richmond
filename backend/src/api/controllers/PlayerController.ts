@@ -89,6 +89,50 @@ class PlayerController {
 
     res.status(200).json(players);
   }
+
+  async editPlayer(req: Request, res: Response) {
+    const id = req.params.id;
+    const data = req.body;
+
+
+    const playerExist = await PlayerService.checkPlayerExist(
+      data.name,
+      data.born_date,
+      data.position,
+      data.number
+    );
+
+    if (playerExist) {
+      return res.status(422).json({
+        error: 'There is already a player registered with that information.',
+      });
+    }
+
+    const numberUsed = await PlayerService.isNumberUsed(
+      data.number,
+      data.active
+    );
+
+    if (numberUsed) {
+      return res.status(422).json({
+        error: 'There is already a active player registered with that number.',
+      });
+    }
+
+    try {
+      playerSchema.parse(data)
+
+      await Player.findOneAndUpdate(
+        { _id: id },
+        { $set: data },
+        { new: true },
+      );
+
+      res.status(204).end()
+    } catch (error) {
+      return res.status(400).json({ error: error });
+    }
+  }
 }
 
 export default new PlayerController();
