@@ -130,7 +130,18 @@ class PlayerController {
 
       res.status(204).end()
     } catch (error) {
-      return res.status(400).json({ error: error });
+      return res.status(500).json({ error: error });
+    }
+  }
+
+  async removePlayer(req: Request, res: Response) {
+    const id = req.params.id
+
+    try {
+      await Player.findOneAndDelete({ _id: id })
+      res.status(204).end()
+    } catch (error) {
+      return res.status(500).json({ error: error })
     }
   }
 }
