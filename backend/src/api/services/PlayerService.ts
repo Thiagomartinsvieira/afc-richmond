@@ -27,9 +27,21 @@ class PlayerService {
   }
 
   async getPlayerById(id: string) {
-    const player = await Player.findById({ _id: id });
+    const player = await Player.findById(
+      { _id: id },
+      'name born_date position number active'
+    );
 
     return player;
+  }
+
+  async getAllPlayers() {
+    const players = await Player.find(
+      {},
+      'name born_date position number active'
+    );
+
+    return players;
   }
 }
 

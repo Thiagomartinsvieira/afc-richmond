@@ -81,7 +81,13 @@ class PlayerController {
 
     const player = await PlayerService.getPlayerById(id);
 
-    res.status(200).json({ player });
+    res.status(200).json(player);
+  }
+
+  async getPlayers(_req: Request, res: Response) {
+    const players = await PlayerService.getAllPlayers();
+
+    res.status(200).json(players);
   }
 }
 
