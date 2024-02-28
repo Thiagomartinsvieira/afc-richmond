@@ -6,13 +6,15 @@ import { useWindowSize } from 'react-use'
 interface NewsCardProps {
   imageUrl: string
   article: string
+  title?: string | undefined
+  id?: number | undefined
 }
 
 interface NewsListProps {
   searchQuery: string
 }
 
-const NewsList: React.FC<NewsListProps> = ({ searchQuery }) => {
+const NewsList = (props: NewsListProps) => {
   const chunkArray = (array: NewsCardProps[], chunkSize: number) => {
     const result = []
     for (let i = 0; i < array.length; i += chunkSize) {
@@ -34,16 +36,16 @@ const NewsList: React.FC<NewsListProps> = ({ searchQuery }) => {
   }
 
   const filteredNewsData = newsData.filter((news) =>
-    news.article.toLowerCase().includes(searchQuery.toLowerCase()),
+    news.article.toLowerCase().includes(props.searchQuery.toLowerCase()),
   )
 
   const newsRows = chunkArray(filteredNewsData, newsCardPerLine)
 
-  if (filteredNewsData.length === 0 && searchQuery.trim() !== '') {
+  if (filteredNewsData.length === 0 && props.searchQuery.trim() !== '') {
     return (
       <div className="flex my-10 mx-auto space-x-2">
         <p className="font-semibold">No results for:</p>{' '}
-        <p className="font-medium">{searchQuery}</p>
+        <p className="font-medium">{props.searchQuery}</p>
       </div>
     )
   }
@@ -54,9 +56,11 @@ const NewsList: React.FC<NewsListProps> = ({ searchQuery }) => {
         <div key={rowIndex} className="flex flex-wrap justify-center">
           {row.map((news, colIndex) => (
             <NewsCard
-              key={colIndex}
+              key={news.id}
               imageUrl={news.imageUrl}
               article={news.article}
+              id={news.id !== undefined ? news.id : 0}
+              title={news.title}
             />
           ))}
         </div>
