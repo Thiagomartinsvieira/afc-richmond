@@ -1,6 +1,7 @@
 import Footer from '@/components/Footer'
 import Nav from '@/components/Nav'
 import Title from '@/components/Title'
+import { arrowUpLeft } from '@/components/icons/icons'
 import ticketsGame from '@/data/ticketsGameData'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -20,6 +21,39 @@ const GameId = () => {
 
   const { width } = useWindowSize()
 
+  if (gameIdValue && parseInt(gameIdValue) >= 7 && !game) {
+    return (
+      <div>
+        <Nav />
+        <Title
+          title="Ticket Purchase"
+          subtitle="Game not found or invalid game ID"
+        />
+        <p className="text-center">
+          We are sorry, but there is no game corresponding to the ID you have
+          entered, or it is an invalid ID.
+        </p>
+        <Image
+          className="mx-auto my-5 border-y-2 border-yellow-700"
+          src="/images/games/roy.gif"
+          width={500}
+          height={400}
+          alt="Roy Kent"
+        />
+        <div className="my-10">
+          <Link
+            className="flex items-center justify-center space-x-3 hover:underline
+            hover:scale-110 transition-transform ease-out duration-300"
+            href="/tickets"
+          >
+            <span className="text-centers">Return to tickets page</span>
+            <span className="text-white">{arrowUpLeft}</span>
+          </Link>
+        </div>
+        <Footer />
+      </div>
+    )
+  }
   return (
     <div>
       <Nav />
