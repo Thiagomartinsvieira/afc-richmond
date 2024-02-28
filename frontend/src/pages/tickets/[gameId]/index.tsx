@@ -21,7 +21,12 @@ const GameId = () => {
 
   const { width } = useWindowSize()
 
-  if (gameIdValue && parseInt(gameIdValue) >= 7 && !game) {
+  if (
+    !gameIdValue ||
+    isNaN(parseInt(gameIdValue)) ||
+    parseInt(gameIdValue) < 1 ||
+    !game
+  ) {
     return (
       <div>
         <Nav />
