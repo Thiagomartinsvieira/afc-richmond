@@ -94,7 +94,6 @@ class PlayerController {
     const id = req.params.id;
     const data = req.body;
 
-
     const playerExist = await PlayerService.checkPlayerExist(
       data.name,
       data.born_date,
@@ -120,28 +119,24 @@ class PlayerController {
     }
 
     try {
-      playerSchema.parse(data)
+      playerSchema.parse(data);
 
-      await Player.findOneAndUpdate(
-        { _id: id },
-        { $set: data },
-        { new: true },
-      );
+      await Player.findOneAndUpdate({ _id: id }, { $set: data }, { new: true });
 
-      res.status(204).end()
+      res.status(204).end();
     } catch (error) {
       return res.status(500).json({ error: error });
     }
   }
 
   async removePlayer(req: Request, res: Response) {
-    const id = req.params.id
+    const id = req.params.id;
 
     try {
-      await Player.findOneAndDelete({ _id: id })
-      res.status(204).end()
+      await Player.findOneAndDelete({ _id: id });
+      res.status(204).end();
     } catch (error) {
-      return res.status(500).json({ error: error })
+      return res.status(500).json({ error: error });
     }
   }
 }
