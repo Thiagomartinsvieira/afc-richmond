@@ -6,7 +6,7 @@ interface NewsCardProps {
   article: string
   imageUrl: string
   id: number
-  title: string | undefined
+  title?: string | undefined
 }
 
 const NewsCard = (props: NewsCardProps) => {
