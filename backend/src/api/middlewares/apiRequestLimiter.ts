@@ -1,6 +1,13 @@
-import { rateLimit } from 'express-rate-limit';
+import { RateLimitRequestHandler, rateLimit } from 'express-rate-limit';
 
-export function apiRequestLimiter(windowMs: number, max: number) {
+/**
+ * Creates and returns an Express middleware for rate limiting API requests.
+ *
+ * @param {number} windowMs - The time window for rate limiting in milliseconds.
+ * @param {number} max - The maximum number of requests allowed within the specified window.
+ * @returns {RateLimitRequestHandler} Express middleware for rate limiting API requests.
+ */
+export function apiRequestLimiter(windowMs: number, max: number): RateLimitRequestHandler {
   return rateLimit({
     windowMs: windowMs,
     max: max,

@@ -27,7 +27,7 @@ const userSchema = new Schema<IUser>(
     roles: {
       type: [String],
       required: true,
-      default: ["user"],
+      default: ['user'],
       validate: (value: Array<IUserRoles>) =>
         value.every((role) => ['user', 'admin'].includes(role)),
     },

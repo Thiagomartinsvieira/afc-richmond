@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import z from 'zod';
 import {
   htmlTemplate,
   mailOptions,
@@ -8,36 +9,29 @@ import {
 import { checkRequiredFields } from '../helpers/check-required-fields';
 import { isEmail } from '../helpers/is-email';
 
+const contactSchema = z.object({
+  name: z.string(),
+  email: z.string().email(),
+  subject: z.string().min(1).max(64),
+  message: z.string(),
+});
+
 class UserController {
   async getContact(req: Request, res: Response) {
-    const { name, email, subject, message } = req.body;
+    const data = req.body;
 
-    const missingFields = checkRequiredFields({
-      name,
-      email,
-      subject,
-      message,
-    });
-
-    if (missingFields.length > 0) {
-      res.status(422).json({
-        error: `The following fields are required: ${missingFields.join(
-          ', '
-        )}.`,
-      });
-      return;
-    }
-
-    if (!isEmail(email)) {
-      return res.status(422).json({ error: 'Invalid email' });
+    try {
+      contactSchema.parse(data);
+    } catch (error) {
+      res.status(422).json({ error: error });
     }
 
     try {
       await transporter.sendMail({
         ...mailOptions,
-        subject: subject,
-        text: textTemplate(name, email, subject, message),
-        html: htmlTemplate(name, email, subject, message),
+        subject: data.subject,
+        text: textTemplate(data.name, data.email, data.subject, data.message),
+        html: htmlTemplate(data.name, data.email, data.subject, data.message),
       });
 
       return res.status(400).end();

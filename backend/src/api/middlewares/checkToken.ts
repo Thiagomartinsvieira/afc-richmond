@@ -4,6 +4,17 @@ import { env } from '../../config/env-config';
 import { getUserByToken } from '../helpers/get-user-by-token';
 import { IUser } from '../interfaces/IUser';
 
+/**
+ * Middleware to check and verify an authentication token.
+ *
+ * This middleware extracts the authorization token from the request headers,
+ * verifies the token using the provided JWT secret, and sets user information in the request object.
+ * If the token is invalid, a 400 Bad Request response is sent.
+ *
+ * @param {Request} req - Express Request object.
+ * @param {Response} res - Express Response object.
+ * @param {NextFunction} next - Express NextFunction callback.
+ */
 export async function checkToken(
   req: Request,
   res: Response,
