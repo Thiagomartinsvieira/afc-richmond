@@ -9,7 +9,13 @@ interface AuthContextProps {
   token: string
   login: (email: string, password: string) => Promise<void>
   logout: () => void
-  register: (name: string, email: string, password: string) => Promise<void>
+  register: (
+    name: string,
+    email: string,
+    password: string,
+    confirmPassword: string,
+    bornDate: string,
+  ) => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined)
@@ -52,7 +58,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setToken('')
   }
 
-  const register = async (name: string, email: string, password: string) => {
+  const register = async (
+    name: string,
+    email: string,
+    bornDate: string,
+    password: string,
+    confirmPassword: string,
+  ) => {
     const response = await fetch(
       'https://afc-richmond.onrender.com/users/register',
       {
@@ -60,7 +72,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+          bornDate,
+          confirmPassword,
+        }),
       },
     )
 
