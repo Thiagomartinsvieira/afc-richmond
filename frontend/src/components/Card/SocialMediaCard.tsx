@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+import Image from 'next/image'
 import {
   facebookIcon,
   instaIcon,
@@ -42,9 +43,11 @@ const SocialMediaCard = () => {
       >
         <div className="md:flex my-5">
           <div className="md:flex-shrink-0">
-            <img
+            <Image
+              width={100}
+              height={48}
               className="h-48 w-full object-cover md:w-48 rounded"
-              src="https://miro.medium.com/v2/resize:fit:960/0*Mvcyh2tEUs72-85S"
+              src="/images/gif/0_Mvcyh2tEUs72-85S.bin"
               alt="AFC Richmond"
             />
           </div>
