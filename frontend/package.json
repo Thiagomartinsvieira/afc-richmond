@@ -14,6 +14,7 @@
     "@next-tools/dynamic": "^0.0.11",
     "@szhsin/react-accordion": "^1.2.3",
     "autoprefixer": "^10.4.16",
+    "js-cookie": "^3.0.5",
     "next": "14.0.2",
     "nookies": "^2.5.2",
     "postcss": "^8.4.31",
