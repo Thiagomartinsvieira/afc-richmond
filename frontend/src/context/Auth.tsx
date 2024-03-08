@@ -1,12 +1,20 @@
-import { useContext, createContext, useState, ReactNode } from 'react'
+import {
+  useContext,
+  createContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from 'react'
+import Cookie from 'js-cookie'
+import { useRouter } from 'next/router'
+import { verifyToken } from '@/utils/auth'
 
 interface AuthProviderProps {
   children: ReactNode
 }
 
 interface AuthContextProps {
-  currentUser: string | null
-  token: string
+  currentUser: any
   login: (email: string, password: string) => Promise<void>
   logout: () => void
   register: (
@@ -29,33 +37,57 @@ export function useAuth() {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [currentUser, setCurrentUser] = useState<string | null>(null)
-  const [token, setToken] = useState('')
+  const [currentUser, setCurrentUser] = useState<any>(null)
+  const router = useRouter()
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      verifyUser(token)
+    }
+  }, [])
+
+  const verifyUser = async (token: string) => {
+    try {
+      const userData = await verifyToken(token)
+      setCurrentUser(userData)
+    } catch (error) {
+      console.error('Error verifying user:', error)
+    }
+  }
 
   const login = async (email: string, password: string) => {
-    const response = await fetch(
-      'https://afc-richmond.onrender.com/users/login',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+    try {
+      const response = await fetch(
+        'https://afc-richmond.onrender.com/users/login',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
         },
-        body: JSON.stringify({ email, password }),
-      },
-    )
+      )
 
-    if (!response.ok) {
-      throw new Error('Login failed')
+      if (!response.ok) {
+        throw new Error('Falha no login')
+      }
+
+      const { token } = await response.json()
+
+      Cookie.set('token', token, { expires: 1 })
+      verifyUser(token)
+      router.push('/dashboard')
+    } catch (error) {
+      console.error('An error occurred during login:', error)
+      throw error
     }
-
-    const data = await response.json()
-    setToken(data.token)
-    setCurrentUser({ ...data.user })
   }
 
   const logout = () => {
+    Cookie.remove('token')
     setCurrentUser(null)
-    setToken('')
+    router.push('/become/login')
   }
 
   const register = async (
@@ -64,32 +96,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     bornDate: string,
     password: string,
     confirmPassword: string,
-  ) => {
-    const response = await fetch(
-      'https://afc-richmond.onrender.com/users/register',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-          bornDate,
-          confirmPassword,
-        }),
-      },
-    )
-
-    if (!response.ok) {
-      throw new Error('Register failed')
-    }
-  }
+  ) => {}
 
   const value = {
     currentUser,
-    token,
     login,
     logout,
     register,

@@ -4,28 +4,55 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useRouter } from 'next/router'
 import { FormEvent } from 'react'
+import { useAuth } from '@/context/Auth'
 
 const SignUp = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [bornDate, setBornDate] = useState('')
+
   const router = useRouter()
 
-  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+  const { register } = useAuth()
+
+  const formatBornDate = (bornDate: string): string => {
+    return bornDate
+  }
+
+  const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (password !== confirmPassword) {
       toast.error("Passwords don't match!")
-    } else {
-      toast.success('ok')
-      setName('')
-      setEmail('')
-      setPassword('')
-      setConfirmPassword('')
-      setTimeout(() => {
-        router.push('/become/member')
-      }, 2000)
+      return
     }
+
+    try {
+      const formattedBornDate = formatBornDate(bornDate)
+
+      console.log('Dados a serem enviados para registro:')
+      console.log('Name:', name)
+      console.log('Email:', email)
+      console.log('Formatted Born Date:', formattedBornDate)
+      console.log('Password:', password)
+      console.log('Confirm Password:', confirmPassword)
+
+      await register(name, email, formattedBornDate, password, confirmPassword)
+      toast.success('Registration successful')
+      router.push('/dashboard')
+    } catch (error) {
+      console.error('Registration failed: ', error)
+      toast.error('Error occurred')
+    }
+  }
+
+  const getCurrentDateFormatted = () => {
+    const currentDate = new Date()
+    const year = currentDate.getFullYear()
+    const month = `0${currentDate.getMonth() + 1}`.slice(-2)
+    const day = `0${currentDate.getDate()}`.slice(-2)
+    return `${year}-${month}-${day}`
   }
 
   return (
@@ -39,7 +66,7 @@ const SignUp = () => {
           className="text-center text-2xl font-bold 
         mb-4"
         >
-          Register
+          Register your account
         </h3>
         <input
           type="text"
@@ -57,13 +84,14 @@ const SignUp = () => {
           required
           className="mb-4 p-2 border border-gray-300 rounded-md"
         />
-        {/* <label className="text-left mb-2">Date of Birth</label>
         <input
-          type="date"
-          placeholder="Date of Birth"
           className="mb-4 p-2 border border-gray-300 rounded-md"
+          type="date"
           required
-        /> */}
+          max={getCurrentDateFormatted()}
+          value={bornDate}
+          onChange={(e) => setBornDate(e.target.value)}
+        />
         <input
           type="password"
           placeholder="Password"
@@ -97,7 +125,7 @@ const SignUp = () => {
           className="bg-blue-500 text-white py-2 rounded-md 
           hover:bg-blue-700 transition duration-300 cursor-pointer"
         >
-          Sign Up
+          Register
         </button>
       </form>
     </div>
