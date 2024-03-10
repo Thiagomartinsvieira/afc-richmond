@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch --env-file .env.local src/index.ts",
     "start": "node ./dist/index.js",
-    "build": "npm i && tsup src/",
+    "build": "tsup src/",
     "lint": "biome lint src/",
     "fix": "biome check src/ --apply",
     "format": "biome format src/ --write"
