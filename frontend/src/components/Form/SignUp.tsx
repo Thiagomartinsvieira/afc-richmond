@@ -18,7 +18,7 @@ const SignUp = () => {
   const { register } = useAuth()
 
   const formatBornDate = (bornDate: string): string => {
-    return bornDate
+    return bornDate + 'T12:00:00.000Z'
   }
 
   const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
@@ -30,13 +30,6 @@ const SignUp = () => {
 
     try {
       const formattedBornDate = formatBornDate(bornDate)
-
-      console.log('Dados a serem enviados para registro:')
-      console.log('Name:', name)
-      console.log('Email:', email)
-      console.log('Formatted Born Date:', formattedBornDate)
-      console.log('Password:', password)
-      console.log('Confirm Password:', confirmPassword)
 
       await register(name, email, formattedBornDate, password, confirmPassword)
       toast.success('Registration successful')
