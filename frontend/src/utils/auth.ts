@@ -4,12 +4,15 @@ import nookies from 'nookies'
 export async function verifyToken(token: string | undefined) {
   if (!token) return null
 
-  const response = await fetch('https://afc-richmond.onrender.com/users/', {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${token}`,
+  const response = await fetch(
+    'https://afc-richmond.onrender.com/users/getuserbytoken',
+    {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     },
-  })
+  )
 
   if (!response.ok) {
     return null
