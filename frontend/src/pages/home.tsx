@@ -86,12 +86,14 @@ const Home = () => {
       </div>
 
       <div className="text-center my-10">
-        <span
-          className="bg-yellow-600 rounded p-2 font-medium text-base
-         cursor-pointer hover:bg-yellow-500"
-        >
-          More news
-        </span>
+        <Link href="/news">
+          <span
+            className="bg-yellow-600 rounded p-2 font-medium text-base
+           cursor-pointer hover:bg-yellow-500"
+          >
+            More news
+          </span>
+        </Link>
         <div className="my-10">
           <SocialMediaCard />
         </div>
