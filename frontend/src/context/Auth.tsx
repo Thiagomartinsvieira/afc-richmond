@@ -96,7 +96,35 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     bornDate: string,
     password: string,
     confirmPassword: string,
-  ) => {}
+  ) => {
+    try {
+      const response = await fetch(
+        'https://afc-richmond.onrender.com/users/register',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            born_date: bornDate,
+            password,
+            confirmpassword: confirmPassword,
+          }),
+        },
+      )
+
+      if (!response.ok) {
+        throw new Error('Registration failed')
+      }
+
+      router.push('/dashboard')
+    } catch (error) {
+      console.error('An error occurred during register:', error)
+      throw new Error('Registration failed')
+    }
+  }
 
   const value = {
     currentUser,
