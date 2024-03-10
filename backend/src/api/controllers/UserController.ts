@@ -7,6 +7,7 @@ import { getUserByToken } from '../helpers/get-user-by-token';
 import { IUser } from '../interfaces/IUser';
 import { User } from '../models/User';
 import UserService from '../services/UserService';
+import { createDiffieHellmanGroup } from 'crypto';
 
 class UserController {
   async register(req: Request, res: Response): Promise<void> {
@@ -239,6 +240,19 @@ class UserController {
     }
 
     return res.status(200).json({ message: users });
+  }
+
+  async getUserToken(req: Request, res: Response) {
+    const token = getToken(req);
+    const user = await getUserByToken(req, res, token);
+
+    if (!token) return res.status(401).json({ message: 'Access denied' });
+
+    if (!user) {
+      return res.status(422).json({ error: 'User not found by this token' });
+    }
+
+    return res.status(200).json(user);
   }
 }
 export default new UserController();

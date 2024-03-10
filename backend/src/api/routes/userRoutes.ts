@@ -6,6 +6,7 @@ const router = Router();
 
 router.get('/', UserController.getUsers);
 router.post('/register', UserController.register);
+router.get('/getuserbytoken', checkToken, UserController.getUserToken);
 router.post('/login', UserController.login);
 router.get('/:id', checkToken, UserController.getUserInfo);
 router.patch('/edit/:id', checkToken, UserController.editUser);
