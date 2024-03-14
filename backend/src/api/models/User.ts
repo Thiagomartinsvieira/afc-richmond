@@ -31,6 +31,11 @@ const userSchema = new Schema<IUser>(
       validate: (value: Array<IUserRoles>) =>
         value.every((role) => ['user', 'admin'].includes(role)),
     },
+    profile_pic_url: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
   { timestamps: true }
 );
