@@ -7,11 +7,17 @@ import { getUserByToken } from '../helpers/get-user-by-token';
 import { IUser } from '../interfaces/IUser';
 import { User } from '../models/User';
 import UserService from '../services/UserService';
-import { createDiffieHellmanGroup } from 'crypto';
 
 class UserController {
   async register(req: Request, res: Response): Promise<void> {
-    const { name, born_date, email, password, confirmpassword } = req.body;
+    const {
+      name,
+      born_date,
+      email,
+      password,
+      confirmpassword,
+      profile_pic_url,
+    } = req.body;
 
     const missingFields = checkRequiredFields({
       name,
@@ -19,6 +25,7 @@ class UserController {
       email,
       password,
       confirmpassword,
+      profile_pic_url,
     });
 
     if (missingFields.length > 0) {
@@ -60,6 +67,7 @@ class UserController {
       born_date,
       email,
       password: hashPassword,
+      profile_pic_url,
     });
 
     try {
@@ -119,14 +127,21 @@ class UserController {
       return res.status(422).json({ err: 'User not found' });
     }
 
-    res.status(200).json({ message: user });
+    res.status(200).json({ user });
   }
 
   async editUser(req: Request, res: Response) {
     const token = getToken(req);
     const user = (await getUserByToken(req, res, token)) as IUser;
 
-    const { name, born_date, email, password, confirmpassword } = req.body;
+    const {
+      name,
+      born_date,
+      email,
+      password,
+      confirmpassword,
+      profile_pic_url,
+    } = req.body;
 
     const missingFields = checkRequiredFields({
       name,
@@ -134,6 +149,7 @@ class UserController {
       email,
       password,
       confirmpassword,
+      profile_pic_url,
     });
 
     if (missingFields.length > 0) {

@@ -9,4 +9,5 @@ export interface IUser {
   email: string;
   membership?: IMembershipPlans;
   roles: IUserRoles[];
+  profile_pic_url?: string;
 }

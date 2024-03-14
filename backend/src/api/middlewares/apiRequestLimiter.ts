@@ -7,7 +7,10 @@ import { RateLimitRequestHandler, rateLimit } from 'express-rate-limit';
  * @param {number} max - The maximum number of requests allowed within the specified window.
  * @returns {RateLimitRequestHandler} Express middleware for rate limiting API requests.
  */
-export function apiRequestLimiter(windowMs: number, max: number): RateLimitRequestHandler {
+export function apiRequestLimiter(
+  windowMs: number,
+  max: number
+): RateLimitRequestHandler {
   return rateLimit({
     windowMs: windowMs,
     max: max,
