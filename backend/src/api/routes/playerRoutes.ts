@@ -10,7 +10,7 @@ router.post('/add', checkToken, checkAuth, PlayerController.add);
 router.get('/:id', PlayerController.getPlayer);
 router.patch('/edit/:id', checkToken, checkAuth, PlayerController.editPlayer);
 router.delete(
-  '/remove/:id',
+  '/delete/:id',
   checkToken,
   checkAuth,
   PlayerController.removePlayer
