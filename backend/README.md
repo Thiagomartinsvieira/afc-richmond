@@ -59,5 +59,5 @@ This route starts with: `/players/`.
 | `/`           | GET    | No            | user       |
 | `/add`        | POST   | Yes           | admin      |
 | `/:id`        | GET    | No            | user       |
-| `/edit/:id`   | PATCH  | No            | user       |
+| `/edit/:id`   | PATCH  | No            | admin       |
 | `/delete/:id` | DELETE | Yes           | admin      |
