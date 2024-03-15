@@ -27,6 +27,7 @@ const playerSchema = z.object({
   number: z.number().min(1).max(99),
   active: z.boolean(),
   place_birth: z.string(),
+  profile_pic_url: z.string().url(),
 });
 
 class PlayerController {
@@ -67,6 +68,7 @@ class PlayerController {
         number: data.number,
         active: data.active,
         place_birth: data.place_birth,
+        profile_pic_url: data.profile_pic_url,
       });
 
       await player.save();

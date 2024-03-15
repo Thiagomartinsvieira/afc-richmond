@@ -5,4 +5,5 @@ export interface IPlayer {
   number: number;
   active: boolean;
   place_birth: string;
+  profile_pic_url: string;
 }

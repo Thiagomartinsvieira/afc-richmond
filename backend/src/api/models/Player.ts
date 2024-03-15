@@ -28,6 +28,11 @@ const playerSchema = new Schema<IPlayer>(
       type: String,
       required: false,
     },
+    profile_pic_url: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
   { timestamps: true }
 );
