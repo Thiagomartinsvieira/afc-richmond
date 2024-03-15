@@ -10,14 +10,7 @@ import UserService from '../services/UserService';
 
 class UserController {
   async register(req: Request, res: Response): Promise<void> {
-    const {
-      name,
-      born_date,
-      email,
-      password,
-      confirmpassword,
-      profile_pic_url,
-    } = req.body;
+    const { name, born_date, email, password, confirmpassword } = req.body;
 
     const missingFields = checkRequiredFields({
       name,
@@ -25,7 +18,6 @@ class UserController {
       email,
       password,
       confirmpassword,
-      profile_pic_url,
     });
 
     if (missingFields.length > 0) {
@@ -67,7 +59,6 @@ class UserController {
       born_date,
       email,
       password: hashPassword,
-      profile_pic_url,
     });
 
     try {
