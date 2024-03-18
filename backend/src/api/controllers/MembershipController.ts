@@ -22,6 +22,12 @@ class MembershipController {
 
     const membership = req.body.membership as IMembershipPlans;
 
+    if (user.membership) {
+      return res
+        .status(422)
+        .json({ error: 'User already have an active membership' });
+    }
+
     if (!membership) {
       return res
         .status(422)
