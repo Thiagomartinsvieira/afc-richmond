@@ -34,7 +34,7 @@ This route starts with: `/membership/`.
 | Route         | Method | Authenticated | Permission |
 | ------------- | ------ | ------------- | ---------- |
 | `/add`        | POST   | Yes           | user       |
-| `/remove`     | DELETE   | Yes           | user       |
+| `/delete`     | DELETE   | Yes           | user       |
 | `/edit`       | PATCH  | Yes           | user       |
 | `/associates` | GET    | No            | user       |
 

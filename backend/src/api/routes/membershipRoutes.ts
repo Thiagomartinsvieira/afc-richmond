@@ -5,7 +5,7 @@ import { checkToken } from '../middlewares/checkToken';
 const router = Router();
 
 router.post('/add', checkToken, MembershipController.add);
-router.delete('/remove', checkToken, MembershipController.remove);
+router.delete('/delete', checkToken, MembershipController.remove);
 router.patch('/edit', checkToken, MembershipController.edit);
 router.get('/associates', MembershipController.associates);
 
