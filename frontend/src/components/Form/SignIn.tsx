@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useRouter } from 'next/router'
@@ -7,21 +7,16 @@ import { FormEvent } from 'react'
 import { useAuth } from '@/context/Auth'
 
 const SignIn = () => {
-  const router = useRouter()
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const { login } = useAuth()
+  const { login, loading } = useAuth()
 
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
       await login(email, password)
-      toast.success('Welcome back')
-      router.push('/dashboard')
     } catch (error) {
-      toast.error('An error occurred')
       console.log('An error occurred:', error)
     }
 
@@ -52,7 +47,7 @@ const SignIn = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          minLength={3} // i have to change it to 6
+          minLength={6}
           className="mb-4 p-2 border border-gray-300 rounded-md"
         />
         <span className="text-gray-400 mb-2">
@@ -65,10 +60,13 @@ const SignIn = () => {
           </Link>
         </span>
         <button
+          disabled={loading}
           type="submit"
-          className="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300 cursor-pointer"
+          className={`bg-blue-500 text-white py-2 rounded-md 
+          hover:bg-blue-700 transition duration-300 cursor-pointer
+          ${loading && 'bg-red-700 hover:bg-red-700'}`}
         >
-          Login
+          {loading ? 'Loading...' : 'Login'}
         </button>
       </form>
     </div>

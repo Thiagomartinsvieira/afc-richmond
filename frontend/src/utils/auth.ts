@@ -5,7 +5,7 @@ export async function verifyToken(token: string | undefined) {
   if (!token) return null
 
   const response = await fetch(
-    'https://afc-richmond.onrender.com/users/getuserbytoken',
+    `${process.env.NEXT_PUBLIC_BASE_URL}/users/getuserbytoken`,
     {
       method: 'GET',
       headers: {

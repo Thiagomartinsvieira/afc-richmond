@@ -1,4 +1,3 @@
-import Benefits from '@/components/Benefits/Benefits'
 import MemberFanCard from '@/components/Card/MemberFanCard'
 import Footer from '@/components/Footer'
 import Nav from '@/components/Nav'
@@ -18,41 +17,11 @@ const plans = () => {
       />
 
       <div className="flex justify-center flex-wrap">
-        <MemberFanCard
-          plan="Bronze"
-          discount={25}
-          value={15}
-          quest={1}
-          starsRating={2}
-        />
-        <MemberFanCard
-          plan="Silver"
-          discount={50}
-          value={30}
-          quest={2}
-          starsRating={3}
-        />
-        <MemberFanCard
-          plan="Gold"
-          discount={75}
-          value={60}
-          quest={3}
-          starsRating={4}
-        />
-        <MemberFanCard
-          plan="Platinum"
-          discount={100}
-          value={80}
-          quest={4}
-          starsRating={4.5}
-        />
-        <MemberFanCard
-          plan="Diamond"
-          discount={100}
-          value={100}
-          quest={5}
-          starsRating={5}
-        />
+        <MemberFanCard plan="Bronze" value={15} />
+        <MemberFanCard plan="Silver" value={30} />
+        <MemberFanCard plan="Gold" value={60} />
+        <MemberFanCard plan="Platinum" value={80} />
+        <MemberFanCard plan="Diamond" value={100} />
       </div>
 
       <Footer />

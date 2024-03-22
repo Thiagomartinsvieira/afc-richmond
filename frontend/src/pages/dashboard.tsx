@@ -8,9 +8,6 @@ import Title from '@/components/Title'
 import { useAuth } from '@/context/Auth'
 import ImageBecomeSlider from '@/components/Carroucel/ImageBecomeSlider'
 import MemberNav from '@/components/Nav/MemberNav'
-import ExperienceCarrousel from '@/components/Carroucel/ExperienceCarroucel'
-import { BecomeImages } from '@/data/becomeImages'
-import Image from 'next/image'
 
 interface UserType {
   name: string

@@ -1,64 +1,90 @@
-import Link from 'next/link'
 import { dollar, star, ticket, userPluss } from '../icons/icons'
+import { useEffect, useState } from 'react'
+import { useAuth } from '@/context/Auth'
+import { useMembership } from '@/context/MembershipContext'
 
 interface MemberFanCardProps {
   plan: 'Bronze' | 'Silver' | 'Gold' | 'Platinum' | 'Diamond'
-  discount: number
-  value: number
-  quest: number
-  starsRating: number
+  value?: number
+  joinNowText?: boolean
 }
 
-const MemberFanCard = (props: MemberFanCardProps) => {
-  const planColors: Record<MemberFanCardProps['plan'], string> = {
-    Bronze: 'bg-yellow-800',
-    Silver: 'bg-gray-400',
-    Gold: 'bg-yellow-400',
-    Platinum: 'bg-blue-500',
-    Diamond: 'bg-purple-700',
+const MemberFanCard = ({ plan, value, joinNowText }: MemberFanCardProps) => {
+  const { currentUser } = useAuth()
+  const { addAssociate, editAssociate, currentPlan } = useMembership()
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  useEffect(() => {
+    if (currentUser) {
+      setIsAuthenticated(true)
+    }
+  }, [currentUser])
+
+  const planDetails = {
+    Bronze: {
+      discount: 20,
+      value: 5,
+      quest: 1,
+      starsRating: 1,
+      color: 'bg-amber-600',
+    },
+    Silver: {
+      discount: 30,
+      value: 10,
+      quest: 2,
+      starsRating: 2,
+      color: 'bg-gray-400',
+    },
+    Gold: {
+      discount: 50,
+      value: 15,
+      quest: 3,
+      starsRating: 3,
+      color: 'bg-yellow-400',
+    },
+    Platinum: {
+      discount: 75,
+      value: 20,
+      quest: 4,
+      starsRating: 4,
+      color: 'bg-gray-300',
+    },
+    Diamond: {
+      discount: 100,
+      value: 25,
+      quest: 5,
+      starsRating: 5,
+      color: 'bg-blue-300',
+    },
   }
 
-  const textPlanColors: Record<MemberFanCardProps['plan'], string> = {
-    Bronze: 'text-white',
-    Silver: 'text-gray-900',
-    Gold: 'text-yellow-900',
-    Platinum: 'text-white',
-    Diamond: 'text-white',
+  const { discount, quest, starsRating, color } = planDetails[plan] || {
+    discount: 0,
+    quest: 0,
+    starsRating: 0,
+    color: 'bg-gray-200',
   }
-
-  const bgPlanColors: Record<MemberFanCardProps['plan'], string> = {
-    Bronze: 'bg-orange-700',
-    Silver: 'bg-gray-300',
-    Gold: 'bg-yellow-300',
-    Platinum: 'bg-blue-600',
-    Diamond: 'bg-purple-800',
-  }
-
-  const bgColorClass = planColors[props.plan] || 'bg-gray-300'
-  const textColorClass = textPlanColors[props.plan] || 'text-white'
-  const bgPlanColorClass = bgPlanColors[props.plan] || 'bg-gray-400'
 
   return (
     <div
-      className={`flex flex-col items-center ${bgColorClass} p-6 rounded-md mx-3 mb-4 w-64 border border-blue-600`}
+      className={`flex flex-col items-center ${color} p-6 rounded-md mx-3 
+      mb-4 w-64 border border-blue-600`}
     >
       <div
-        className={`flex items-center justify-center ${bgPlanColorClass} mb-3 py-3 px-6 rounded-md`}
+        className={`flex items-center justify-center ${color} mb-3 py-3 px-6
+         rounded-md`}
       >
-        <h3 className={`${textColorClass} text-lg font-bold`}>{props.plan}</h3>
+        <h3 className={`text-white text-lg font-bold`}>{plan}</h3>
       </div>
       <div className="mb-3">
         <span className="font-semibold text-black flex items-center">
-          {ticket}{' '}
-          <span className="ml-2">{props.discount}% discount on tickets</span>
+          {ticket} <span className="ml-2">{discount}% discount on tickets</span>
         </span>
       </div>
       <div className="mb-3">
         <span className="font-semibold text-black flex items-center">
           {userPluss}{' '}
-          <span className="ml-2">
-            Up to {props.quest} guests with 50% discount
-          </span>
+          <span className="ml-2">Up to {quest} guests with 50% discount</span>
         </span>
       </div>
       <div className="mb-3">
@@ -73,20 +99,35 @@ const MemberFanCard = (props: MemberFanCardProps) => {
         <span className="font-semibold text-black flex items-center">
           {star}{' '}
           <span className="ml-2">
-            {props.starsRating} fixed stars in the rating Priority
+            {starsRating} fixed stars in the rating Priority
           </span>
         </span>
       </div>
-      <span className="flex bg-green-800 text-white px-4 py-2 rounded-md font-semibold mb-3 justify-center items-center">
-        <div className="text-xs">$</div>
-        {props.value} <div className="text-xs ml-1">month</div>
-      </span>
-      <Link
-        href="/become/register"
-        className="text-center text-white bg-black font-semibold p-2 rounded-md transition duration-300 hover:bg-gray-800 cursor-pointer border"
-      >
-        Join Now
-      </Link>
+      {value && (
+        <span className="flex bg-green-800 text-white px-4 py-2 rounded-md font-semibold mb-3 justify-center items-center">
+          <div className="text-xs">$</div>
+          {value} <div className="text-xs ml-1">month</div>
+        </span>
+      )}
+      {joinNowText && (
+        <>
+          {currentPlan === '' ? (
+            <button
+              onClick={() => addAssociate(plan.toLowerCase())}
+              className="text-center text-white bg-black font-semibold p-2 rounded-md transition duration-300 hover:bg-gray-800 cursor-pointer border"
+            >
+              Join Now
+            </button>
+          ) : (
+            <button
+              onClick={() => editAssociate(plan.toLowerCase())}
+              className="text-center text-white bg-black font-semibold p-2 rounded-md transition duration-300 hover:bg-gray-800 cursor-pointer border"
+            >
+              Update Now
+            </button>
+          )}
+        </>
+      )}
     </div>
   )
 }

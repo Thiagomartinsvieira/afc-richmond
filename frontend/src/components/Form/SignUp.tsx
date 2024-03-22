@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { useRouter } from 'next/router'
 import { FormEvent } from 'react'
 import { useAuth } from '@/context/Auth'
 
@@ -13,9 +12,7 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [bornDate, setBornDate] = useState('')
 
-  const router = useRouter()
-
-  const { register } = useAuth()
+  const { register, loading } = useAuth()
 
   const formatBornDate = (bornDate: string): string => {
     return bornDate + 'T12:00:00.000Z'
@@ -32,8 +29,6 @@ const SignUp = () => {
       const formattedBornDate = formatBornDate(bornDate)
 
       await register(name, email, formattedBornDate, password, confirmPassword)
-      toast.success('Registration successful')
-      router.push('/dashboard')
     } catch (error) {
       console.error('Registration failed: ', error)
       toast.error('Error occurred')
@@ -114,11 +109,13 @@ const SignUp = () => {
           </Link>
         </span>
         <button
+          disabled={loading}
           type="submit"
-          className="bg-blue-500 text-white py-2 rounded-md 
-          hover:bg-blue-700 transition duration-300 cursor-pointer"
+          className={`bg-blue-500 text-white py-2 rounded-md 
+          hover:bg-blue-700 transition duration-300 cursor-pointer
+          ${loading && 'bg-red-700 hover:bg-red-700'}`}
         >
-          Register
+          {loading ? 'Loading...' : 'Register'}
         </button>
       </form>
     </div>

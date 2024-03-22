@@ -31,27 +31,9 @@ const become = () => {
         <h2>Reasons to become a Richmonites</h2>
 
         <div className="flex flex-wrap justify-center m-5">
-          <MemberFanCard
-            plan="Bronze"
-            discount={25}
-            value={15}
-            quest={1}
-            starsRating={2}
-          />
-          <MemberFanCard
-            plan="Silver"
-            discount={50}
-            value={30}
-            quest={2}
-            starsRating={3}
-          />
-          <MemberFanCard
-            plan="Gold"
-            discount={75}
-            value={60}
-            quest={3}
-            starsRating={4}
-          />
+          <MemberFanCard plan="Bronze" value={15} />
+          <MemberFanCard plan="Silver" value={30} />
+          <MemberFanCard plan="Gold" value={60} />
         </div>
 
         <button
