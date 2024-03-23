@@ -1,6 +1,7 @@
+import { useAuth } from '@/context/Auth'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface TicketsCard {
   id: number
@@ -13,6 +14,18 @@ interface TicketsCard {
 }
 
 const TicketsCard = (props: TicketsCard) => {
+  const [userName, setUserName] = useState('')
+
+  const { currentUser } = useAuth()
+
+  useEffect(() => {
+    if (currentUser) {
+      setUserName(currentUser.name)
+    }
+  }, [currentUser])
+
+  console.log(userName)
+
   return (
     <div className="flex flex-col border mx-auto border-gray-500">
       <span
@@ -68,7 +81,9 @@ const TicketsCard = (props: TicketsCard) => {
         <p className="">{props.matchTime}h</p>
         <p className="">{props.stadium}</p>
         <Link
-          href={`/tickets/${props.id}`}
+          href={
+            userName ? `/member/tickets/${props.id}` : `/tickets/${props.id}`
+          }
           className="bg-red-900 px-8 py-1 rounded mb-3 
         hover:bg-red-800"
         >
