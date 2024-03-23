@@ -7,6 +7,7 @@ import Benefits from '@/components/Benefits/Benefits'
 import { BecomeImages } from '@/data/becomeImages'
 import ExperienceCarrousel from '@/components/Carroucel/ExperienceCarroucel'
 import ImageBecomeSlider from '@/components/Carroucel/ImageBecomeSlider'
+import Link from 'next/link'
 
 const become = () => {
   return (
@@ -36,12 +37,13 @@ const become = () => {
           <MemberFanCard plan="Gold" value={60} />
         </div>
 
-        <button
+        <Link
+          href="/become/plans"
           className="mb-10 bg-yellow-600 rounded p-1 
         hover:scale-105 transform transition-transform"
         >
           More plans
-        </button>
+        </Link>
 
         <ExperienceCarrousel images={BecomeImages} />
       </div>

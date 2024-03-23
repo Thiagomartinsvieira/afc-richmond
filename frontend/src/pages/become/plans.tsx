@@ -16,7 +16,7 @@ const plans = () => {
         subtitle="Choose your membership plan and be a part of the AFC Richmond fan family. Enjoy exclusive benefits, discounts, and exciting quests as you support our club on and off the field."
       />
 
-      <div className="flex justify-center flex-wrap">
+      <div className="flex justify-center flex-wrap mb-20">
         <MemberFanCard plan="Bronze" value={15} />
         <MemberFanCard plan="Silver" value={30} />
         <MemberFanCard plan="Gold" value={60} />
