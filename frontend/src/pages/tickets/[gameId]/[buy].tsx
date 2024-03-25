@@ -64,34 +64,38 @@ const Buy = () => {
       >
         <div className="flex justify-center mb-20">
           <div className="flex flex-col justify-center items-center">
-            <div
+            <button
+              disabled={showTicket}
               className={` bg-red-600 p-6 hover:bg-red-400 cursor-pointer
                w-52 ${width > 640 ? '' : 'mt-10'}`}
               onClick={() => setGrandstandState('red')}
-            ></div>
+            ></button>
             <div className="flex">
-              <div
+              <button
+                disabled={showTicket}
                 className="bg-blue-600 p-6 hover:bg-blue-400 
                 cursor-pointer"
                 onClick={() => setGrandstandState('blue')}
-              ></div>
+              ></button>
               <Image
                 src="/images/stadium/field.jpg"
                 width={200}
                 height={200}
                 alt="Soccer field"
               />
-              <div
+              <button
+                disabled={showTicket}
                 className="bg-violet-600 p-6 hover:bg-violet-400 
                 cursor-pointer"
                 onClick={() => setGrandstandState('violet')}
-              ></div>
+              ></button>
             </div>
-            <div
+            <button
+              disabled={showTicket}
               className="bg-green-600 p-6 hover:bg-green-400 
               cursor-pointer w-52"
               onClick={() => setGrandstandState('green')}
-            ></div>
+            ></button>
           </div>
         </div>
 
