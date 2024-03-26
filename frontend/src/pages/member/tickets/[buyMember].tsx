@@ -1,11 +1,17 @@
+import MemberFanCard from '@/components/Card/MemberFanCard'
 import Footer from '@/components/Footer'
 import Nav from '@/components/Nav'
-import Title from '@/components/Title'
-import Image from 'next/image'
-import ticketsGame from '@/data/ticketsGameData'
-import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import MemberNav from '@/components/Nav/MemberNav'
 import Ticket from '@/components/Tickets/Ticket'
+import Title from '@/components/Title'
+import { useAuth } from '@/context/Auth'
+import ticketsGame from '@/data/ticketsGameData'
+import { authenticated } from '@/utils/auth'
+import { GetServerSideProps } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
 import { useWindowSize } from 'react-use'
 
 interface ColorPriceClasses {
@@ -13,6 +19,10 @@ interface ColorPriceClasses {
   blue: string
   violet: string
   green: string
+}
+
+interface DiscountRates {
+  [key: string]: number
 }
 
 const colorClasses: ColorPriceClasses = {
@@ -23,7 +33,7 @@ const colorClasses: ColorPriceClasses = {
 }
 
 const priceClasses: ColorPriceClasses = {
-  red: '30',
+  red: '20',
   blue: '45',
   violet: '60',
   green: '30',
@@ -31,19 +41,27 @@ const priceClasses: ColorPriceClasses = {
 
 type GrandstandColor = keyof typeof colorClasses
 
-const Buy = () => {
-  const router = useRouter()
-  const { buy } = router.query
-
-  const game = ticketsGame.find(
-    (ticket) => ticket.id === parseInt(buy as string),
-  )
-
+const BuyMember = () => {
+  const [userPlan, setUserPlan] = useState('')
   const [amount, setAmount] = useState<number>(1)
   const [grandstandState, setGrandstandState] = useState<
     GrandstandColor | '' | null
   >(null)
   const [showTicket, setShowTicket] = useState<boolean>(false)
+
+  const router = useRouter()
+  const { currentUser } = useAuth()
+  const { buyMember } = router.query
+
+  useEffect(() => {
+    if (currentUser) {
+      setUserPlan(currentUser.membership)
+    }
+  }, [currentUser])
+
+  const game = ticketsGame.find(
+    (ticket) => ticket.id === parseInt(buyMember as string),
+  )
 
   const handleBuyTicket = () => {
     setTimeout(() => {
@@ -53,11 +71,72 @@ const Buy = () => {
 
   const { width } = useWindowSize()
 
+  const calculateDiscount = (userPlan: string): number => {
+    const discountRates: DiscountRates = {
+      bronze: 20,
+      silver: 30,
+      gold: 50,
+      platinum: 75,
+      diamond: 100,
+    }
+
+    if (userPlan.toLocaleLowerCase() in discountRates) {
+      return discountRates[userPlan.toLocaleLowerCase()]
+    } else {
+      return 0
+    }
+  }
+
+  const discount = calculateDiscount(userPlan)
+  const originalPrice =
+    grandstandState !== null && grandstandState !== ''
+      ? parseInt(priceClasses[grandstandState])
+      : 0
+  const discountedPrice =
+    grandstandState !== null
+      ? originalPrice - (originalPrice * discount) / 100
+      : 0
+
   return (
     <div>
       <Nav />
+      <MemberNav />
+      {userPlan !== '' ? (
+        <h2 className="flex items-center justify-center text-lg font-bold mb-5">
+          Your plan is{' '}
+          <span className="ml-1 text-xl">{userPlan.toUpperCase()}</span>
+        </h2>
+      ) : (
+        <div className="flex flex-col items-center space-y-5">
+          <p className="flex items-center justify-center text-lg font-bold">
+            You do not have an active plan yet 🥺
+          </p>
+          <p className="text-base font-semibold">What are you waiting for?</p>
+          <Link
+            href="/member/plan"
+            className="bg-blue-600 hover:bg-blue-500 transition ease-in-out 
+            p-2 rounded-lg font-bold"
+          >
+            Choose a plan now 🫠
+          </Link>
+        </div>
+      )}
+      <div className="flex items-center justify-center mb-5">
+        {userPlan === 'bronze' ? (
+          <MemberFanCard plan="Bronze" />
+        ) : userPlan === 'silver' ? (
+          <MemberFanCard plan="Silver" />
+        ) : userPlan === 'gold' ? (
+          <MemberFanCard plan="Gold" />
+        ) : userPlan === 'platinum' ? (
+          <MemberFanCard plan="Platinum" />
+        ) : userPlan === 'diamond' ? (
+          <MemberFanCard plan="Diamond" />
+        ) : (
+          ''
+        )}
+      </div>
       <Title title="Choose Your Seat" subtitle="Select a Section" />
-
       <div
         className={`flex flex-col-reverse md:flex-row justify-center 
       ${width < 640 ? '' : 'space-x-32'}`}
@@ -174,10 +253,27 @@ const Buy = () => {
               className="flex ml-auto mr-4 flex-col space-y-3
             text-orange-500"
             >
-              <span>$ {priceClasses.red}</span>
-              <span>$ {priceClasses.green}</span>
-              <span>$ {priceClasses.blue}</span>
-              <span>$ {priceClasses.violet}</span>
+              {userPlan !== '' ? (
+                <>
+                  <span>$ {(parseInt(priceClasses.red) * discount) / 100}</span>
+                  <span>
+                    $ {(parseInt(priceClasses.green) * discount) / 100}
+                  </span>
+                  <span>
+                    $ {(parseInt(priceClasses.blue) * discount) / 100}
+                  </span>
+                  <span>
+                    $ {(parseInt(priceClasses.violet) * discount) / 100}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>$ {parseInt(priceClasses.red)}</span>
+                  <span>$ {parseInt(priceClasses.green)}</span>
+                  <span>$ {parseInt(priceClasses.blue)}</span>
+                  <span>$ {parseInt(priceClasses.violet)}</span>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -188,7 +284,12 @@ const Buy = () => {
             <span>You selected</span>
             <b className={colorClasses[grandstandState]}>
               {grandstandState} ${' '}
-              {parseInt(priceClasses[grandstandState]) * amount}
+              {userPlan !== ''
+                ? (parseInt(priceClasses[grandstandState]) *
+                    amount *
+                    discount) /
+                  100
+                : parseInt(priceClasses[grandstandState]) * amount}
             </b>
           </p>
           <div className="flex flex-col justify-center items-center">
@@ -257,4 +358,8 @@ const Buy = () => {
   )
 }
 
-export default Buy
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  return await authenticated(ctx)
+}
+
+export default BuyMember

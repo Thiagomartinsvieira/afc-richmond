@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { arrowRight } from '../icons/icons'
 import BenefitsCard from '../Card/BenefitsCard'
 import { benefitsData } from '@/data/benefitsData'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useWindowSize } from 'react-use'
+import { useAuth } from '@/context/Auth'
 
 const Benefits = () => {
+  const [userName, setUserName] = useState('')
+
   const chunkArray = (array: any[], chunkSize: number) => {
     const result = []
     for (let i = 0; i < array.length; i += chunkSize) {
@@ -14,6 +17,14 @@ const Benefits = () => {
     }
     return result
   }
+
+  const { currentUser } = useAuth()
+
+  useEffect(() => {
+    if (currentUser) {
+      setUserName(currentUser.name)
+    }
+  }, [currentUser])
 
   const { width } = useWindowSize()
   let cardsPerSlide: number
@@ -84,7 +95,11 @@ const Benefits = () => {
           hover:text-black rounded mt-4"
           >
             <span className="mr-2">
-              <Link href="become/login">Sign up for a plan</Link>
+              <Link
+                href={`${userName === '' ? '/become/login' : '/member/plan'}`}
+              >
+                {userName === '' ? 'Sign up for a plan' : 'See your plan'}
+              </Link>
             </span>{' '}
             {arrowRight}
           </button>

@@ -128,9 +128,8 @@ const Plan = (props: ProfileProps) => {
         )}
         <section id="23">
           <Title
-            title="Planos disponives"
-            subtitle="Escolha o Beneficio que mais combina com voce e deixe o Richmond mais
-            perto de voce"
+            title="Available plans"
+            subtitle="Choose the Benefit that best suits you and bring Richmond closer to you"
           />
           <div
             className="flex flex-wrap items-center justify-center mx-20 

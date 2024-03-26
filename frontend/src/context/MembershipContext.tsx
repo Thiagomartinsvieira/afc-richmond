@@ -101,15 +101,11 @@ export const MembershipProvider: React.FC<{ children: ReactNode }> = ({
   }
 
   const editAssociate = async (membership: string) => {
-    console.log('Tentando atualizar plano', membership)
-
     try {
       const token = Cookie.get('token')
       if (!token) {
         throw new Error('User not authenticated')
       }
-
-      console.log('token', token)
 
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/membership/edit`,

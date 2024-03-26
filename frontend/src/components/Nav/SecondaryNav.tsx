@@ -1,8 +1,18 @@
+import { useAuth } from '@/context/Auth'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const SecondaryNav = () => {
+  const { currentUser } = useAuth()
+  const [name, setName] = useState('')
+
+  useEffect(() => {
+    if (currentUser) {
+      setName(currentUser.name)
+    }
+  }, [currentUser])
+
   const upcomingGames = [
     {
       id: 1,
@@ -60,7 +70,11 @@ const SecondaryNav = () => {
                 <>
                   <Link
                     className="flex items-center"
-                    href={`/tickets/${game.id}`}
+                    href={
+                      name
+                        ? `/member/tickets/${game.id}`
+                        : `/tickets/${game.id}`
+                    }
                   >
                     <Image
                       width={40}
@@ -81,7 +95,11 @@ const SecondaryNav = () => {
                 <>
                   <Link
                     className="flex items-center"
-                    href={`/tickets/${game.id}`}
+                    href={
+                      name
+                        ? `/member/tickets/${game.id}`
+                        : `/tickets/${game.id}`
+                    }
                   >
                     <Image
                       src={game.teamLogo}

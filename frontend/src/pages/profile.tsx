@@ -109,7 +109,7 @@ const Profile = ({ user }: ProfileProps) => {
     <div>
       <Nav />
       <MemberNav />
-      <Title title="Profile" />
+      <Title title="Profile" subtitle="Update your profile information" />
       <div>
         <form
           onSubmit={handleSubmit}
@@ -181,6 +181,7 @@ const Profile = ({ user }: ProfileProps) => {
             <input
               type="password"
               value={userPassword}
+              placeholder="Current Password"
               onChange={(e) => setUserPassword(e.target.value)}
               required
               className="my-2 p-1 pl-2 rounded"
@@ -189,6 +190,7 @@ const Profile = ({ user }: ProfileProps) => {
             <input
               type="password"
               value={userConfirmPassword}
+              placeholder="Current Password"
               onChange={(e) => setUserConfirmPassword(e.target.value)}
               required
               className="my-2 p-1 pl-2 rounded"
