@@ -41,6 +41,12 @@ const MemberNav = () => {
                 className="block px-4 py-2 text-sm text-gray-700 
               hover:bg-gray-100 hover:rounded-lg text-center"
               >
+                <Link href="/dashboard">Home</Link>
+              </li>
+              <li
+                className="block px-4 py-2 text-sm text-gray-700 
+              hover:bg-gray-100 hover:rounded-lg text-center"
+              >
                 <Link href="/profile">Profile</Link>
               </li>
               <li

@@ -17,11 +17,11 @@ const plans = () => {
       />
 
       <div className="flex justify-center flex-wrap mb-20">
-        <MemberFanCard plan="Bronze" value={15} />
-        <MemberFanCard plan="Silver" value={30} />
-        <MemberFanCard plan="Gold" value={60} />
-        <MemberFanCard plan="Platinum" value={80} />
-        <MemberFanCard plan="Diamond" value={100} />
+        <MemberFanCard plan="Bronze" value={15} joinNowText />
+        <MemberFanCard plan="Silver" value={30} joinNowText />
+        <MemberFanCard plan="Gold" value={60} joinNowText />
+        <MemberFanCard plan="Platinum" value={80} joinNowText />
+        <MemberFanCard plan="Diamond" value={100} joinNowText />
       </div>
 
       <Footer />
