@@ -97,6 +97,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setLoading(false)
     } catch (error) {
       console.error('An error occurred during login:', error)
+      toast.error(
+        'An error occurred during login check your credentials and try again',
+      )
       setLoading(false)
       throw error
     }
