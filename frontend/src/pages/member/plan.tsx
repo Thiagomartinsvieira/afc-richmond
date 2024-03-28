@@ -27,9 +27,9 @@ const Plan = (props: ProfileProps) => {
 
   useEffect(() => {
     if (currentUser) {
-      setUserPlan(currentUser.membership)
+      setUserPlan(currentPlan)
     }
-  }, [currentUser])
+  }, [currentPlan, currentUser])
 
   return (
     <div>

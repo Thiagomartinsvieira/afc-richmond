@@ -87,6 +87,7 @@ export const MembershipProvider: React.FC<{ children: ReactNode }> = ({
           body: JSON.stringify({ membership }),
         },
       )
+
       if (!response.ok) {
         throw new Error('Failed to add associate')
       }
@@ -95,8 +96,18 @@ export const MembershipProvider: React.FC<{ children: ReactNode }> = ({
       setCurrentPlan(membership)
 
       toast.success(`Your plan now is ${membership}`)
-    } catch (error) {
-      console.error('An error occurred while adding associate:', error)
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(
+          'An error occurred while adding associate:',
+          error.message,
+        )
+        toast.error(error.message)
+      } else {
+        console.error('An error occurred while adding associate')
+
+        toast.error('An unexpected error occurred')
+      }
     }
   }
 
@@ -125,10 +136,19 @@ export const MembershipProvider: React.FC<{ children: ReactNode }> = ({
 
       updateUserPlan(membership)
       setCurrentPlan(membership)
-
       toast.success(`Your plan now is ${membership}`)
-    } catch (error) {
-      console.error('An error occurred while updating associate:', error)
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(
+          'An error occurred while updating associate:',
+          error.message,
+        )
+
+        toast.error(error.message)
+      } else {
+        console.error('An unexpected error occurred while updating associate')
+        toast.error('An unexpected error occurred')
+      }
     }
   }
 
@@ -161,7 +181,7 @@ export const MembershipProvider: React.FC<{ children: ReactNode }> = ({
 
       updateUserPlan('')
       setCurrentPlan('')
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('An error occurred while removing associate:', error)
     }
   }

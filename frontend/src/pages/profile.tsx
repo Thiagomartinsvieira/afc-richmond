@@ -105,6 +105,14 @@ const Profile = ({ user }: ProfileProps) => {
     return `${year}-${month}-${day}`
   }
 
+  const getCurrentDateFormatted = () => {
+    const currentDate = new Date()
+    const year = currentDate.getFullYear()
+    const month = `0${currentDate.getMonth() + 1}`.slice(-2)
+    const day = `0${currentDate.getDate()}`.slice(-2)
+    return `${year}-${month}-${day}`
+  }
+
   return (
     <div>
       <Nav />
@@ -170,10 +178,12 @@ const Profile = ({ user }: ProfileProps) => {
               onChange={(e) => setUserEmail(e.target.value)}
             />
             <label>Born Date</label>
+
             <input
               className="my-2 p-1 pl-2 rounded"
               required
               type="date"
+              max={getCurrentDateFormatted()}
               value={userBornDate}
               onChange={(e) => setUserBornDate(e.target.value)}
             />
