@@ -178,6 +178,7 @@ const Profile = ({ user }: ProfileProps) => {
               onChange={(e) => setUserEmail(e.target.value)}
             />
             <label>Born Date</label>
+
             <input
               className="my-2 p-1 pl-2 rounded"
               required

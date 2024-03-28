@@ -146,8 +146,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         throw new Error(errorData.message || 'Edit failed')
       }
 
-      setCurrentUser((prev: any) => ({ ...prev, name, email }))
+      setCurrentUser((prev: any) => ({
+        ...prev,
+        name,
+        email,
+      }))
+      setCurrentUser(bornDate)
       setLoading(false)
+
       toast.success('Profile updated successfully')
     } catch (error) {
       console.error('An error occurred during edit:', error)
