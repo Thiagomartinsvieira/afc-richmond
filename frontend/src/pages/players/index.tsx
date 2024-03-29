@@ -3,7 +3,7 @@ import Nav from '../../components/Nav'
 import PlayerCard from '@/components/Card/PlayerCard'
 import Title from '../../components/Title'
 import { playersSquad } from '@/data/playersData'
-import { idolsData } from '@/data/idolsData'
+import { idolsSquad } from '@/data/idolsData'
 import { staffData } from '@/data/staffData'
 import Footer from '@/components/Footer'
 
@@ -14,7 +14,7 @@ const Players = () => {
   const dataToShow = showStaff
     ? staffData
     : showIdols
-      ? idolsData
+      ? idolsSquad
       : playersSquad
 
   const positions = Array.from(
@@ -57,7 +57,7 @@ const Players = () => {
         </button>
         <button
           onClick={() => handleToogleData('idols')}
-          className={`btn font-semibold transition ${
+          className={`font-semibold transition ${
             showIdols
               ? 'border-b-4 border-blue-500 hover:border-transparent hover:border-blue-500'
               : ''
