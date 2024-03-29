@@ -45,6 +45,14 @@ const PlayerDetails = () => {
       return <div>Player not found</div>
     }
 
+    if (idol.birthDate) {
+      const birthDate = new Date(idol.birthDate)
+      const currentDate = new Date()
+
+      const difference = currentDate.getTime() - birthDate.getTime()
+      age = Math.floor(difference / (1000 * 60 * 60 * 24 * 365.25)).toString()
+    }
+
     return (
       <div>
         <Nav />
