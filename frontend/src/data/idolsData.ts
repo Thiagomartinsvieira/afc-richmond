@@ -1,9 +1,9 @@
-export const idolsData = [
+export const idolsSquad = [
   {
     name: 'Roy Kent',
     position: 'Centre Midfielder',
     imageUrl: '/images/idols/Roy_kent.webp',
-    playerNumber: 15,
+    playerNumber: 6,
   },
   {
     name: 'Jack Dawkins',
