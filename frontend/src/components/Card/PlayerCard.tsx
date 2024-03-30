@@ -21,12 +21,14 @@ const PlayerCard = (props: PlayerCardProps) => {
       hover:scale-105 cursor-pointe`}
       onClick={props.onclick}
     >
-      <div
-        className={`absolute top-5 right-5 font-black
+      {props.playerNumber !== undefined && props.playerNumber < 100 && (
+        <div
+          className={`absolute top-5 right-5 font-black
         z-10 text-2xl`}
-      >
-        {props.playerNumber}
-      </div>
+        >
+          {props.playerNumber}
+        </div>
+      )}
 
       <Link href={`/players/${props.playerNumber}`}>
         <Image

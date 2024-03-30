@@ -1,18 +1,42 @@
-import PlayersCarrousel from '@/components/Carroucel/PlayersCarroucel'
-import Footer from '@/components/Footer'
-import Nav from '@/components/Nav'
-import { arrowUpLeft } from '@/components/icons/icons'
-import { playersSquad } from '@/data/playersData'
-import { idolsSquad } from '@/data/idolsData'
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
 import { useWindowSize } from 'react-use'
+import Nav from '@/components/Nav'
+import PlayersCarrousel from '@/components/Carroucel/PlayersCarroucel'
+import Footer from '@/components/Footer'
+import { arrowUpLeft } from '@/components/icons/icons'
+import { playersSquad } from '@/data/playersData'
+import { idolsSquad } from '@/data/idolsData'
+import { staffData } from '@/data/staffData'
+
+interface BaseProfile {
+  id?: number
+  playerNumber?: number
+  name: string
+  position: string
+  imageUrl: string
+  PlaceOfBirth?: string
+}
+
+interface PlayerOrIdolProfile extends BaseProfile {
+  birthDate: string
+  Captain?: boolean
+}
+
+interface StaffProfile extends BaseProfile {}
+
+type Profile = PlayerOrIdolProfile | StaffProfile
+
+function isPlayerOrIdolProfile(
+  profile: Profile,
+): profile is PlayerOrIdolProfile {
+  return (profile as PlayerOrIdolProfile).birthDate !== undefined
+}
 
 const PlayerDetails = () => {
   const { width } = useWindowSize()
-
   const router = useRouter()
   const { playerDetails } = router.query
 
@@ -20,195 +44,75 @@ const PlayerDetails = () => {
     return <div>Invalid or missing player details</div>
   }
 
-  const playerNumber = parseInt(playerDetails, 10)
+  const profileNumber = parseInt(playerDetails, 10)
+  let profile: Profile | undefined =
+    playersSquad.find((player) => player.playerNumber === profileNumber) ||
+    idolsSquad.find((idols) => idols.playerNumber === profileNumber) ||
+    staffData.find((staff) => staff.playerNumber === profileNumber)
 
-  const player = playersSquad.find(
-    (player) => player.playerNumber === playerNumber,
-  )
+  let profileType = profile
+    ? playersSquad.includes(profile as any)
+      ? 'player'
+      : idolsSquad.includes(profile as any)
+        ? 'idol'
+        : 'staff'
+    : null
 
   let age = 'Unknown'
-
-  if (player) {
-    if (player.birthDate) {
-      const birthDate = new Date(player.birthDate)
-      const currentDate = new Date()
-
-      const difference = currentDate.getTime() - birthDate.getTime()
-      age = Math.floor(difference / (1000 * 60 * 60 * 24 * 365.25)).toString()
-    }
+  if (profile && isPlayerOrIdolProfile(profile)) {
+    const birthDate = new Date(profile.birthDate)
+    const currentDate = new Date()
+    const difference = currentDate.getTime() - birthDate.getTime()
+    age = Math.floor(difference / (1000 * 60 * 60 * 24 * 365.25)).toString()
   }
 
-  if (!player) {
-    const idol = idolsSquad.find((idol) => idol.playerNumber === playerNumber)
-
-    if (!idol) {
-      return <div>Player not found</div>
-    }
-
-    if (idol.birthDate) {
-      const birthDate = new Date(idol.birthDate)
-      const currentDate = new Date()
-
-      const difference = currentDate.getTime() - birthDate.getTime()
-      age = Math.floor(difference / (1000 * 60 * 60 * 24 * 365.25)).toString()
-    }
-
-    return (
-      <div>
-        <Nav />
-        <div
-          className="flex flex-col justify-center items-center space-y-4
-         my-10"
-        >
-          <div className="flex flex-col justify-end w-full">
-            {width >= 1024 && (
-              <hr
-                className={`border border-blue-600 border-t-2 ml-auto mr-10 
-              ${idol.playerNumber.toString().length >= 2 ? 'w-24' : 'w-12'}`}
-              />
-            )}
-            <span
-              className="font-extrabold text-7xl ml-auto mr-10
-             text-yellow-500"
-            >
-              {width > 1024 && playerNumber}
-            </span>
-            {width >= 1024 && (
-              <hr
-                className={`border border-blue-600 border-t-2 ml-auto mr-10 
-             ${idol.playerNumber.toString().length >= 2 ? 'w-24' : 'w-12'}`}
-              />
-            )}
-          </div>
-
-          <div className="flex flex-col lg:flex-row space-y-4">
-            <div className="flex justify-center">
-              <Image
-                src={idol.imageUrl}
-                width={300}
-                height={300}
-                alt={idol.name}
-                className="rounded-md border-2"
-              />
-            </div>
-
-            <div className="flex flex-col ml-10 space-y-5">
-              <div className="flex text-3xl mx-auto lg:mx-0 ">
-                <h2 className="font-extrabold">{idol.name}</h2>
-              </div>
-              <p className="font-bold">
-                Position:{' '}
-                <span className="font-extrabold text-xl">{idol.position}</span>
-              </p>
-              {width <= 1024 && (
-                <p>
-                  Player Number:{' '}
-                  <span className="font-extrabold text-xl">{playerNumber}</span>
-                </p>
-              )}
-              <p>
-                Age: <span className="font-extrabold text-xl">{age}</span>
-              </p>
-              <div className="flex flex-col">
-                <p>
-                  Place Of Birth:{' '}
-                  <span className="font-extrabold text-xl">
-                    {idol.PlaceOfBirth}
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <PlayersCarrousel />
-        <div className="mb-10 mt-5">
-          <Link
-            className="flex items-center justify-center space-x-3 hover:underline
-            hover:scale-110 transition-transform ease-out duration-300"
-            href="/players"
-          >
-            <span className="ml-5">Back to player</span>
-            <span>{arrowUpLeft}</span>
-          </Link>
-        </div>
-        <Footer />
-      </div>
-    )
+  if (!profile) {
+    return <div>Profile not found</div>
   }
 
   return (
     <div>
       <Nav />
-      <div
-        className="flex flex-col justify-center items-center space-y-4
-       my-10"
-      >
-        <div className="flex flex-col justify-end w-full">
-          {width >= 1024 && (
-            <hr
-              className={`border border-blue-600 border-t-2 ml-auto mr-10 
-            ${player.playerNumber.toString().length >= 2 ? 'w-24' : 'w-12'}`}
-            />
-          )}
-          <span
-            className="font-extrabold text-7xl ml-auto mr-10
-           text-yellow-500"
-          >
-            {width > 1024 && playerNumber}
-          </span>
-          {width >= 1024 && (
-            <hr
-              className={`border border-blue-600 border-t-2 ml-auto mr-10 
-           ${player.playerNumber.toString().length >= 2 ? 'w-24' : 'w-12'}`}
-            />
-          )}
-        </div>
-
-        <div className="flex flex-col lg:flex-row space-y-4">
+      <div className="flex flex-col justify-center items-center space-y-4 my-10">
+        {profileType && (
           <div className="flex justify-center">
             <Image
-              src={player.imageUrl}
+              src={profile.imageUrl}
               width={300}
               height={300}
-              alt={player.name}
+              alt={profile.name}
               className="rounded-md border-2"
             />
-          </div>
-
-          <div className="flex flex-col ml-10 space-y-5">
-            <div className="flex text-3xl mx-auto lg:mx-0 ">
-              <h2 className="font-extrabold">{player.name}</h2>
-            </div>
-            <p className="font-bold">
-              Position:{' '}
-              <span className="font-extrabold text-xl">{player.position}</span>
-            </p>
-            {width <= 1024 && (
-              <p>
-                Player Number:{' '}
-                <span className="font-extrabold text-xl">{playerNumber}</span>
+            <div className="flex flex-col ml-10 space-y-5">
+              <h2 className="font-extrabold text-3xl">{profile.name}</h2>
+              <p className="font-bold">
+                Position:{' '}
+                <span className="font-extrabold text-xl">
+                  {profile.position}
+                </span>
               </p>
-            )}
-            <p>
-              Age: <span className="font-extrabold text-xl">{age}</span>
-            </p>
-            <div className="flex flex-col">
               <p>
                 Place Of Birth:{' '}
                 <span className="font-extrabold text-xl">
-                  {player.PlaceOfBirth}
+                  {profile.PlaceOfBirth || 'Unknown'}
                 </span>
               </p>
+              {profileType !== 'staff' && (
+                <>
+                  <p>
+                    Age: <span className="font-extrabold text-xl">{age}</span>
+                  </p>
+                </>
+              )}
             </div>
           </div>
-        </div>
+        )}
       </div>
       <PlayersCarrousel />
       <div className="mb-10 mt-5">
         <Link
-          className="flex items-center justify-center space-x-3 hover:underline
-          hover:scale-110 transition-transform ease-out duration-300"
           href="/players"
+          className="flex items-center justify-center space-x-3 hover:underline hover:scale-110 transition-transform ease-out duration-300"
         >
           <span className="ml-5">Back to player</span>
           <span>{arrowUpLeft}</span>

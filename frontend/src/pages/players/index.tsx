@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from '../../components/Nav'
 import PlayerCard from '@/components/Card/PlayerCard'
 import Title from '../../components/Title'
@@ -21,14 +21,29 @@ const Players = () => {
     new Set(dataToShow.map((player) => player.position)),
   )
 
+  useEffect(() => {
+    const storedPlayer = localStorage.getItem('player')
+    if (storedPlayer === 'idols') {
+      setShowIdols(true)
+    } else if (storedPlayer === 'staff') {
+      setShowStaff(true)
+    } else {
+      setShowIdols(false)
+      setShowStaff(false)
+    }
+  }, [])
+
   const handleToogleData = (dataType: string) => {
     if (dataType === 'idols') {
       setShowIdols(!showIdols)
       setShowStaff(false)
+      localStorage.setItem('player', 'idols')
     } else if (dataType === 'staff') {
       setShowStaff(!showStaff)
       setShowIdols(false)
+      localStorage.setItem('player', 'staff')
     } else {
+      localStorage.setItem('player', 'players')
       setShowIdols(false)
       setShowStaff(false)
     }
