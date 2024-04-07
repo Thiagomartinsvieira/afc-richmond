@@ -26,6 +26,7 @@ interface AuthContextProps {
     profilePicUrl: string,
   ) => Promise<void>
   logout: () => void
+  qtdUsers: () => Promise<number>
   deleteAccount: (email: string, password: string) => Promise<void>
   loading: boolean
   register: (
@@ -242,6 +243,32 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   }
 
+  const qtdUsers = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+
+      if (!response.ok) {
+        throw new Error('Fails to search new users')
+      }
+
+      const userData = await response.json()
+      const numberOfUsers = userData.message.length
+      console.log(numberOfUsers)
+      return numberOfUsers
+    } catch (error) {
+      console.log('An error occured during search:', error)
+      throw new Error('Fails to search new users')
+    }
+  }
+
   const value = {
     currentUser,
     login,
@@ -250,6 +277,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     loading,
     deleteAccount,
     edit,
+    qtdUsers,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
