@@ -32,9 +32,11 @@ const become = () => {
         <h2>Reasons to become a Richmonites</h2>
 
         <div className="flex flex-wrap justify-center m-5">
-          <MemberFanCard plan="Bronze" value={15} />
-          <MemberFanCard plan="Silver" value={30} />
-          <MemberFanCard plan="Gold" value={60} />
+          <section id="plans">
+            <MemberFanCard plan="Bronze" value={15} />
+            <MemberFanCard plan="Silver" value={30} />
+            <MemberFanCard plan="Gold" value={60} />
+          </section>
         </div>
 
         <Link
