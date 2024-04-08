@@ -1,7 +1,23 @@
+import { useAuth } from '@/context/Auth'
+import { count } from 'console'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { FaEnvelope, FaHeadset, FaWhatsapp } from 'react-icons/fa'
 
 const BecomeFooter = () => {
+  const { qtdUsers } = useAuth()
+  const [userCount, setUserCount] = useState(10)
+
+  useEffect(() => {
+    const fetchUserCount = async () => {
+      const count = await qtdUsers()
+      setUserCount(count)
+    }
+
+    fetchUserCount()
+  }, [qtdUsers])
+
   return (
     <div className="bg-gray-800">
       <footer className="container mx-auto px-4 py-8">
@@ -84,18 +100,17 @@ const BecomeFooter = () => {
               <h2 className="text-lg font-semibold text-yellow-600">
                 Memberships
               </h2>
-              <p
-                className="text-center flex justify-between items-center 
-              my-2"
-              >
-                <span className="bg-white text-black p-2 rounded">0</span>
-                <span className="bg-white text-black p-2 rounded">0</span>
-                <span className="bg-white text-black p-2 rounded">0</span>
-                <span className="bg-white text-black p-2 rounded">0</span>
-                <span className="bg-white text-black p-2 rounded">0</span>
+              <p className="text-center flex justify-between items-center my-2">
+                <span
+                  className="bg-white text-black p-2 px-6 rounded 
+                mx-auto font-black text-lg border-yellow-500 border-2"
+                >
+                  {userCount}
+                </span>
               </p>
+
               <p className="bg-yellow-600 border text-center rounded-lg">
-                <a href="#">Fan Partner</a>
+                <Link href="/become/register">Fan Partner</Link>
               </p>
             </div>
           </div>
