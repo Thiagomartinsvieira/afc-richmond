@@ -3,6 +3,7 @@ import SponsorFooter from './SponsorFooter'
 import BecomeFooter from './BecomeFooter'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
@@ -16,7 +17,7 @@ const Footer = () => {
               width={100}
               height={100}
               src="/images/logos/Richmond_logo.png"
-              alt=""
+              alt="Afc Richmond logo"
             />
             <h2 className="text-xl font-semibold">AFC Richmond</h2>
           </div>
@@ -25,21 +26,21 @@ const Footer = () => {
             className="hidden lg:flex items-center justify-center md:justify-start 
           mt-4 md:mt-0 space-x-4 md:order-1"
           >
-            <a href="#" className="hover:text-gray-400">
+            <Link href="/home" className="hover:text-gray-400">
               Home
-            </a>
-            <a href="#" className="hover:text-gray-400">
+            </Link>
+            <Link href="/players" className="hover:text-gray-400">
               Players squad
-            </a>
-            <a href="#" className="hover:text-gray-400">
+            </Link>
+            <Link href="/become" className="hover:text-gray-400">
               Become a fan member
-            </a>
-            <a href="#" className="hover:text-gray-400">
+            </Link>
+            <Link href="/history" className="hover:text-gray-400">
               History
-            </a>
-            <a href="#" className="hover:text-gray-400">
+            </Link>
+            <Link href="/contact" className="hover:text-gray-400">
               Contact
-            </a>
+            </Link>
           </div>
 
           <div

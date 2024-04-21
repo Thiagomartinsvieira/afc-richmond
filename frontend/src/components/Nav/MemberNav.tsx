@@ -1,13 +1,22 @@
 import { useAuth } from '@/context/Auth'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaTimes } from 'react-icons/fa'
 import { FaUser } from 'react-icons/fa6'
 
 const MemberNav = () => {
   const { logout } = useAuth()
+  const [userName, setUserName] = useState('')
   const [isOpen, setIsOpen] = useState(false)
+
+  const { currentUser } = useAuth()
+
+  useEffect(() => {
+    if (currentUser) {
+      setUserName(currentUser.name)
+    }
+  }, [currentUser])
 
   const toogleMenu = () => {
     setIsOpen(!isOpen)
@@ -29,7 +38,10 @@ const MemberNav = () => {
           </li>
 
           <li className="cursor-pointer" onClick={toogleMenu}>
-            {!isOpen ? <FaUser size={20} /> : <FaTimes size={20} />}
+            <div className="flex space-x-2">
+              <li>{userName.split(' ')[0]}</li>
+              {!isOpen ? <FaUser size={20} /> : <FaTimes size={20} />}
+            </div>
           </li>
           {isOpen && (
             <ul

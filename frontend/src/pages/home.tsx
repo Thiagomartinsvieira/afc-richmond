@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import PlayersCarroucel from '@/components/Carroucel/PlayersCarroucel'
 import { useWindowSize } from 'react-use'
 import Link from 'next/link'
+import RichmondStore from '@/components/Carroucel/RichmondStore'
 
 const Home = () => {
   const { width } = useWindowSize()
@@ -100,6 +101,7 @@ const Home = () => {
         <PlayersCarroucel />
       </div>
       <Benefits />
+      <RichmondStore />
       <Footer />
     </div>
   )

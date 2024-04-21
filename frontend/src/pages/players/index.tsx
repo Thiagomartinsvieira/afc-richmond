@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from '../../components/Nav'
 import PlayerCard from '@/components/Card/PlayerCard'
 import Title from '../../components/Title'
 import { playersSquad } from '@/data/playersData'
-import { idolsData } from '@/data/idolsData'
+import { idolsSquad } from '@/data/idolsData'
 import { staffData } from '@/data/staffData'
 import Footer from '@/components/Footer'
 
@@ -14,21 +14,36 @@ const Players = () => {
   const dataToShow = showStaff
     ? staffData
     : showIdols
-      ? idolsData
+      ? idolsSquad
       : playersSquad
 
   const positions = Array.from(
     new Set(dataToShow.map((player) => player.position)),
   )
 
+  useEffect(() => {
+    const storedPlayer = localStorage.getItem('player')
+    if (storedPlayer === 'idols') {
+      setShowIdols(true)
+    } else if (storedPlayer === 'staff') {
+      setShowStaff(true)
+    } else {
+      setShowIdols(false)
+      setShowStaff(false)
+    }
+  }, [])
+
   const handleToogleData = (dataType: string) => {
     if (dataType === 'idols') {
       setShowIdols(!showIdols)
       setShowStaff(false)
+      localStorage.setItem('player', 'idols')
     } else if (dataType === 'staff') {
       setShowStaff(!showStaff)
       setShowIdols(false)
+      localStorage.setItem('player', 'staff')
     } else {
+      localStorage.setItem('player', 'players')
       setShowIdols(false)
       setShowStaff(false)
     }
@@ -57,7 +72,7 @@ const Players = () => {
         </button>
         <button
           onClick={() => handleToogleData('idols')}
-          className={`btn font-semibold transition ${
+          className={`font-semibold transition ${
             showIdols
               ? 'border-b-4 border-blue-500 hover:border-transparent hover:border-blue-500'
               : ''
